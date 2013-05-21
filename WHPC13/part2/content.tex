@@ -1,0 +1,363 @@
+
+
+
+\begin{frame}{Before we start...}
+
+   \begin{block}{Goal of this Workshop}
+    \begin{itemize}
+     \item {\Huge \textbf{\color{red} You}} are here to learn new things about HPC
+    \end{itemize}
+   \end{block}
+
+   \vspace*{1cm}
+   \begin{block}{Ask Questions}
+    \begin{itemize}
+     \item Tell me if you do not understand
+     \item Ask for further details
+     \item Don't be shy
+    \end{itemize}
+   \end{block}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Table of Contents}
+   \begin{block}{$p$-Bratu Equation} \end{block}
+   \begin{block}{Distributed Arrays} \end{block}
+   \begin{block}{Nonlinear Solvers} \end{block}
+   \begin{block}{Matrices, Linear Solvers} \end{block}
+   \begin{block}{Preconditioners} \end{block}
+\end{frame}
+
+
+%%%%%% General PETSc information %%%%%%%%%%
+
+%
+% Why Libraries?
+%   - Reinvent the wheel again and again?
+%   - Same procedure common for non-software (Theorems, engineering, etc.)
+%   - Specialization and settlement of approaches over time (OS, Hardware, etc.)
+%   
+
+
+
+
+
+%
+%%%%% p-Bratu
+%
+\section{p-Bratu Equation}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{$p$-Bratu Equation} \end{center}
+\end{frame}
+
+\input{slides/pbratu.tex}
+
+
+
+
+%
+%%%%% Distributed Arrays
+%
+\section{Distributed Arrays}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Distributed Arrays} \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Distributed Array}
+
+  \begin{block}{Interface for topologically structured grids}
+  \end{block}
+
+  \begin{block}{Defines (topological part of) a finite-dimensional function space}
+    \begin{itemize} 
+      \item Get an element from this space: \lstinline|DMCreateGlobalVector()| 
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Provides parallel layout}
+  \end{block}
+
+  \begin{block}{Refinement and coarsening}
+    \begin{itemize}
+      \item \lstinline|DMRefineHierarchy()| 
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Ghost value coherence}
+    \begin{itemize}
+       \item \lstinline|DMGlobalToLocalBegin()|
+     \end{itemize}
+  \end{block}
+
+  \begin{block}{Matrix preallocation}
+       \begin{itemize}
+         \item \lstinline|DMCreateMatrix()| (formerly \lstinline|DMGetMatrix()|) 
+       \end{itemize}
+  \end{block}
+\end{frame}
+
+\input{slides/DA/GhostValues.tex}
+\input{slides/DA/GlobalNumberings.tex}
+\input{slides/DA/LocalNumbering.tex}
+\input{slides/DA/Vectors.tex}
+\input{slides/DA/UpdatingGhosts.tex}
+\input{slides/DA/Stencils.tex}
+\input{slides/DA/CreatingDA2d.tex}
+\input{slides/DA/WorkingWithLocal.tex}
+\input{slides/DA/LocalGlobalMapping.tex}
+\input{slides/DA/LocalFunction.tex}
+
+
+%%
+%% Discretizations
+%% 
+
+% Finite Differences
+% Finite Volumes
+% Finite Elements
+% Other approaches
+\input{slides/Discretization.tex}
+
+
+\input{slides/DA/BratuResidual.tex}
+
+%% Go through first code example
+
+
+%
+% Nonlinear Solvers
+%
+\section{Nonlinear Solvers}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Nonlinear Solvers} \end{center}
+\end{frame}
+
+
+\begin{frame}{Newton iteration: Workhorse of SNES}
+  \begin{flushright}
+    \includegraphics[width=0.25\textwidth]{figures/Newton}
+  \end{flushright}
+  \vspace*{-4cm}
+  \begin{block}{Standard form of a nonlinear system}
+    \[ \hspace*{-1cm} -\nabla \cdot \bigl(\vert\nabla u\vert^{\mathfrak{p}-2} \nabla u \bigr) - \lambda e^u = F(u) = 0 \]
+  \end{block}
+  
+  \begin{block}{Iteration}
+    \vspace*{-0.5cm}
+    \begin{align*}
+      \text{Solve:} & \qquad J(u) w = -F(u) \\
+      \text{Update:} & \qquad u^+ \gets u + w
+    \end{align*}
+    \begin{itemize}
+    \item Quadratically convergent near a root: $|u^{n+1}-u^*| \in \mathcal{O} \Big(|u^n-u^*|^2\Big)$
+    \item Picard is the same operation with a different $J(u)$
+    \end{itemize}
+  \end{block}
+  
+  \begin{block}{Jacobian Matrix for $\mathfrak{p}$-Bratu Equation}
+    \vspace*{-0.5cm}
+        \begin{gather*}
+         J(u) w \sim -\nabla \bigl[ (\eta {\mathbf{1}} + \eta' \nabla u \otimes \nabla u) \nabla w \bigr] - \lambda e^u w \\
+          \eta' = \frac{\mathfrak{p}-2}{2} \eta / (\epsilon^2 + \gamma)
+        \end{gather*}
+  \end{block}
+\end{frame}
+
+
+\begin{frame}{SNES}
+  
+  \begin{block}{Scalable Nonlinear Equation Solvers}
+    \begin{itemize}
+     \item Newton solvers: Line Search, Thrust Region
+     \item Inexact Newton-methods: Newton-Krylov
+     \item Matrix-Free Methods: With iterative linear solvers
+    \end{itemize}
+  \end{block}
+  
+  \begin{block}{How to get the Jacobian Matrix?}
+    \begin{itemize}
+     \item Implement it by hand
+     \item Let PETSc finite-difference it
+     \item Use Automatic Differentiation software
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\input{slides/SNES/NonlinearSolversList.tex}
+
+%\input{slides/SNES/FlowControl.tex}
+\input{slides/SNES/Callbacks.tex}
+\input{slides/SNES/Function.tex}
+\input{slides/SNES/Jacobian.tex}
+\input{slides/SNES/FiniteDifferenceJacobian.tex}
+
+\input{slides/SNES/DMDASNES.tex}
+
+
+
+
+
+
+%
+% Matrices (preparing for Linear Solvers)
+%
+
+\section{Matrices in PETSc}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Matrices} \end{center}
+\end{frame}
+
+\input{slides/PETSc/MatrixMemoryPreallocation.tex}
+\input{slides/PETSc/Integration/MisguidedMatrixAssembly.tex}
+\input{slides/PETSc/Integration/EfficientMatrixAssembly.tex}
+
+
+\input{slides/MatrixDefinition.tex}
+
+% Sparse Matrix formats (include benchmark from manual or Jed)
+% Matrices in parallel
+% Matrix preallocation
+
+\input{slides/MatricesImportant.tex}
+
+% \begin{frame}{PETSc}
+%    \begin{center} \Large \textbf{What can we do with a matrix \\ which does not have entries?} \\[2em]
+%       \visible<2>{\includegraphics[width=0.4\textwidth]{figures/coffee} }
+%    \end{center}
+% \end{frame}
+
+% 41 distinct slides here
+
+%
+% Linear Solvers
+%
+
+% Condition number!
+\section{Iterative Solvers}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Iterative Solvers} \end{center}
+\end{frame}
+
+\input{slides/MatrixNoEntries.tex}
+
+% Dense solvers (reiterate MAGMA-stuff from Day 1)
+% Direct solvers (Sparse Gauss, Dissection, etc.)
+% Conjugate Gradients
+% BiCGStab
+\input{slides/GMRES.tex}
+
+\input{slides/PETSc/Integration/LinearSolvers.tex}
+
+% Do some calculations on why the use of multiple GPUs is hard
+
+
+%
+%%%%% Preconditioners
+% 
+
+\section{Preconditioners}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Preconditioners} \end{center}
+\end{frame}
+
+\input{slides/Preconditioning.tex}
+
+% Explain various preconditioners here:
+%   - Jacobi, Block-Jacobi
+%   - SPAI
+%   - ICC/ILU (include symbolic stage)
+%   - Multigrid (geometric, algebraic)
+%\input{slides/PreconditioningSamples.tex}
+
+
+
+% Intermediate summary: Preconditioners for single quantity
+
+
+\input{slides/FieldSplit.tex}
+% Compose preconditioners for multiple fields (Fun with Matt)
+
+
+
+
+%
+% Debugging and Profiling
+%
+\section{Debugging and Profiling}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Debugging and Profiling} \end{center}
+\end{frame}
+
+\subsection{Debugging}
+\begin{frame}[fragile]{PETSc Debugging}
+  \begin{itemize}
+  \item By default, a debug build is provided
+
+  \vspace*{0.3cm}
+  \item Launch the debugger
+  \begin{itemize}
+    \item \lstinline|-start_in_debugger  [gdb,dbx,noxterm]|
+    \item \lstinline|-on_error_attach_debugger [gdb,dbx,noxterm]|
+  \end{itemize}
+
+  \vspace*{0.3cm}
+  \item Attach the debugger only to some parallel processes
+  \begin{itemize}
+    \item \lstinline|-debugger_nodes 0,1|
+  \end{itemize}
+
+  \vspace*{0.3cm}
+  \item Set the display (often necessary on a cluster)
+  \begin{itemize}
+    \item \lstinline|-display :0|
+  \end{itemize}
+\end{itemize}
+\end{frame}  
+
+\input{slides/PETSc/DebuggingTips.tex}
+
+
+
+\input{slides/PETSc/Integration/Profiling.tex}
+\input{slides/ReadingLogSummary.tex}
+\input{slides/CommunicationCosts.tex}
+
+
+
+
+
+%%%% Conclusion
+
+
+
+
+%
+% Conclusion and Wrap-Up
+%
+\section{Conclusions}
+\begin{frame}{Conclusions}
+ 
+ \begin{block}{PETSc can help You}
+  \begin{itemize}
+   \item solve algebraic and DAE problems in your application area
+   \item rapidly develop efficient parallel code, can start from examples
+   \item develop new solution methods and data structures
+   \item debug and analyze performance
+   \item advice on software design, solution algorithms, and performance
+   \item \centering \texttt{petsc-\{users,dev,maint\}@mcs.anl.gov}
+
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{You can help PETSc}
+  \begin{itemize}
+   \item report bugs and inconsistencies, or if you think there is a better way
+   \item tell us if the documentation is inconsistent or unclear
+   \item consider developing new algebraic methods as plugins, contribute if your idea works
+  \end{itemize}
+ \end{block}
+
+\end{frame}

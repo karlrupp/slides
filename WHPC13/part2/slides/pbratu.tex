@@ -1,0 +1,85 @@
+
+
+
+
+\begin{frame}{The $\mathfrak{p}$-Bratu Equation}
+
+  \begin{block}{The ``Hello World of PDEs''}
+  \begin{itemize}
+   \item Poisson's Equation
+    \begin{equation*}
+      -\nabla \cdot \bigl(\nabla u \bigr) = f,
+    \end{equation*}
+   \item Leads to symmetric, positive definite system matrices
+   \item Commonly used in numerical analysis (corner effects, etc.)
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{More General Form}
+  \begin{itemize}
+   \item With diffusivity tensor $\eta$:
+    \begin{equation*}
+      -\nabla \cdot \bigl( \eta \nabla u \bigr) = f,
+    \end{equation*}
+   \item Typically: $\eta > \delta > 0$
+   \item $\eta$ can be discontinous (material boundaries)
+   \item Reduced regularity of solution
+  \end{itemize}
+  \end{block}
+  
+\end{frame}
+
+
+\begin{frame}{The $\mathfrak{p}$-Bratu Equation}
+
+  \begin{block}{Additional Volume Term}
+  \begin{itemize}
+   \item Consider
+    \begin{equation*}
+      -\nabla \cdot \bigl(\eta \nabla u \bigr) - \lambda e^u - f = 0 \ ,
+    \end{equation*}
+   \item Canonical nonlinear form
+   \item $e^u$ has ``wrong sign'': turning point at $\lambda_{\text{crit}}$
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{Another Tweak}
+  \begin{itemize}
+   \item Diffusivity tensor $\eta$ depends on $u$, e.g.:
+    \begin{equation*}
+      \eta = \frac{1}{2} \vert \nabla u \vert^2,
+    \end{equation*}
+   \item Singular or degenerate when $\nabla u = 0$.
+  \end{itemize}
+  \end{block}
+  
+\end{frame}
+
+
+% \section{$\pfrak$-Bratu}
+\begin{frame}{The $\mathfrak{p}$-Bratu Equation}
+
+  \begin{block}{$\mathfrak{p}$-Bratu Equation}
+  \begin{itemize}
+  \item 2-dimensional model problem
+    \begin{equation*}
+      -\nabla \cdot \bigl(\vert\nabla u\vert^{\mathfrak{p}-2} \nabla u \bigr) - \lambda e^u - f = 0, \qquad 1 \le \mathfrak{p} \le \infty, \quad \lambda < \lambda_{\text{crit}}(\mathfrak{p})
+    \end{equation*}
+    Singular or degenerate when $\nabla u = 0$, turning point at $\lambda_{\text{crit}}$.
+  \end{itemize}
+  \end{block}
+  
+  \begin{block}{Regularized Variant}
+  \begin{itemize}
+  \item Remove singularity of $\eta$ using a parameter $\varepsilon$:
+    \begin{gather*}
+      -\nabla \cdot (\eta \nabla u) - \lambda e^u - f = 0 \\
+      \eta(\gamma) = (\epsilon^2 + \gamma)^{\frac{\mathfrak{p}-2}{2}} \qquad \gamma(u) = \frac{1}{2} \vert\nabla u\vert^2
+    \end{gather*}
+  \item       Physical interpretation: diffusivity tensor flattened in direction $\nabla u$
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+
+

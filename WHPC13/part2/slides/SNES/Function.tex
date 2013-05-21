@@ -1,0 +1,23 @@
+\begin{frame}[fragile]{SNES Function}
+
+\begin{align*}
+ F(u) = 0
+\end{align*}
+
+The user provided function which calculates the nonlinear residual has signature
+\begin{lstlisting}
+  PetscErrorCode (*func)(SNES snes,
+                         Vec x,Vec r,
+                         void *ctx)
+\end{lstlisting}
+
+\begin{itemize}
+  \item \lstinline|x| - The current solution
+  \item \lstinline|r| - The residual
+  \item \lstinline|ctx| -  The user context passed to \lstinline|SNESSetFunction()|
+  \begin{itemize}
+    \item Use this to pass application information, e.g.~physical constants
+  \end{itemize}
+\end{itemize}
+
+\end{frame}

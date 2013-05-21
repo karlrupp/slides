@@ -1,0 +1,32 @@
+\begin{frame}{Updating Ghosts}
+
+\begin{block}{Two-step Process for Updating Ghosts}
+ \begin{itemize}
+  \item enables overlapping computation and communication
+ \end{itemize}
+\end{block}
+ 
+
+\begin{block}{\lstinline|DMGlobalToLocalBegin(dm, gvec, mode, lvec)|}
+  \begin{itemize}
+    \item \lstinline|gvec| provides the data 
+    \item \lstinline|mode| is either \lstinline|INSERT_VALUES| or \lstinline|ADD_VALUES|
+    \item \lstinline|lvec| holds the local and ghost values
+  \end{itemize}
+\end{block}
+
+\begin{block}{\lstinline|DMGlobalToLocalEnd(dm, gvec, mode, lvec)|}
+  \begin{itemize}
+    \item Finishes the communication
+  \end{itemize}
+\end{block}
+
+\medskip
+
+\begin{block}{Reverse Process}
+  \begin{itemize}
+   \item Via \lstinline|DMLocalToGlobalBegin()| and \lstinline|DMLocalToGlobalEnd()|.
+  \end{itemize}
+\end{block}
+ 
+\end{frame}

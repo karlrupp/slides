@@ -1,0 +1,98 @@
+
+\begin{frame}{Discretization}
+ 
+ \begin{block}{Mapping PDEs to a (un)structured Grid}
+   \begin{itemize}
+    \item Can be arbitrarily complex (mathematically)
+    \item Neverending area of research
+   \end{itemize}
+ \end{block}
+ 
+ \begin{block}{Popular Discretization Schemes}
+   \begin{itemize}
+    \item Finite Difference Method
+    \item Finite Volume Method
+    \item Finite Element Method
+   \end{itemize}
+ \end{block}
+ 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Finite Difference Methods}
+ 
+ \begin{block}{Finite Difference Methods: $u'$}
+   \begin{itemize}
+    \item Consider 1d-grid
+    \item Replace $u' \approx \frac{u[i+1] - u[i]}{h}$
+    \item or $u' \approx \frac{u[i] - u[i-1]}{h}$
+    \item or $u' \approx \frac{u[i+1] - u[i-1]}{2h}$
+   \end{itemize}
+ \end{block}
+ 
+ %\vspace*{1cm}
+ \begin{block}{Finite Difference Methods: $u''$}
+   \begin{itemize}
+    \item Naive: $u'' \approx \frac{u'[i+1] - u'[i-1]}{2h} \approx \frac{u[i+2] - 2u[i] + u[i-2]}{4h^2}$
+    \item Use 'virtual' grid nodes $u'[i+0.5]$, $u'[i-0.5]$ to obtain
+      \begin{align*}
+        u''(x_i) \approx \frac{u[i+1] - 2u[i] + u[i-1]}{h^2}
+      \end{align*}
+   \end{itemize}
+ \end{block}
+ 
+ %\vspace*{-7cm}
+ %\begin{flushright}
+ % \includegraphics[width=0.55\textwidth]{figures/fd_stencil}
+ %\end{flushright}
+ %\vspace*{4cm}
+
+ 
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Finite Volume Methods}
+ 
+ \begin{block}{Finite Volume Methods}
+   \begin{itemize}
+    \item Suitable for unstructured grids
+    \item Popular for conservation laws
+    \item Integrate PDE over box, apply Gauss' theorem
+    \item On regular grid: (Almost) same expression as finite differences
+   \end{itemize}
+ \end{block}
+ 
+ %\begin{center}
+ % \includegraphics[width=0.4\textwidth]{figures/finite-volume}
+ %\end{center}
+ 
+\end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Finite Element Methods}
+ 
+ \begin{block}{Finite Element Methods}
+   \begin{itemize}
+    \item Ansatz: $u \approx \sum_i u_i \varphi_i$
+    \item $\varphi_i$ piecewise polynomials of degree $p$
+    \item Solve for $u_i$
+    \item Adaptivity: in $h$ and/or $p$ possible
+    \item Rich mathematical theory
+   \end{itemize}
+ \end{block}
+ 
+ %\begin{center}
+ % \includegraphics[width=0.5\textwidth]{figures/finite_element_method}
+ %\end{center}
+ 
+\end{frame}
+

@@ -1,0 +1,29 @@
+\begin{frame}[fragile]
+\frametitle{DA Local Function}
+
+\begin{block}{User-provided Function for Nonlinear Residual in 2D}
+\begin{lstlisting}
+  PetscErrorCode (*lfunc)(DMDALocalInfo *info,
+                          Field **x, Field **r,
+                          void *ctx)
+\end{lstlisting}
+
+\begin{tabular}{lp{8.3cm}}
+  \lstinline|info| & All layout and numbering information \\
+  \lstinline|x|    & The current solution \newline
+     \emph{ Notice that it is a multidimensional array} \\
+  \lstinline|r|    & The residual \\
+  \lstinline|ctx|  & The user context passed to \lstinline|DMSetApplicationContext()| or to SNES \\
+\end{tabular}
+
+
+\bigskip
+
+The local DMDA function is activated by calling
+\begin{itemize}
+ \item \lstinline|SNESSetDM(snes,dm)|
+ \item \lstinline|SNESSetFunction(snes, r, SNESDAFormFunction, ctx)|
+\end{itemize}
+\end{block}
+\end{frame}
+

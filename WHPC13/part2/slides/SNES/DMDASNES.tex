@@ -1,0 +1,28 @@
+\begin{frame}[fragile]{DMDA and SNES}
+ 
+  \begin{block}{Fusing Distributed Arrays and Nonlinear Solvers}
+   \begin{itemize}
+    \item Make DM known to SNES solver
+      \begin{lstlisting}
+ SNESSetDM(snes,dm);
+      \end{lstlisting}
+
+    \item Attach residual evaluation routine
+      \begin{lstlisting}
+ DMDASNESSetFunctionLocal(dm,INSERT_VALUES,
+        (DMDASNESFunction)FormFunctionLocal,
+                          &user);
+      \end{lstlisting}
+   \end{itemize}
+  \end{block}
+
+  \begin{block}{Ready to Roll}
+   \begin{itemize}
+    \item First solver implementation completed
+    \item Uses finite-differencing to obtain Jacobian Matrix
+    \item Rather slow, but scalable!
+   \end{itemize}
+  \end{block}
+
+ 
+\end{frame}

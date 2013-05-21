@@ -1,0 +1,33 @@
+\begin{frame}[fragile]{SNES Jacobian}
+
+\begin{block}{User-provided function calculating the Jacobian Matrix}
+\begin{lstlisting}
+PetscErrorCode (*func)(SNES snes,Vec x,Mat *J,Mat *M,
+                       MatStructure *flag,void *ctx)
+\end{lstlisting}
+
+\begin{itemize}
+  \item \lstinline|x| - The current solution
+  \item \lstinline|J| - The Jacobian
+  \item \lstinline|M| -  The Jacobian preconditioning matrix (possibly J itself)
+  \item \lstinline|ctx| - The user context passed to \lstinline|SNESSetFunction()|
+  \begin{itemize}
+    \item Use this to pass application information, e.g. physical constants
+  \end{itemize}
+
+  \item Possible \lstinline|MatStructure| values are:
+  \begin{itemize}
+    \item \lstinline|SAME_NONZERO_PATTERN|
+    \item \lstinline|DIFFERENT_NONZERO_PATTERN|
+  \end{itemize}
+\end{itemize}
+\end{block}
+
+\begin{block}{Alternatives}
+\begin{itemize}
+  \item a builtin sparse finite difference approximation (``coloring'')
+  \item automatic differentiation (ADIC/ADIFOR)
+\end{itemize}
+\end{block}
+
+\end{frame}

@@ -1,0 +1,35 @@
+\begin{frame}{Debugging Tips}
+
+\begin{itemize}
+  \item Put a breakpoint in \lstinline|PetscError()| to catch errors as they occur
+
+  \vspace*{0.3cm}
+  \item PETSc tracks memory overwrites at both ends of arrays
+  \begin{itemize}
+    \item The \lstinline|CHKMEMQ| macro causes a check of all allocated memory
+
+    \item Track memory overwrites by bracketing them with \lstinline|CHKMEMQ|
+  \end{itemize}
+
+  \vspace*{0.3cm}
+  \item PETSc checks for leaked memory
+  \begin{itemize}
+    \item Use \lstinline|PetscMalloc()| and \lstinline|PetscFree()| for all allocation
+
+    \item Print unfreed memory on \lstinline|PetscFinalize()| with \lstinline|-malloc_dump|
+  \end{itemize}
+
+  \vspace*{0.3cm}
+  \item Simply the best tool today is {\color{red} Valgrind}
+  \begin{itemize}
+    \item It checks memory access, cache performance, memory usage, etc.
+
+    \item \href{http://www.valgrind.org}{http://www.valgrind.org}
+
+    \item Pass \lstinline|-malloc 0| to PETSc when running under Valgrind
+    \item Might need \lstinline|--trace-children=yes| when running under MPI
+    \item \lstinline|--track-origins=yes| handy for uninitialized memory
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
