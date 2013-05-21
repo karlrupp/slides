@@ -1,0 +1,36 @@
+
+
+
+\begin{frame}[fragile]
+\frametitle{PETSc}
+ \begin{block}{Obtaining PETSc}
+ \begin{itemize}
+  \item Linux Package Managers
+  \item Web: http://mcs.anl.gov/petsc, download tarball
+  \item Git: https://bitbucket.org/petsc/petsc
+  \item Mercurial: https://bitbucket.org/petsc/petsc-hg
+ \end{itemize}
+ \end{block}
+
+ \begin{block}{Installing PETSc}
+ \begin{itemize}
+  \item
+ \begin{lstlisting}[escapechar={@}]
+$> cd /path/to/petsc/workdir
+$> git clone \
+     https:@/@/bitbucket.org/petsc/petsc.git \
+     --branch master --depth 1
+$> cd petsc
+ \end{lstlisting}
+  \item
+ \begin{lstlisting}
+$> export PETSC_DIR=$PWD PETSC_ARCH=mpich-gcc-dbg
+$> ./configure --with-cc=gcc --with-fc=gfortran 
+                 --download-f-blas-lapack
+                 --download-{mpich,ml,hypre}
+\end{lstlisting}
+ \end{itemize}
+ \end{block}
+
+\end{frame}
+

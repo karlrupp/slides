@@ -1,0 +1,121 @@
+
+% Start and ice-breaker:
+
+% Introducing myself
+
+\input{slides/self.tex}
+
+
+
+\begin{frame}{Before we start...}
+
+   \begin{block}{Goal of this Workshop}
+    \begin{itemize}
+     \item {\Huge \textbf{\color{red} You}} should learn new things about HPC
+    \end{itemize}
+   \end{block}
+
+   \vspace*{1cm}
+   \begin{block}{Ask Questions}
+    \begin{itemize}
+     \item Tell me if you do not understand
+     \item Ask for further details
+     \item Don't be shy
+    \end{itemize}
+   \end{block}
+
+\end{frame}
+
+
+
+
+%%%%%% General PETSc information %%%%%%%%%%
+
+%%% What is PETSc
+
+%
+% Stats, Who, Philosophy
+%
+
+
+\input{slides/petsc-overview}
+\input{slides/Timeline}
+\input{slides/About}
+\input{slides/RoleOfPETSc}
+
+%\begin{frame}{PETSc}
+%   \begin{center} \Large \textbf{First Steps} \end{center}
+%\end{frame}
+
+\input{slides/petsc-obtaining.tex}
+\input{slides/AutomaticDownloads.tex}
+
+
+\begin{frame}[fragile]
+\frametitle{PETSc Pyramid}
+ \begin{block}{PETSc Structure} \vspace{0.3cm}
+   \includegraphics[width=1.0\textwidth]{PETScPyramid.jpg}
+ \end{block}
+
+\end{frame}
+
+\input{slides/FlowControl.tex}
+\input{slides/OptionsDatabase.tex}
+
+
+\section{Application Integration}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Application Integration} \end{center}
+\end{frame}
+
+\input{slides/ApplicationIntegration1.tex}
+\input{slides/ApplicationIntegration2.tex}
+\input{slides/IntegrationStages.tex}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{PETSc and Accelerators}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{PETSc and Accelerators} \end{center}
+\end{frame}
+
+
+\input{slides/petsc-operations.tex}
+
+
+%%%%%%% GPUs: Disillusion %%%%%%%
+
+\input{slides/gpu-overview.tex}
+\input{slides/gpu-benchmark-addition.tex}
+\input{slides/gpu-benchmark-cg.tex}
+
+
+%%%% Conclusion
+
+
+\section{Conclusion}
+\begin{frame}{End of Day 1}
+ 
+ \begin{block}{PETSc can help You}
+  \begin{itemize}
+   \item solve algebraic and DAE problems in your application area
+   \item rapidly develop efficient parallel code, can start from examples
+   \item develop new solution methods and data structures
+   \item debug and analyze performance
+   \item advice on software design, solution algorithms, and performance
+   \item \centering \texttt{petsc-\{users,dev,maint\}@mcs.anl.gov}
+
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{You can help PETSc}
+  \begin{itemize}
+   \item report bugs and inconsistencies, or if you think there is a better way
+   \item tell us if the documentation is inconsistent or unclear
+   \item consider developing new algebraic methods as plugins, contribute if your idea works
+  \end{itemize}
+ \end{block}
+
+\end{frame}
