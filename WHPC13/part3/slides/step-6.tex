@@ -1,0 +1,63 @@
+
+
+
+\begin{frame}[fragile]{Step 6: Full Implementation}
+
+  \begin{block}{$\mathfrak{p}$-Bratu Equation}
+    \begin{gather*}
+      -\nabla \cdot (\eta \nabla u) - \lambda e^u - f = 0 \\
+      \eta(\gamma) = (\epsilon^2 + \gamma)^{\frac{\mathfrak{p}-2}{2}} \qquad \gamma(u) = \frac{1}{2} \vert\nabla u\vert^2
+    \end{gather*}
+
+ \begin{lstlisting}
+ $> git checkout -f step-6
+ $> make
+ $> salloc --gres=gpu:1 ./submit_job
+ \end{lstlisting}
+  \end{block}
+
+  \begin{block}{Two more implementations for Jacobian}
+    \begin{itemize}
+     \item \lstinline|-jtype 3|: Jacobian on 5-star stencil
+     \item \lstinline|-jtype 4|: Full Jacobian
+    \end{itemize}
+
+  \end{block}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Final Quiz}
+
+  \begin{block}{Preparation}
+    \begin{itemize}
+     \item Use the following options in \lstinline|petscrc|:
+ \begin{lstlisting}
+-da_grid_x 320 
+-da_grid_y 320
+-p         3
+-lambda    2
+ \end{lstlisting}
+    \end{itemize}
+  \end{block}
+
+  %\visible<2>{
+  \begin{block}{Task}
+    \begin{itemize}
+     \item Find the fastest set of parameters (see petscrc)
+     \item Use \lstinline|-log_summary|
+     \item Experiment with
+     \begin{itemize}
+      \item CPU vs. GPU
+      \item Jacobian Matrices (\lstinline|-jtype|)
+      \item Linear solvers (KSP)
+      \item Preconditioners (PC)
+     \end{itemize}
+    \end{itemize}
+  \end{block}
+  %}
+
+\end{frame}
+
+
+

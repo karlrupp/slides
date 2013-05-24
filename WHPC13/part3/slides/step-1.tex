@@ -1,0 +1,27 @@
+
+
+
+
+\begin{frame}[fragile]{Step 1: Hello World}
+
+   \begin{block}{Initialize Environment}
+    \begin{lstlisting}[escapechar=@]
+ $> export PETSC_DIR=/opt/petsc-20130502
+ $> git clone https:@/@/github.com/karlrupp/whpc13.git
+
+ $> cd whpc13
+ $> module load mpi
+ $> cp scripts/submit_job.sh .
+ $> make
+ $> salloc --gres=gpu:1 ./submit_job.sh
+    \end{lstlisting}
+   \end{block}
+
+   \begin{block}{Options}
+     Provided via \lstinline|petscrc|
+   \end{block}
+
+
+\end{frame}
+
+

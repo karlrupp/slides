@@ -1,0 +1,47 @@
+
+
+
+
+\begin{frame}[fragile]{Step 2: Poisson Equation}
+
+  \begin{block}{Poisson Equation}
+    \begin{equation*}
+     - \Delta u = 0
+    \end{equation*}
+
+ \begin{lstlisting}
+ $> git checkout -f step-2
+ $> make
+ $> salloc --gres=gpu:1 ./submit_job
+ \end{lstlisting}
+
+  \end{block}
+
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Quiz}
+
+  \begin{block}{Quiz}
+    \begin{itemize}
+     \item First correct answer wins chocolate!
+    \end{itemize}
+  \end{block}
+
+  %\visible<2>{
+  \begin{block}{Question}
+    \begin{itemize}
+     \item Which preconditioner (PC) type is used?
+     \item Hints
+       \begin{itemize}
+        \item Use options from petscrc 
+        \item Read and try to understand output
+       \end{itemize}
+    \end{itemize}
+  \end{block}
+  %}
+\end{frame}
+
+

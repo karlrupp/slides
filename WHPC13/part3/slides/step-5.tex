@@ -1,0 +1,63 @@
+
+
+
+
+\begin{frame}[fragile]{Step 5: Providing Jacobian}
+
+  \begin{block}{$\mathfrak{p}$-Bratu Equation}
+    \begin{gather*}
+      -\nabla \cdot (\eta \nabla u) - \lambda e^u - f = 0 \\
+      \eta(\gamma) = (\epsilon^2 + \gamma)^{\frac{\mathfrak{p}-2}{2}} \qquad \gamma(u) = \frac{1}{2} \vert\nabla u\vert^2
+    \end{gather*}
+
+ \begin{lstlisting}
+ $> git checkout -f step-5
+ $> make
+ $> salloc --gres=gpu:1 ./submit_job
+ \end{lstlisting}
+  \end{block}
+
+  \begin{block}{Use 'simpler' Jacobians for Newton}
+    \begin{itemize}
+     \item Just use $-\Delta w  - e^u w$ (simplest)
+     \item More detail: Include $\eta$, but not $\eta^\prime$
+    \end{itemize}
+
+  \end{block}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Not a Quiz}
+
+  \begin{block}{Play with Parameters}
+    \begin{itemize}
+     \item Check out the following options (one at a time):
+        \begin{itemize}
+         \item \lstinline|-snes_mf|
+         \item \lstinline|-snes_fd|
+         \item \lstinline|-jtype 1 -myJ|
+         \item \lstinline|-jtype 2 -myJ|
+        \end{itemize}
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Look at Scalability}
+    \begin{itemize}
+     \item Adjust
+ \begin{lstlisting}
+-da_grid_x 40 
+-da_grid_y 40
+ \end{lstlisting}
+     \item Go up to (don't use \lstinline|-snes_fd|)
+ \begin{lstlisting}
+-da_grid_x 160 
+-da_grid_y 160
+ \end{lstlisting}
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+
+
