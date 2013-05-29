@@ -1,0 +1,130 @@
+
+
+\begin{frame}{Before we start...}
+   \begin{block}{Ask Questions}
+    \begin{itemize}
+     \item Tell me if you do not understand
+     \item Ask for further details
+    \end{itemize}
+
+   \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{Table of Contents}
+   \begin{block}{About PETSc} \end{block}
+   \begin{block}{First Steps} \end{block}
+   \begin{block}{Application Integration} \end{block}
+   \begin{block}{Profiling} \end{block}
+   \begin{block}{PETSc and GPUs} \end{block}
+\end{frame}
+
+
+%%%%%% General PETSc information %%%%%%%%%%
+
+%%% What is PETSc
+
+%
+% Stats, Who, Philosophy
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{About PETSc}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{About PETSc} \end{center}
+\end{frame}
+
+
+\input{slides/petsc-origins.tex}
+\input{slides/Timeline}
+\input{slides/About}
+\input{slides/RoleOfPETSc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{First Steps}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{First Steps} \end{center}
+\end{frame}
+
+\input{slides/obtaining-petsc.tex}
+\input{slides/AutomaticDownloads.tex}
+\input{slides/petsc-pyramid.tex}
+\input{slides/FlowControl.tex}
+\input{slides/OptionsDatabase.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Application Integration}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Application Integration} \end{center}
+\end{frame}
+
+\input{slides/ApplicationIntegration1.tex}
+\input{slides/ApplicationIntegration2.tex}
+\input{slides/Stages.tex}
+\input{slides/Initialization.tex}
+\input{slides/MatrixMemoryPreallocation.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Matrices in PETSc}
+\input{slides/MatrixDefinition.tex}
+\input{slides/MatricesImportant.tex}
+\input{slides/MatrixNoEntries.tex}
+\input{slides/GMRES.tex}
+\input{slides/LinearSolvers.tex}
+\input{slides/NonlinearSolvers.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Profiling}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Profiling} \end{center}
+\end{frame}
+\input{slides/Profiling.tex}
+\input{slides/ReadingLogSummary.tex}
+\input{slides/CommunicationCosts.tex}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{PETSc and GPUs}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{PETSc and GPUs} \end{center}
+\end{frame}
+
+\input{slides/gpus.tex}
+
+
+
+%%%% Conclusion
+
+\section{Conclusions}
+\begin{frame}{Conclusions}
+ 
+ \begin{block}{PETSc can help You}
+  \begin{itemize}
+   \item solve algebraic and DAE problems in your application area
+   \item rapidly develop efficient parallel code, can start from examples
+   \item develop new solution methods and data structures
+   \item debug and analyze performance
+   \item advice on software design, solution algorithms, and performance
+   \item \centering \texttt{petsc-\{users,dev,maint\}@mcs.anl.gov}
+
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{You can help PETSc}
+  \begin{itemize}
+   \item report bugs and inconsistencies, or if you think there is a better way
+   \item tell us if the documentation is inconsistent or unclear
+   \item consider developing new algebraic methods as plugins, contribute if your idea works
+  \end{itemize}
+ \end{block}
+
+\end{frame}

@@ -1,0 +1,23 @@
+\begin{frame}[fragile]{Initialization}
+
+\begin{block}{Call \lstinline|PetscInitialize()|}
+  \begin{itemize}
+    \item Setup static data and services
+    \item Setup MPI if it is not already
+    \item Can set \lstinline|PETSC_COMM_WORLD| to use your communicator \\
+      (can always use subcommunicators for each object)
+  \end{itemize}
+\end{block}
+
+\begin{block}{Call \lstinline|PetscFinalize()|}
+  \begin{itemize}
+    \item Calculates logging summary
+    \item Can check for leaks/unused options
+    \item Shutdown and release resources
+  \end{itemize}
+\end{block}
+
+\begin{block}{Can only initialize PETSc once}
+\end{block}
+
+\end{frame}

@@ -1,0 +1,24 @@
+\begin{frame}{Basic PetscObject Usage}
+
+\begin{block}{Every object in PETSc supports a basic interface}
+\vspace{0.3cm}
+\begin{tabular}{|r|l|}
+\hline
+Function & Operation \\
+\hline
+\texttt{Create()}               & create the object \\
+\texttt{Get/SetName()}          & name the object \\
+\texttt{Get/SetType()}          & set the implementation type \\
+\texttt{Get/SetOptionsPrefix()} & set the prefix for all options \\
+\texttt{SetFromOptions()}       & customize object from command line \\
+\texttt{SetUp()}                & perform other initialization \\
+\texttt{View()}                 & view the object \\
+\texttt{Destroy()}              & cleanup object allocation \\
+\hline
+\end{tabular}
+
+\end{block}
+
+\begin{block}{Also, all objects support the \lstinline|-help| option.}\end{block}
+
+\end{frame}
