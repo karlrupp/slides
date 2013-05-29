@@ -1,0 +1,162 @@
+
+
+%%%%%%%%% Benchmarks
+\begin{frame}{Benchmark}
+ \begin{center}
+  Benchmark - Setup
+ \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Benchmark Setup}
+
+     \begin{block}{Hardware}
+       \begin{itemize}
+         \item NVIDIA GTX 580 (default)
+         \item AMD HD 7970 (only for final benchmark)
+         \item Intel Core2Quad 9550
+       \end{itemize}
+     \end{block}
+
+     \begin{block}{Numbering}
+      \begin{itemize}
+        \item Lexicographic
+        \item Red-Black
+        \item Minimum Degree
+      \end{itemize}
+    \end{block}
+
+     \begin{block}{Remarks}
+      \begin{itemize}
+        \item Setup purely on CPU, not included
+        \item Data transfer costs not included
+        \item OpenCL for both GPUs
+      \end{itemize}
+    \end{block}
+
+\end{frame}
+
+
+%%%%%%%%%%% FDM 2D %%%%%%%%%%%%%%%%%%
+\begin{frame}{Benchmark}
+ \begin{center}
+  Case Study 1: 2D Poisson, Structured Grid
+ \end{center}
+\end{frame}
+
+\begin{frame}{Benchmarks}
+  \begin{center}
+   \vspace*{-0.4cm}
+   \includegraphics[width=0.60\textwidth]{figures/fdm2d-solver.pdf} \\[-0.2em]
+   \includegraphics[width=0.60\textwidth]{figures/fdm2d-iters.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Benchmarks}
+  \begin{center}
+   \vspace*{-0.4cm}
+   \includegraphics[width=0.60\textwidth]{figures/fdm2d-precond.pdf} \\[-0.2em]
+   \includegraphics[width=0.60\textwidth]{figures/fdm2d-levels.pdf}
+  \end{center}
+\end{frame}
+
+
+
+%%%%%%%%%%% FDM 3D %%%%%%%%%%%%%%%%%%
+\begin{frame}{Benchmark}
+ \begin{center}
+  Case Study 2: 3D Poisson, Structured Grid
+ \end{center}
+\end{frame}
+
+\begin{frame}{Benchmarks}
+  \begin{center}
+   \vspace*{-0.4cm}
+   \includegraphics[width=0.6\textwidth]{figures/fdm3d-solver.pdf} \\[-0.2em]
+   \includegraphics[width=0.6\textwidth]{figures/fdm3d-iters.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Benchmarks}
+  \begin{center}
+   \vspace*{-0.4cm}
+   \includegraphics[width=0.60\textwidth]{figures/fdm3d-precond.pdf} \\[-0.2em]
+   \includegraphics[width=0.60\textwidth]{figures/fdm3d-levels.pdf}
+  \end{center}
+\end{frame}
+
+
+%%%%%%%%%%% FEM 2D %%%%%%%%%%%%%%%%%%
+\begin{frame}{Benchmark}
+ \begin{center}
+  Case Study 3: 2D Poisson, Unstructured Grid
+ \end{center}
+\end{frame}
+
+\begin{frame}{Benchmarks}
+  \begin{center}
+   \vspace*{-0.4cm}
+   \includegraphics[width=0.6\textwidth]{figures/fem2d-solver.pdf} \\[-0.2em]
+   \includegraphics[width=0.6\textwidth]{figures/fem2d-iters.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Benchmarks}
+  \begin{center}
+   \vspace*{-0.4cm}
+   \includegraphics[width=0.60\textwidth]{figures/fem2d-precond.pdf} \\[-0.2em]
+   \includegraphics[width=0.60\textwidth]{figures/fem2d-levels.pdf}
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%% FEM 3D %%%%%%%%%%%%%%%%%%
+\begin{frame}{Benchmark}
+ \begin{center}
+  Case Study 4: 3D Poisson, Unstructured Grid
+ \end{center}
+\end{frame}
+
+\begin{frame}{Benchmarks}
+  \begin{center}
+   \vspace*{-0.4cm}
+   \includegraphics[width=0.6\textwidth]{figures/fem3d-solver.pdf} \\[-0.2em]
+   \includegraphics[width=0.6\textwidth]{figures/fem3d-iters.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Benchmarks}
+  \begin{center}
+   \vspace*{-0.4cm}
+   \includegraphics[width=0.60\textwidth]{figures/fem3d-precond.pdf} \\[-0.2em]
+   \includegraphics[width=0.60\textwidth]{figures/fem3d-levels.pdf}
+  \end{center}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Incomplete LU Factorization Preconditioners}
+
+     \begin{block}{Coloring}
+      \begin{itemize}
+        \item Color dependency graph
+        \item Purely algebraic
+      \end{itemize}
+
+      \begin{center}
+    \only<1>{\includegraphics[width=0.65\textwidth]{figures/2d-unstructured-1}}
+    \only<2>{\includegraphics[width=0.65\textwidth]{figures/2d-unstructured-2}}
+    \only<3>{\includegraphics[width=0.65\textwidth]{figures/2d-unstructured-3}}
+      \end{center}
+
+    \end{block}
+\end{frame}
+
+
+\begin{frame}{Benchmarks}
+  \begin{center}
+   \includegraphics[width=0.90\textwidth]{figures/fem2d-solver-coloring.pdf}
+  \end{center}
+\end{frame}
+
+

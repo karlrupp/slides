@@ -1,0 +1,53 @@
+
+
+
+
+\begin{frame}[fragile]
+\frametitle{Incomplete LU Factorization Preconditioners}
+
+  \begin{minipage}{0.5\textwidth}
+    \begin{block}{Basic Idea}
+      \begin{itemize}
+        \item Factor sparse matrix $\matrix A \approx \tilde{\matrix L} \tilde{\matrix U}$
+        \item $\tilde{\matrix L}$ and $\tilde{\matrix U}$ sparse, triangular
+        \item ILU0: Pattern of $\tilde{\matrix L}$, $\tilde{\matrix U}$ equal to $\matrix A$
+        \item ILUT: Keep $k$ elements per row
+      \end{itemize}
+    \end{block}
+  \end{minipage}
+%
+  \begin{minipage}{0.45\textwidth}
+    \begin{block}{Solver Cycle Phase}
+      \vspace*{-0.1cm}
+      \begin{itemize}
+        \item Residual correction ${\color{red}\tilde{\matrix L}} \tilde{\matrix U} x = z$
+        \item Forward solve ${\color{red}\tilde{\matrix L}} y = z$
+        \item Backward solve $\tilde{\matrix U} x = y$
+        \item Little parallelism in general
+      \end{itemize}
+    \end{block}
+  \end{minipage}
+
+
+  \begin{align*} 
+   \left(
+   \begin{array}{ccccccccc}
+     \textstyle 5 &  \textstyle \times & \textstyle \times     & \textstyle \times  &   & \textstyle \times     & \textstyle \times &   &   \\
+     \textstyle \color{red} \times & \textstyle 3 & \textstyle \times      &    &   &      &   &  &   \\
+    \textstyle \color{red} \times & \textstyle \color{red} \times & \textstyle 4     & \textstyle \times  &   &       &   &   &   \\
+%
+    \textstyle \color{red} \times &   &  \textstyle\color{red}  \times     & \textstyle 5  & \textstyle \times & \textstyle \times     &   &   & \textstyle \times \\
+      &   &       & \textstyle \color{red} \times  & \textstyle 5 & \textstyle \times     &   & \textstyle \times & \textstyle \times \\
+    \textstyle \color{red} \times &   &      & \textstyle \color{red} \times  & \textstyle \color{red} \times & \textstyle 6     & \textstyle \times & \textstyle \times &  \\
+%
+    \textstyle \color{red} \times &  &       &    &   & \textstyle\color{red}  \times     & \textstyle 3 &   &   \\
+      &   &       &    & \textstyle\color{red}  \times & \textstyle \color{red} \times    &   & \textstyle 4 & \textstyle \times \\
+      &   &      & \textstyle\color{red}  \times  & \textstyle \color{red} \times &      &   & \textstyle \color{red} \times & \textstyle 4 \\
+   \end{array}
+         \right)
+  \end{align*}
+
+ 
+\end{frame}
+
+

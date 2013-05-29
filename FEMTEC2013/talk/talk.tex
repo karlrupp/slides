@@ -1,0 +1,126 @@
+% -------------------------------------------------------------------
+\documentclass[usepdftitle=false,9pt]{beamer}
+
+% Specify the respective Beamer theme here:
+%\usetheme[height=0.3cm,width=1.8cm,shadow=false]{iue}
+
+
+%encodings
+\usepackage[utf8]{inputenc}
+\usepackage[OT1]{fontenc}
+
+%some useful packages
+\usepackage[]{mathrsfs}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{acronym}
+\usepackage[]{listings}
+\usepackage[]{xcolor}
+\usepackage[]{graphicx}
+\usepackage[]{textcomp} %for tilde
+\usepackage{tikz}
+
+\hypersetup{pdftitle={On Level Scheduling for Incomplete LU Factorization Preconditioners on Accelerators}, pdfauthor={Karl Rupp, Barry Smith}}
+
+
+%% Listings package START
+\usepackage{color}
+\usepackage{listings}
+
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.6,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\definecolor{lightgrey}{rgb}{0.98,0.98,0.98}
+
+
+\lstloadlanguages{C++}
+\lstset{%
+  language=C++,
+  basicstyle=\small\ttfamily,
+  commentstyle=\itshape\color{darkgreen},
+  keywordstyle=\bfseries\color{darkblue},
+  stringstyle=\color{darkred},
+  showspaces=false,
+  showtabs=false,
+  columns=fixed,
+  backgroundcolor=\color{lightgrey},
+  numbers=none,
+  frame=single,
+  numberstyle=\tiny,
+  breaklines=true,
+  showstringspaces=false,
+  xleftmargin=0.1cm,
+  xrightmargin=3em
+}%
+
+\lstset{emphstyle=\color{red}}
+
+%% Listings package STOP
+
+
+
+
+
+
+
+
+\renewcommand{\matrix}[1]{\boldsymbol{#1}}
+\renewcommand{\vector}[1]{\boldsymbol{#1}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\domelem}[1]{\boldsymbol{\mathrm{#1}}}
+\newcommand{\kB}{k_\mathrm{B}}
+\newcommand{\VT}{V_\mathrm{T}}
+\newcommand{\q}{\mathrm{q}}
+\newcommand{\LandauO}{\mathcal{O}}
+\newcommand{\Bullet}{$\triangleright$}
+\newcommand{\black}{ }
+\newcommand{\ViennaCL}{\texttt{ViennaCL}}
+
+%\setlength{\fboxrule}{1pt}
+
+%\renewcommand{\seriesdefault}{\bfdefault}
+%\usepackage{helvet}
+
+\graphicspath{{figures/}}           % in which folder all the figures are
+\newcommand{\tn}   {\textnormal}
+
+%\mode<presentation>
+
+% table of contents, depth
+\setcounter{tocdepth}{2}
+
+% modify at will
+\setbeamercovered{invisible}
+%\setbeamercovered{transparent}
+
+
+
+\author[Karl Rupp]{Karl Rupp, Barry Smith \\ \ttfamily rupp@mcs.anl.gov}
+
+\institute[ANL]
+{ \footnotesize
+  Mathematics and Computer Science Division \\
+  Argonne National Laboratory \\
+}
+
+\title[GPU ILU]{On Level Scheduling \\ for Incomplete LU Factorization Preconditioners \\ on Accelerators}
+
+\date[FEMTEC 2013, May 20th, 2013]{ \footnotesize FEMTEC 2013 \\[2em] May 20th, 2013}
+
+\setbeamertemplate{blocks}[default]
+%\setbeamercolor{block title}{bg=}
+\setbeamercolor{block body}{bg=}
+\setbeamercovered{transparent}
+
+\begin{document}
+
+\begin{frame}[plain]
+ \frametitle{~}
+ \titlepage
+\end{frame}
+
+\input{content}
+
+\end{document}
+

@@ -1,0 +1,61 @@
+
+
+
+
+%%%%%%% GPUs: Disillusion %%%%%%%
+
+\begin{frame}{Hardware}
+ \begin{center}
+  Parallel Hardware Constraints
+ \end{center}
+
+\end{frame}
+
+\input{slides/gpu-arch.tex}
+
+\input{slides/vector-timings.tex}
+
+\input{slides/ilu.tex}
+
+\input{slides/level-scheduling.tex}
+
+\input{slides/block-ilu.tex}
+
+
+\input{slides/ilu-benchmarks.tex}
+
+
+
+
+%%%% Conclusion
+
+
+
+\begin{frame}{Conclusion}
+
+ \begin{block}{ILU Preconditioners}
+  \begin{itemize}
+   \item Fine-grained parallelism exploitable (if done right)
+   \item Higher-order discretizations less parallel
+  \end{itemize}
+ \end{block}
+ 
+ \begin{block}{Matrix Pattern}
+  \begin{itemize}
+   \item CPU: banded for cache reuse
+   \item GPU: colored for parallelism
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Availability}
+  \begin{itemize}
+   \item ViennaCL: \texttt{http://viennacl.sourceforge.net/}
+   \item (PETSc:   \texttt{http://www.mcs.anl.gov/petsc/})
+  \end{itemize}
+ \end{block}
+
+ \begin{center}
+   ViennaCL + PETSc tutorial on Thursday afternoon!
+ \end{center}
+
+\end{frame}
