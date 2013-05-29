@@ -1,0 +1,196 @@
+% -------------------------------------------------------------------
+\documentclass[usepdftitle=false,10pt]{beamer}
+
+% Specify the respective Beamer theme here:
+%\usetheme[height=0.3cm,width=1.8cm,shadow=false]{iue}
+
+
+%encodings
+\usepackage[utf8]{inputenc}
+\usepackage[OT1]{fontenc}
+
+%some useful packages
+\usepackage[]{mathrsfs}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{acronym}
+\usepackage[]{listings}
+\usepackage[]{xcolor}
+\usepackage[]{graphicx}
+\usepackage[]{textcomp} %for tilde
+
+\hypersetup{pdftitle={A Discussion of Selected Vienna-Libraries for Computational Science}, pdfauthor={Karl Rupp, Florian Rudolf, Josef Weinbub}}
+
+
+%% Listings package START
+\usepackage{color}
+\usepackage{listings}
+
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.6,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\definecolor{lightgrey}{rgb}{0.98,0.98,0.98}
+
+
+\lstloadlanguages{C++}
+\lstset{%
+  language=C++,
+  basicstyle=\small\ttfamily,
+  commentstyle=\itshape\color{darkgreen},
+  keywordstyle=\bfseries\color{darkblue},
+  stringstyle=\color{darkred},
+  showspaces=false,
+  showtabs=false,
+  columns=fixed,
+  backgroundcolor=\color{lightgrey},
+  numbers=none,
+  frame=single,
+  numberstyle=\tiny,
+  breaklines=true,
+  showstringspaces=false,
+  xleftmargin=0.1cm
+}%
+
+\lstset{emphstyle=\color{red}}
+
+%% Listings package STOP
+
+
+
+
+
+
+
+
+\renewcommand{\matrix}[1]{\boldsymbol{#1}}
+\renewcommand{\vector}[1]{\boldsymbol{#1}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\domelem}[1]{\boldsymbol{\mathrm{#1}}}
+\newcommand{\kB}{k_\mathrm{B}}
+\newcommand{\VT}{V_\mathrm{T}}
+\newcommand{\q}{\mathrm{q}}
+\newcommand{\LandauO}{\mathcal{O}}
+
+
+%\setlength{\fboxrule}{1pt}
+
+%\renewcommand{\seriesdefault}{\bfdefault}
+%\usepackage{helvet}
+
+\graphicspath{{figures/}}           % in which folder all the figures are
+\newcommand{\tn}   {\textnormal}
+
+%\mode<presentation>
+
+% table of contents, depth
+\setcounter{tocdepth}{2}
+
+% modify at will
+\setbeamercovered{transparent}
+
+
+
+\author[Karl Rupp]{Karl Rupp$^1$, Florian Rudolf$^2$, Josef Weinbub$^2$}
+
+\institute[ANL]
+{ \footnotesize
+  $^1$MCS Division, Argonne National Laboratory, USA \\
+  $^2$Institut f\"ur Mikroelektronik, TU Wien, Austria \\[0.5cm]
+}
+
+\title[Vienna Libraries]{A Discussion of 
+                        Selected Vienna-Libraries \\
+                        for Computational Science 
+                         }
+\date[C++ Now, May 15th, 2013]{ \footnotesize C++Now, May 15th, 2013}
+
+\setbeamertemplate{blocks}[default]
+%\setbeamercolor{block title}{bg=}
+\setbeamercolor{block body}{bg=}
+
+\begin{document}
+\begin{frame}[plain]
+ \frametitle{~}
+ \titlepage
+\end{frame}
+
+\input{slides/intro.tex}
+
+%%
+%%
+%%  Part 1: ViennaCL
+%%
+%%
+
+\input{slides/viennacl.tex}
+
+
+%%
+%%
+%%  Part 2: ViennaGrid
+%%
+%%
+
+\input{slides/viennagrid.tex}
+
+%%
+%%
+%%  Part 3: ViennaData
+%%
+%%
+
+\input{slides/viennadata.tex}
+
+
+%%
+%%
+%%  Part 4: ViennaMath
+%%
+%%
+
+\input{slides/viennamath.tex}
+
+%%
+%%
+%%  Part 4: ViennaFEM
+%%
+%%
+
+\input{slides/viennafem.tex}
+
+
+
+
+\begin{frame}{Summary}
+
+  \begin{block}{Software Packages}
+   \begin{itemize}
+    \item ViennaCL:   \hspace*{0.50cm} GPU-accelerated Linear Algebra
+    \item ViennaData: \hspace*{0.19cm} Generic Data Storage 
+    \item ViennaFEM:  \hspace*{0.23cm} Modular High-Level Finite Element Package
+    \item ViennaGrid: \hspace*{0.27cm} Generic Mesh Datastructure
+    \item ViennaMath: \hspace*{0.17cm} Symbolic Math Kernel
+   \end{itemize}
+
+   \begin{center}
+     \ttfamily http://vienna\{cl,data,fem,grid,math\}@sourceforge.net
+   \end{center}
+
+  \end{block}
+
+  \begin{block}{Design Philosophy}
+   \begin{itemize}
+    \item Orthogonal Software Design
+    \item Convenient High-Level User API
+    \item Avoid Unneeded Dependencies
+    \item Free Open Source (MIT License)
+   \end{itemize}
+  \end{block}
+
+\end{frame}
+
+
+
+\end{document}
+

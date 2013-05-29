@@ -1,0 +1,32 @@
+
+
+\begin{frame}[fragile]
+ \frametitle{ViennaData}
+
+ \begin{block}{Other Routines}
+  \begin{itemize}
+   \item Not further addressed:
+ \begin{lstlisting}
+  viennadata::copy<KeyType, ValueType>(key)(src_obj, dst_obj);
+  viennadata::move<KeyType, ValueType>(key)(src_obj, dst_obj);
+  viennadata::find<KeyType, ValueType>(key)(obj);
+  
+  viennadata::erase<KeyType, ValueType>(key)(obj);
+  viennadata::erase<KeyType, all>(key)(obj);  
+  viennadata::erase<all, ValueType>(key)(obj);  
+ \end{lstlisting}
+  \end{itemize}
+ \end{block}
+
+  \visible<1->{
+  \begin{block}{Pitfalls}
+   \begin{itemize}
+    \item Inheritance
+    \item Limited lifetime of objects
+    \item Compilation units with different configuration
+   \end{itemize}
+  \end{block}
+  }
+
+\end{frame}
+

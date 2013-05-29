@@ -1,0 +1,98 @@
+
+
+
+\begin{frame}[fragile]{Data Storage}
+   
+ \begin{block}{Plain Object-Oriented Approach?}
+  \begin{lstlisting}
+  struct Triangle {
+   PointType a, b, c;
+   bool is_on_boudary;
+   double rho; };   //e.g. specific mass
+  \end{lstlisting} 
+ \end{block}
+
+ \visible<1->{
+ \begin{block}{Pros and Cons}
+   \begin{itemize}
+    \item Data is directly stored with the object
+    \item Each (!) triangle carries a boolean flag
+    \item Reusability reduced $\Rightarrow$ better rename to \texttt{TriangleWithMaterial}
+  \end{itemize}
+ \end{block}
+ }
+ 
+ \visible<1->{
+ \begin{center}
+  \Huge \color{red} Monolithic, don't do this!
+ \end{center}
+ }
+\end{frame}
+
+
+
+%% Data storage 2
+\begin{frame}[fragile]
+\frametitle{Data Storage}
+ \begin{block}{Store Data with Mesh:}
+  \begin{lstlisting}
+  class Mesh {
+   vector<Triangle> triangles;
+   std::map<size_t, bool>  boudary_map; //no memory wasted
+   vector<double> rho_for_triangles;   };
+  \end{lstlisting} 
+ \end{block}
+
+ \visible<1->{
+ \begin{block}{Pros and Cons}
+   \begin{itemize}
+    \item \texttt{Triangle} is still reusable
+    \item \texttt{Mesh} class has to handle data storage complexity
+    \item Each additional data requires a change of \texttt{Mesh} class
+    \item \texttt{Mesh} object has to be passed to all modules
+  \end{itemize}
+ \end{block}
+ }
+ 
+ \visible<1->{
+ \begin{center}
+  \Huge \color{red} Monolithic, don't do this!
+ \end{center}
+ }
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{ViennaData}
+
+ \begin{block}{Approach by ViennaData}
+  \begin{itemize}
+   \item Introduction of a hidden data container
+   \item  Data is stored in a map-like manner using keys
+  \end{itemize}
+ \end{block}
+
+\begin{lstlisting}[basicstyle=\scriptsize\ttfamily]
+  //generic interface:
+  viennadata::access<KeyType, ValueType>(key)(obj);
+
+  //boundary flag and specific mass retrieval for triangle:
+  bool on_boundary = access<BoundaryKeyType, bool>(boundary_key)(triangle);
+  double       rho = access<MassKeyType,   double>(    mass_key)(triangle);
+\end{lstlisting} 
+
+  \visible<1->{
+  \begin{block}{Pros and Cons}
+   \begin{itemize}
+    \item[+] \texttt{Triangle} and \texttt{Mesh} are still reusable
+    \item[+] Can be used with arbitrary objects (third-party libraries)
+    \item[+] Unified interface for data access
+    \item[--] Global state
+   \end{itemize}
+  \end{block}
+  }
+
+\end{frame}
+
+

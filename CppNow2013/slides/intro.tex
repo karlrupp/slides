@@ -1,0 +1,198 @@
+
+
+\begin{frame}{Contents}
+  \begin{center}
+   \Large Part 0: What is this all about?
+  \end{center}
+\end{frame}
+
+
+\begin{frame}{Contents}
+
+ \begin{minipage}{0.5\textwidth}
+  \begin{block}{Libraries}
+   \begin{itemize}
+    \item ViennaCL
+    \item ViennaData
+    \item ViennaFEM
+    \item ViennaGrid
+    \item ViennaIPD
+    \item ViennaMath
+    \item ViennaMesh
+   \end{itemize}
+  \end{block}
+ \end{minipage}
+%
+ \begin{minipage}{0.45\textwidth}
+  \begin{block}{Applications}
+   \begin{itemize}
+    \item ViennaMOS
+    \item ViennaProfiler
+    \item ViennaSHE
+    \item ViennaWD
+    \item ViennaX
+    \item
+    \item 
+   \end{itemize}
+  \end{block}
+ \end{minipage}
+ 
+
+\end{frame}
+
+
+
+
+\begin{frame}{Contents}
+
+  \begin{block}{Covered In This Talk}
+   \begin{itemize}
+    \item Requirements in Computational Science
+    \item GPU Computing
+    \item Providing High-Level Interfaces
+    \item Avoiding Monolithic Code
+    \item Abstractions: From Math to Code (and back)
+   \end{itemize}
+  \end{block}
+
+  \begin{block}{Not Covered}
+   \begin{itemize}
+    \item C++11
+    \item Maximize use of Boost
+   \end{itemize}
+  \end{block}
+
+\end{frame}
+
+
+
+
+\begin{frame}{The Computational Scientist}
+  \begin{block}{A Strange Animal}
+   \begin{itemize}
+    \item Goal is science, not to execute software
+    \item Codes seldomly designed for 'large scale' upfront
+    \item Scientists receive software training from scientists
+    \item Performance vs. portability and maintainability
+    \item Run code on clusters (headless, old software stack, ...)
+    \item \emph{Come and go}
+   \end{itemize}
+  \end{block}
+
+  \vspace*{2cm}
+  \begin{block}{}
+   \footnotesize Basili \textit{et al.}, Understanding the High-Performance-Computing Community: A Software Engineer's Perspective. IEEE Software, 2008.
+  \end{block}
+
+\end{frame}
+
+
+\begin{frame}{Simulation Flow}
+ \begin{block}{The Many Steps in Simulating a FinFET}
+  \begin{center}
+   \includegraphics[width=0.65\textwidth]{intel-trigate.png} \\
+   {\tiny (C) Intel, 2011 }
+  \end{center}
+ \end{block}
+\end{frame}
+
+
+% 
+% 
+% \begin{frame}{Simulation Flow}
+%  \begin{block}{The Many Steps in Simulating a FinFET}
+%   \begin{center}
+%    \includegraphics[width=0.95\textwidth]{flow-model.png}
+%   \end{center}
+%  \end{block}
+% \end{frame}
+% 
+% \begin{frame}{Simulation Flow}
+%  \begin{block}{The Many Steps in Simulating a FinFET}
+%   \begin{center}
+%    \includegraphics[width=0.95\textwidth]{flow-meshing-1.png}
+%   \end{center}
+%  \end{block}
+% \end{frame}
+% 
+% \begin{frame}{Simulation Flow}
+%  \begin{block}{The Many Steps in Simulating a FinFET}
+%   \begin{center}
+%    \includegraphics[width=0.95\textwidth]{flow-meshing-2.png}
+%   \end{center}
+%  \end{block}
+% \end{frame}
+% 
+% \begin{frame}{Simulation Flow}
+%  \begin{block}{The Many Steps in Simulating a FinFET}
+%   \begin{center}
+%    \includegraphics[width=0.95\textwidth]{flow-simulate.png}
+%   \end{center}
+%  \end{block}
+% \end{frame}
+% 
+% 
+% \begin{frame}{Simulation Flow}
+%  \begin{block}{The Many Steps in Simulating a FinFET}
+%   \begin{center}
+%    \includegraphics[width=0.95\textwidth]{flow-viennagrid.png}
+%   \end{center}
+%  \end{block}
+% \end{frame}
+% 
+% \begin{frame}{Simulation Flow}
+%  \begin{block}{The Many Steps in Simulating a FinFET}
+%   \begin{center}
+%    \includegraphics[width=0.95\textwidth]{flow-grid-data.png}
+%   \end{center}
+%  \end{block}
+% \end{frame}
+% 
+% \begin{frame}{Simulation Flow}
+%  \begin{block}{The Many Steps in Simulating a FinFET}
+%   \begin{center}
+%    \includegraphics[width=0.95\textwidth]{flow-viennadata.png}
+%   \end{center}
+%  \end{block}
+% \end{frame}
+% 
+% \begin{frame}{Simulation Flow}
+%  \begin{block}{The Many Steps in Simulating a FinFET}
+%   \begin{center}
+%    \includegraphics[width=0.95\textwidth]{flow-poisson.png}
+%   \end{center}
+%  \end{block}
+% \end{frame}
+% 
+% \begin{frame}{Simulation Flow}
+%  \begin{block}{The Many Steps in Simulating a FinFET}
+%   \begin{center}
+%    \includegraphics[width=0.95\textwidth]{flow-viennamath.png}
+%   \end{center}
+%  \end{block}
+% \end{frame}
+% 
+% \begin{frame}{Simulation Flow}
+%  \begin{block}{The Many Steps in Simulating a FinFET}
+%   \begin{center}
+%    \includegraphics[width=0.95\textwidth]{flow-viennafem.png}
+%   \end{center}
+%  \end{block}
+% \end{frame}
+% 
+% \begin{frame}{Simulation Flow}
+%  \begin{block}{The Many Steps in Simulating a FinFET}
+%   \begin{center}
+%    \includegraphics[width=0.95\textwidth]{flow-laststep.png}
+%   \end{center}
+%  \end{block}
+% \end{frame}
+
+\begin{frame}{Simulation Flow}
+ \begin{block}{The Many Steps in Simulating a FinFET}
+  \begin{center}
+   \includegraphics[width=0.95\textwidth]{flow-viennacl.png}
+  \end{center}
+ \end{block}
+\end{frame}
+

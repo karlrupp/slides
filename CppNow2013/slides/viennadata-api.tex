@@ -1,0 +1,37 @@
+
+
+\begin{frame}[fragile]
+\frametitle{ViennaData}
+
+ \begin{block}{Generic Interface}
+\begin{lstlisting}
+  viennadata::access<KeyType, ValueType>(key)(obj);
+\end{lstlisting} 
+ \end{block}
+
+
+ \begin{block}{Default Storage Scheme}
+  \begin{itemize}
+   \item If nothing is known about the object:
+  \end{itemize}
+  
+\begin{lstlisting}
+  std::map<ObjectType *,
+           std::map<KeyType, ValueType> >
+\end{lstlisting} 
+
+  \begin{itemize}
+   \item The compiler creates such a map for each of the following:
+  \end{itemize}
+
+\begin{lstlisting}
+  access<long, double>(42)(triangle);
+  access<char, double>('b')(triangle);
+  access<std::string, double>("mass")(triangle);
+  access<std::string, double>("mass")(vertex);
+\end{lstlisting} 
+ \end{block}
+
+\end{frame}
+
+

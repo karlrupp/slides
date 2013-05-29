@@ -1,0 +1,137 @@
+
+
+
+
+
+
+% Fast access to data: ~2-3 slides
+\begin{frame}[fragile]
+\frametitle{ViennaData}
+
+ \begin{block}{Performance Considerations}
+   \begin{itemize}
+    \item $\mathcal{O}(\log N) + \mathcal{O}(\log K)$ access time
+    \item $N$ ... objects of same type (e.g. triangles)
+    \item $K$ ... keys of same type
+    \item Usually too slow in a high-performance setting
+   \end{itemize}
+ \end{block}
+
+ \visible<1->{
+ \begin{block}{Can We Do Better?}
+  \visible<1->{
+  \begin{itemize}
+   \item In general: No
+   \item In certain situations: Yes
+  \end{itemize}
+  }
+ \end{block}
+ }
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{frame}[fragile]
+\frametitle{ViennaData}
+
+ \begin{block}{Type-based Key Dispatch}
+   \begin{itemize}
+    \item Only one key per type
+    \item $\mathcal{O}(\log N)$ access time
+   \end{itemize}
+\begin{lstlisting}
+  access<mass_key, double>(mass_key())(triangle);
+  
+  // or:
+  access<mass_key, double>()(triangle);
+\end{lstlisting} 
+ \end{block}
+
+ \begin{block}{Internal Datastructure}
+\begin{lstlisting}
+  std::map<ObjectType *, ValueType>
+\end{lstlisting} 
+   \begin{itemize}
+    \item Transparent to user
+    \item One line of code for activation
+   \end{itemize}
+ \end{block}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{frame}[fragile]
+\frametitle{ViennaData}
+
+ \begin{block}{Numeric IDs for Objects}
+   \begin{itemize}
+    \item Only one key per type
+    \item $\mathcal{O}(K)$ access time
+    \item $\mathcal{O}(1)$ access time with type-based key dispatch
+   \end{itemize}
+ \end{block}
+\begin{lstlisting}
+  access<std::string, double>("mass")(triangle);
+  
+  // with type-based key dispatch:
+  access<mass_key, double>()(triangle);
+\end{lstlisting} 
+
+ \begin{block}{Internal Datastructure}
+\begin{lstlisting}
+  std::vector<ValueType>
+\end{lstlisting} 
+   \begin{itemize}
+    \item Transparent to user
+    \item One line of code for activation
+    \item Overload generic \lstinline|id()| accessor
+   \end{itemize}
+ \end{block}
+\end{frame}
+
+
+
+% Benchmark from manual: ~2 slides
+
+
+\begin{frame}[fragile]
+ \frametitle{ViennaData}
+
+ \begin{block}{Benchmarking ViennaData}
+   \begin{itemize}
+    \item ID-based access to data via ViennaData (class \lstinline|LightWeight|)
+    \item OOP-style storage in classes with payload
+   \end{itemize}
+ 
+ \begin{lstlisting}
+   template <size_t N>
+   struct FatClass {
+     double data;
+     char payload[N];
+   };
+ \end{lstlisting}
+
+ \end{block}
+
+ \visible<1->{
+  \begin{center}
+  \begin{tabular}{|l|c|c|}
+ \hline
+        &  $10^3$ Objects (us) & $10^6$ Objects (ms) \\
+ \hline
+ \lstinline|LightWeight|    & \textbf{4} & \textbf{5} \\
+ \lstinline|FatClass<10>|   & \textbf{1.3} & \textbf{4} \\
+ \lstinline|FatClass<100>|  & 2.1 & 11 \\
+ \lstinline|FatClass<1000>| & 2.5 & 11 \\
+ \hline
+ \end{tabular}
+  \end{center}
+ }
+\end{frame}
+
+

@@ -1,0 +1,31 @@
+
+
+\begin{frame}[fragile]
+\frametitle{Domain Configuration}
+ \begin{block}{Top Level Configuration of Domain}
+  \begin{itemize}
+   \item Mostly a collection of tags
+   \item Predefined configuration classes for common cases
+   \item ViennaGrid 1.0.x: Supplemented by global customizations
+  \end{itemize}
+
+  \begin{lstlisting}
+   struct triangular_3d
+   {
+     typedef double            numeric_type;
+     typedef cartesian_cs<3>   coordinate_system_tag;
+     typedef triangle_tag      cell_tag;
+   };
+   
+   result_of::domain<triangular_3d>::type     Domain;
+  \end{lstlisting} 
+
+  \begin{itemize}
+   \item Work in progress: Everything in a single config class
+  \end{itemize}
+ \end{block}
+ \vspace*{0.45cm}
+\end{frame}
+
+
+

@@ -1,0 +1,31 @@
+
+
+
+% Quick look: Boost Geometry
+\begin{frame}[fragile]{What about Boost.Geometry?}
+ \begin{block}{A Quick Look at Boost.Geometry}
+  \begin{itemize}
+   \item Concepts: Point, Segment, Linestring, Box, etc.
+   \item Algorithms: \lstinline|distance()|, \lstinline|intersects()|, \lstinline|convex_hull()|, etc.
+   \item Central entity: Point
+  \end{itemize}
+  \begin{lstlisting}
+   int a[3] = {1, 2, 3};
+   int b[3] = {2, 3, 4};
+
+   double d = boost::geometry::distance(a, b);
+  \end{lstlisting}  
+ \end{block}
+
+ \visible<1->{
+ \begin{block}{Why Boost.Geometry is Not Enough}
+  \begin{itemize}
+   \item What about 3D objects? Tetrahedra? Hexahedra?
+   \item Traversal of boundary objects missing
+   \item No storage facilities for \emph{many} objects
+  \end{itemize}
+ \end{block}
+ }
+\end{frame}
+
+

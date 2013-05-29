@@ -1,0 +1,85 @@
+
+
+\begin{frame}[fragile]{Expression Template Limitations}
+
+ \begin{block}{Expression Templates are Not Enough}
+  \begin{itemize}
+   \item Consider
+    \begin{lstlisting}
+     u = x + y;
+     v = x - y;
+    \end{lstlisting}
+   \item Suboptimal performance with almost any library
+  \end{itemize}
+ \end{block}
+ 
+ \begin{center}
+  \includegraphics[width=0.4\textwidth]{kernel-fusion-1.pdf}
+ \end{center}
+
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Expression Template Limitations}
+
+ \begin{block}{Expression Templates are Not Enough}
+  \begin{itemize}
+   \item Consider
+    \begin{lstlisting}
+     u = x + y;
+     v = x - y;
+    \end{lstlisting}
+   \item Suboptimal performance with almost any library
+  \end{itemize}
+ \end{block}
+ 
+ \begin{center}
+  \includegraphics[width=0.4\textwidth]{kernel-fusion-2.pdf}
+ \end{center}
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Expression Template Limitations}
+
+ \begin{block}{Expression Templates are Not Enough}
+  \begin{itemize}
+   \item Consider
+    \begin{lstlisting}
+     u = x + y;
+     v = x - y;
+    \end{lstlisting}
+   \item Suboptimal performance with almost any library
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{OpenCL Kernel Generation}
+   \begin{itemize}
+    \item Separate temporary avoidance from operation execution
+    \begin{lstlisting}
+      custom_operation op;
+      op.add( u = x + y );
+      op.add( v = x - y );
+      op.execute();          // OpenCL JIT
+    \end{lstlisting}
+    \item Fully transparent kernel fusion scheduled for release 1.5.0
+   \end{itemize}
+ \end{block}
+\end{frame}
+
+
+\begin{frame}{Expression Template Limitations}
+
+ \begin{block}{Benchmark Results}
+  \begin{center}
+   $\beta \leftarrow x^T \cdot (2x + y)$ \\
+   \includegraphics[width=0.75\textwidth]{figures/daxpy_ddot.pdf} \\
+  \end{center}
+   \scriptsize Tillet \textit{et al.}, HotPar '13
+
+ \end{block}
+
+\end{frame}
