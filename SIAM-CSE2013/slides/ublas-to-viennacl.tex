@@ -1,0 +1,149 @@
+
+
+
+%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{From Boost.uBLAS to ViennaCL}
+\begin{block}{Consider Existing CPU Code (Boost.uBLAS)}
+  \begin{lstlisting}
+using namespace boost::numeric::ublas;
+
+
+matrix<double> A(1000, 1000);
+vector<double> x(1000), y(1000);
+
+/* Fill A, x, y here */
+
+double val = inner_prod(x, y);
+y += 2.0 * x;
+A += val * outer_prod(x, y);
+
+x = solve(A, y, upper_tag()); // Upper tri. solver
+
+std::cout << "  2-norm: " << norm_2(x) << std::endl;
+std::cout << "sup-norm: " << norm_inf(x) << std::endl;
+  \end{lstlisting}
+
+  \begin{itemize}
+   \item High-level code with syntactic sugar
+  \end{itemize}
+
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{From Boost.uBLAS to ViennaCL}
+ \begin{block}{Previous Code Snippet Rewritten with ViennaCL}
+  \begin{lstlisting}
+using namespace viennacl;
+using namespace viennacl::linalg;
+
+matrix<double> A(1000, 1000);
+vector<double> x(1000), y(1000);
+
+/* Fill A, x, y here */
+
+double val = inner_prod(x, y);
+y += 2.0 * x;
+A += val * outer_prod(x, y);
+
+x = solve(A, y, upper_tag()); // Upper tri. solver
+
+std::cout << "  2-norm: " << norm_2(x) << std::endl;
+std::cout << "sup-norm: " << norm_inf(x) << std::endl;
+  \end{lstlisting} 
+
+  \begin{itemize}
+   \item High-level code with syntactic sugar
+  \end{itemize}
+
+ \end{block}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%% Iterative solvers %%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{From Boost.uBLAS to ViennaCL}
+\begin{block}{ViennaCL in Addition Provides Iterative Solvers}
+  \begin{lstlisting}
+using namespace viennacl;
+using namespace viennacl::linalg;
+
+compressed_matrix<double> A(1000, 1000);
+vector<double> x(1000), y(1000);
+
+/* Fill A, x, y here */
+
+x = solve(A, y, cg_tag());       // Conjugate Gradients
+x = solve(A, y, bicgstab_tag()); // BiCGStab solver
+x = solve(A, y, gmres_tag());    // GMRES solver
+  \end{lstlisting}
+\end{block}
+
+ \begin{block}{No Iterative Solvers Available in Boost.uBLAS...}
+  \vspace*{1.22cm}
+ \end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{From Boost.uBLAS to ViennaCL}
+\begin{block}{Thanks to Interface Compatibility}
+  \begin{lstlisting}
+using namespace boost::numeric::ublas;
+using namespace viennacl::linalg;
+
+compressed_matrix<double> A(1000, 1000);
+vector<double> x(1000), y(1000);
+
+/* Fill A, x, y here */
+
+x = solve(A, y, cg_tag());       // Conjugate Gradients
+x = solve(A, y, bicgstab_tag()); // BiCGStab solver
+x = solve(A, y, gmres_tag());    // GMRES solver
+  \end{lstlisting} 
+\end{block}
+
+\begin{block}{Code Reuse Beyond GPU Borders}
+ \begin{itemize}
+  \item Eigen \ { \ \footnotesize \verb|http://eigen.tuxfamily.org/|}
+  \item MTL 4 \ { \footnotesize \verb|http://www.mtl4.org/|}
+ \end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{From Boost.uBLAS to ViennaCL}
+\begin{block}{Generic CG Implementation (Sketch)}
+  \begin{lstlisting}
+for (unsigned int i = 0; i < tag.max_iterations(); ++i)
+{
+  tmp = viennacl::linalg::prod(matrix, p);
+
+  alpha     = ip_rr / inner_prod(tmp, p);
+  result   += alpha * p;
+  residual -= alpha * tmp;
+        
+  new_ip_rr = inner_prod(residual, residual);
+  if (new_ip_rr / norm_rhs_squared < tag.tolerance())
+    break;
+        
+  beta  = new_ip_rr / ip_rr;
+  ip_rr = new_ip_rr;
+
+  p = residual + beta * p;
+} 
+  \end{lstlisting} 
+\end{block}
+
+\end{frame}
+
+
+
