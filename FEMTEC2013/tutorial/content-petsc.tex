@@ -1,0 +1,97 @@
+
+
+\begin{frame}{Part 2}
+ \begin{center}
+   \Huge PETSc \\[2em] \large Portable Extensible Toolkit for Scientific Computing
+ \end{center}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{PETSc}
+ \begin{block}{Obtaining PETSc}
+ \begin{itemize}
+  \item Linux Package Managers
+  \item Web: http://mcs.anl.gov/petsc, download tarball
+  \item Git: https://bitbucket.org/petsc/petsc
+  \item Mercurial: https://bitbucket.org/petsc/petsc-hg
+ \end{itemize}
+ \end{block}
+
+ \begin{block}{Installing PETSc}
+ \begin{itemize}
+  \item
+ \begin{lstlisting}[escapechar={@}]
+$> cd /path/to/petsc/workdir
+$> git clone \
+     https:@/@/bitbucket.org/petsc/petsc.git \
+     --branch master --depth 1
+$> cd petsc
+ \end{lstlisting}
+  \item
+ \begin{lstlisting}
+$> export PETSC_DIR=$PWD PETSC_ARCH=mpich-gcc-dbg
+$> ./configure --with-cc=gcc --with-fc=gfortran 
+                 --download-f-blas-lapack
+                 --download-{mpich,ml,hypre}
+\end{lstlisting}
+ \end{itemize}
+ \end{block}
+
+\end{frame}
+
+
+\input{slides/About}
+\input{slides/FlowControl}
+
+\begin{frame}[fragile]
+\frametitle{PETSc Pyramid}
+ \begin{block}{PETSc Structure} \vspace{0.3cm}
+   \includegraphics[width=1.0\textwidth]{PETScPyramid.jpg}
+ \end{block}
+
+\end{frame}
+
+
+
+
+\input{slides/DA/GhostValues.tex}
+\input{slides/DA/GlobalNumberings.tex}
+\input{slides/DA/LocalNumbering.tex}
+\input{slides/DA/WorkingWithLocal.tex}
+
+%%%%%%%%%  Go to p-Bratu
+
+\input{slides/pbratu.tex}
+
+
+
+%
+% Conclusion and Wrap-Up
+%
+\section{Conclusions}
+\begin{frame}{Conclusions}
+ 
+ \begin{block}{PETSc Can Help You}
+  \begin{itemize}
+   \item Solve algebraic and DAE problems in your application area
+   \item Rapidly develop efficient parallel code, can start from examples
+   \item Develop new solution methods and data structures
+   \item Debug and analyze performance
+   \item Advice on software design, solution algorithms, and performance
+   \item \centering \texttt{petsc-\{users,dev,maint\}@mcs.anl.gov}
+
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{You Can Help PETSc}
+  \begin{itemize}
+   \item report bugs and inconsistencies, or if you think there is a better way
+   \item tell us if the documentation is inconsistent or unclear
+   \item consider developing new algebraic methods as plugins, contribute if your idea works
+  \end{itemize}
+ \end{block}
+
+\end{frame}
+

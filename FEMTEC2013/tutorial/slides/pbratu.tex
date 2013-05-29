@@ -1,0 +1,34 @@
+
+
+
+
+
+% \section{$\pfrak$-Bratu}
+\begin{frame}{The $\mathfrak{p}$-Bratu Equation}
+
+  \begin{block}{$\mathfrak{p}$-Bratu Equation}
+  \begin{itemize}
+  \item 2-dimensional model problem
+    \begin{equation*}
+      -\nabla \cdot \bigl(\vert\nabla u\vert^{\mathfrak{p}-2} \nabla u \bigr) - \lambda e^u - f = 0, \qquad 1 \le \mathfrak{p} \le \infty, \quad \lambda < \lambda_{\text{crit}}(\mathfrak{p})
+    \end{equation*}
+    Singular or degenerate when $\nabla u = 0$, turning point at $\lambda_{\text{crit}}$.
+  \end{itemize}
+  \end{block}
+
+  \visible<2->{
+  \begin{block}{Regularized Variant}
+  \begin{itemize}
+  \item Remove singularity of $\eta$ using a parameter $\varepsilon$:
+    \begin{gather*}
+      -\nabla \cdot (\eta \nabla u) - \lambda e^u - f = 0 \\
+      \eta(\gamma) = (\epsilon^2 + \gamma)^{\frac{\mathfrak{p}-2}{2}} \qquad \gamma(u) = \frac{1}{2} \vert\nabla u\vert^2
+    \end{gather*}
+  \item       Physical interpretation: diffusivity tensor flattened in direction $\nabla u$
+  \end{itemize}
+  \end{block}
+  }
+\end{frame}
+
+
+

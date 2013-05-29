@@ -1,0 +1,39 @@
+
+
+\begin{frame}[fragile]
+\frametitle{Internals}
+
+ \begin{block}{Vector Addition}
+  \begin{lstlisting}
+ x = y + z;
+  \end{lstlisting}
+  
+  \begin{itemize}
+   \item Temporaries are costly (particularly on GPUs)
+  \end{itemize}
+
+ \end{block}
+
+
+ \begin{block}{Expression Templates}
+  \begin{itemize}
+   \item Limited expansion
+   \item Map to a set of predefined kernels
+  \end{itemize}
+  
+  \begin{lstlisting}
+ vector_expression<vector<T>, op_plus, vector<T> >
+ operator+(vector<T> & v, vector<T> & w) { ... }
+
+ vector::operator=(vector_expression<...> const & e) {
+   viennacl::linalg::avbv(*this, 1,e.lhs(), 1,e.rhs());
+ }
+  \end{lstlisting}
+  \vspace*{0.5cm}
+
+ \end{block}
+
+\end{frame}
+
+
+

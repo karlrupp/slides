@@ -1,0 +1,52 @@
+
+
+
+
+\begin{frame}{Part 1}
+ \begin{center}
+   \large \includegraphics[width=0.5\textwidth]{figures/viennacl-logo} \\[1em] Vienna Computing Library \\[2em] \normalfont \texttt{http://viennacl.sourceforge.net/}
+ \end{center}
+\end{frame}
+
+%%%%%%%%
+
+\input{slides/viennacl-from-ublas.tex}
+\input{slides/viennacl-about.tex}
+\input{slides/viennacl-expression-templates.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Benchmarks
+
+\input{slides/viennacl-cg-benchmark.tex}
+\input{slides/viennacl-gemm-benchmark.tex}
+
+
+%% Acknowledgments and Summary
+
+\input{slides/viennacl-ack.tex}
+
+
+\begin{frame}{Summary}
+ 
+ \begin{block}{High-Level C++ Approach of ViennaCL}
+  \begin{itemize}
+   \item Convenience of single-threaded high-level libraries (Boost.uBLAS)
+   \item Header-only library for simple integration into existing code
+   \item MIT (X11) license
+   \item \centering http://viennacl.sourceforge.net/
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Selected Features}
+  \begin{itemize}
+   \item Backends: OpenMP, OpenCL, CUDA
+   \item Iterative Solvers: CG, BiCGStab, GMRES
+   \item Preconditioners: AMG, SPAI, ILU, Jacobi
+   \item BLAS: Levels 1-3
+   \item 
+  \end{itemize}
+ \end{block}
+
+\end{frame}
