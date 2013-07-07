@@ -1,0 +1,143 @@
+
+
+\begin{frame}{Algebraic Multigrid Preconditioners}
+
+  \begin{block}{Poisson Equation in 2D}
+    \begin{itemize}
+     \item Unstructured triangular grid
+     \item Finite element discretization
+    \end{itemize}
+  \end{block}
+
+ \begin{block}{Various Algebraic Multigrid Methods}
+  \vspace*{0.3cm}
+  \begin{minipage}{0.48\textwidth}
+  \begin{center}
+   \includegraphics[width=0.9\textwidth]{figures/cpu_scaling-2.pdf}\\
+   Intel Core i7 960 CPU
+  \end{center}
+  \end{minipage}
+  \begin{minipage}{0.48\textwidth}
+  \begin{center}
+   %\includegraphics[width=0.99\textwidth]{figures/gpu_scaling.pdf}\\
+   %NVIDIA GTX 470 GPU
+  \end{center}
+  \end{minipage}
+ \end{block}
+
+  \vspace*{0.6cm}
+
+\end{frame}
+
+\begin{frame}{Algebraic Multigrid Preconditioners}
+
+  \begin{block}{Poisson Equation in 2D}
+    \begin{itemize}
+     \item Unstructured triangular grid
+     \item Finite element discretization
+    \end{itemize}
+  \end{block}
+
+ \begin{block}{Various Algebraic Multigrid Methods}
+  \vspace*{0.3cm}
+  \begin{minipage}{0.48\textwidth}
+  \begin{center}
+   \includegraphics[width=0.9\textwidth]{figures/cpu_scaling-2.pdf}\\
+   Intel Core i7 960 CPU
+  \end{center}
+  \end{minipage}
+  \begin{minipage}{0.48\textwidth}
+  \begin{center}
+   \includegraphics[width=0.9\textwidth]{figures/gpu_scaling-1.pdf}\\
+   NVIDIA GTX 470 GPU
+  \end{center}
+  \end{minipage}
+ \end{block}
+
+  \vspace*{0.6cm}
+
+\end{frame}
+
+\begin{frame}{Algebraic Multigrid Preconditioners}
+
+  \begin{block}{Poisson Equation in 2D}
+    \begin{itemize}
+     \item Unstructured triangular grid
+     \item Finite element discretization
+    \end{itemize}
+  \end{block}
+
+ \begin{block}{Various Algebraic Multigrid Methods}
+  \vspace*{0.3cm}
+  \begin{minipage}{0.48\textwidth}
+  \begin{center}
+   \includegraphics[width=0.9\textwidth]{figures/cpu_scaling-2.pdf}\\
+   Intel Core i7 960 CPU
+  \end{center}
+  \end{minipage}
+  \begin{minipage}{0.48\textwidth}
+  \begin{center}
+   \includegraphics[width=0.9\textwidth]{figures/gpu_scaling-2.pdf}\\
+   NVIDIA GTX 470 GPU
+  \end{center}
+  \end{minipage}
+ \end{block}
+
+  \vspace*{0.6cm}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Algebraic Multigrid Preconditioners}
+
+ \begin{block}{A Closer Look}
+  \vspace*{0.3cm}
+  \begin{minipage}{0.48\textwidth}
+  \begin{center}
+   \includegraphics[width=0.8\textwidth]{figures/bench-details-cpu-1.pdf}\\
+   Intel Core i7 960 CPU
+  \end{center}
+  \end{minipage}
+  \begin{minipage}{0.48\textwidth}
+  \begin{center}
+   \includegraphics[width=0.8\textwidth]{figures/bench-details-gpu-1.pdf}\\
+   NVIDIA GTX 470 GPU
+  \end{center}
+  \end{minipage}
+ \end{block}
+
+ \vspace*{1.97cm}
+\end{frame}
+
+
+\begin{frame}{Algebraic Multigrid Preconditioners}
+
+ \begin{block}{A Closer Look}
+  \vspace*{0.3cm}
+  \begin{minipage}{0.48\textwidth}
+  \begin{center}
+   \includegraphics[width=0.8\textwidth]{figures/bench-details-cpu-2.pdf}\\
+   Intel Core i7 960 CPU
+  \end{center}
+  \end{minipage}
+  \begin{minipage}{0.48\textwidth}
+  \begin{center}
+   \includegraphics[width=0.8\textwidth]{figures/bench-details-gpu-2.pdf}\\
+   NVIDIA GTX 470 GPU
+  \end{center}
+  \end{minipage}
+ \end{block}
+
+
+  \begin{block}{Findings}
+    \begin{itemize}
+     \item Solver cycle time scales with GPU
+     \item Setup time limited by CPU $\Rightarrow$ Minimize
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+

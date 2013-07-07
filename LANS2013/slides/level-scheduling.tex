@@ -1,0 +1,51 @@
+
+
+
+\begin{frame}[fragile]
+\frametitle{Incomplete LU Factorization Preconditioners}
+
+     \begin{block}{Level Scheduling}
+      \begin{itemize}
+        \item Build dependency graph
+        \item Substitute as many entries as possible simultaneously
+        \item Trade-off: Each step vs. multiple steps in a single kernel
+      \end{itemize}
+
+      \begin{center}
+    \only<1>{ \includegraphics[width=0.65\textwidth]{figures/level-scheduling.png} }
+    \only<2>{ \includegraphics[width=0.65\textwidth]{figures/level-scheduling-1.png} }
+    \only<3>{ \includegraphics[width=0.65\textwidth]{figures/level-scheduling-3.png} }
+      \end{center}
+
+    \end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Incomplete LU Factorization Preconditioners}
+
+     \begin{block}{Interpretation on Structured Grids}
+      \begin{itemize}
+        \item 2d finite-difference discretization
+        \item Substitution whenever all neighbors with smaller index computed
+        \item Works particularly well in 3d
+      \end{itemize}
+
+      \begin{center}
+    \only<1>{\includegraphics[width=0.4\textwidth]{figures/2d-grid-1}\hspace*{1.0cm}\includegraphics[width=0.4\textwidth]{figures/order_lexi}}
+    \only<2>{\hspace*{-0.085cm}\includegraphics[width=0.4\textwidth]{figures/2d-grid-2}\hspace*{1.0cm}\includegraphics[width=0.4\textwidth]{figures/order_lexi}}
+    \only<3>{\hspace*{-0.17cm}\includegraphics[width=0.4\textwidth]{figures/2d-grid-3}\hspace*{1.0cm}\includegraphics[width=0.4\textwidth]{figures/order_lexi}}
+%
+    \only<4>{\hspace*{-0.255cm}\includegraphics[width=0.4\textwidth]{figures/2d-grid-1-bad}\hspace*{1.0cm}\includegraphics[width=0.4\textwidth]{figures/order_bad}}
+    \only<5>{\hspace*{-0.34cm}\includegraphics[width=0.4\textwidth]{figures/2d-grid-2-bad}\hspace*{1.0cm}\includegraphics[width=0.4\textwidth]{figures/order_bad}}
+    \only<6>{\hspace*{-0.425cm}\includegraphics[width=0.4\textwidth]{figures/2d-grid-3-bad}\hspace*{1.0cm}\includegraphics[width=0.4\textwidth]{figures/order_bad}}
+%
+    \only<7>{\hspace*{-0.765cm}\includegraphics[width=0.4\textwidth]{figures/2d-grid-1-rb}\hspace*{1.0cm}\includegraphics[width=0.4\textwidth]{figures/order_rb}}
+    \only<8>{\hspace*{-0.75cm}\includegraphics[width=0.41\textwidth]{figures/2d-grid-2-rb}\hspace*{0.9cm}\includegraphics[width=0.4\textwidth]{figures/order_rb}}
+    \only<9>{\hspace*{-0.75cm}\includegraphics[width=0.41\textwidth]{figures/2d-grid-3-rb}\hspace*{0.9cm}\includegraphics[width=0.4\textwidth]{figures/order_rb}}
+      \end{center}
+
+    \end{block}
+\end{frame}
+
+
