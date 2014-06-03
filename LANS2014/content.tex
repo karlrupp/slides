@@ -1,0 +1,69 @@
+
+
+%
+% Introduction: Motivation for this work
+%
+
+\begin{frame}{Outline}
+ \begin{center}
+  \includegraphics[width=0.9\textwidth]{figures/outline}
+ \end{center}
+\end{frame}
+
+\input{slides/intro.tex}
+
+%
+% Introduce CG and perform first optimizations
+%
+\input{slides/cg.tex}
+
+%
+% Parameter Tuning: Explain benchmark setting, then present results
+%
+\input{slides/benchmark-intro.tex}
+\input{slides/benchmark.tex}
+
+%
+% Continue with CG-method, show results for pipelined variant
+%
+\input{slides/cg2.tex}
+
+
+%
+% Discuss mdot implementation for use within GMRES:
+%
+\input{slides/gmres.tex}
+
+
+%
+% Conclusion:
+%
+\begin{frame}{Summary and Conclusion}
+
+  \begin{block}{Conjugate Gradient Method}
+   \begin{itemize}
+    \item Careful choice of sparse matrix format
+    \item Tune kernels to target device
+    \item Minimize reads from global memory (kernel fusion, pipelining)
+   \end{itemize}
+  \end{block}
+
+  %\pause
+  \begin{block}{Generalized Minimum Residual Method (GMRES)}
+   \begin{itemize}
+    \item Minimizes reads from global memory (mdot kernel)
+    \item Up to twice the performance of 'naive' implementations
+   \end{itemize}
+  \end{block}
+  
+  %\pause
+  \begin{block}{Implications}
+    \begin{itemize}
+     \item Tune primarily with memory transfers in mind
+     \item Prefer regular memory access patterns
+     \item Use \emph{appropriate} vector data types
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
