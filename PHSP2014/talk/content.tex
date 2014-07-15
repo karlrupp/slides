@@ -1,0 +1,162 @@
+
+
+%
+% Introduction: Motivation for this work
+%
+
+\begin{frame}{Outline}
+ \begin{block}{ViennaCL Overview and Internals}\end{block}
+ \begin{block}{Tuning Potpourri: Iterative Solvers}\end{block}
+ \begin{block}{Community Building}\end{block}
+ \begin{block}{Development Infrastructure}\end{block}
+ \begin{block}{Miscellaneous}\end{block}
+ \begin{block}{Summary}\end{block}
+\end{frame}
+
+
+\input{slides/ublas-to-viennacl.tex}
+
+\begin{frame}[fragile]
+\frametitle{From Boost.uBLAS to ViennaCL}
+\begin{block}{Yesterday's Vector Addition Tutorial Revisited}
+  \begin{lstlisting}
+#include <iostream>
+#include "viennacl/vector.hpp"
+
+typedef float   NumericT;
+using namespace viennacl;
+
+int main()
+{
+  std::size_t N = 128*1024;
+  vector<NumericT> x = scalar_vector<NumericT>(N, 1.0);
+  vector<NumericT> y = scalar_vector<NumericT>(N, 2.0);
+
+  x += y;
+
+  std::cout << x << std::endl;
+}
+  \end{lstlisting} 
+\end{block}
+
+\end{frame}
+
+
+\input{slides/about.tex}
+
+\input{slides/internals.tex}
+
+
+\begin{frame}{Outline}
+ \begin{block}{ViennaCL Overview and Internals}\end{block}
+ \begin{block}{\textbf{Tuning Potpourri: Iterative Solvers}}\end{block}
+ \begin{block}{Community Building}\end{block}
+ \begin{block}{Development Infrastructure}\end{block}
+ \begin{block}{Miscellaneous}\end{block}
+ \begin{block}{Summary}\end{block}
+\end{frame}
+
+
+%
+% Introduce CG and perform first optimizations
+%
+\input{slides/cg.tex}
+
+
+%
+% Continue with CG-method, show results for pipelined variant
+%
+\input{slides/cg2.tex}
+
+
+%
+% Community building
+%
+
+\begin{frame}{Outline}
+ \begin{block}{ViennaCL Overview and Internals}\end{block}
+ \begin{block}{Tuning Potpourri: Iterative Solvers}\end{block}
+ \begin{block}{\textbf{Community Building}}\end{block}
+ \begin{block}{Development Infrastructure}\end{block}
+ \begin{block}{Miscellaneous}\end{block}
+ \begin{block}{Summary}\end{block}
+\end{frame}
+
+\input{slides/community.tex}
+
+
+%
+% Development Infrastructure
+%
+
+\begin{frame}{Outline}
+ \begin{block}{ViennaCL Overview and Internals}\end{block}
+ \begin{block}{Tuning Potpourri: Iterative Solvers}\end{block}
+ \begin{block}{Community Building}\end{block}
+ \begin{block}{\textbf{Development Infrastructure}}\end{block}
+ \begin{block}{Miscellaneous}\end{block}
+ \begin{block}{Summary}\end{block}
+\end{frame}
+
+
+\input{slides/infrastructure.tex}
+
+
+%
+% Miscellaneous
+%
+
+\begin{frame}{Outline}
+ \begin{block}{ViennaCL Overview and Internals}\end{block}
+ \begin{block}{Tuning Potpourri: Iterative Solvers}\end{block}
+ \begin{block}{Community Building}\end{block}
+ \begin{block}{Development Infrastructure}\end{block}
+ \begin{block}{\textbf{Miscellaneous}}\end{block}
+ \begin{block}{Summary}\end{block}
+\end{frame}
+
+
+\input{slides/et-limitations.tex}
+
+\input{slides/opencl-cpu.tex}
+
+\input{slides/iterator-fail.tex}
+
+
+
+%
+% Conclusion:
+%
+\begin{frame}{Summary and Conclusion}
+
+  \begin{block}{ViennaCL}
+   \begin{itemize}
+    \item Convenient high-level linear algebra library
+    \item CUDA-, OpenCL-, and OpenMP-backends
+    \item 
+     \begin{center}
+      \Large http://viennacl.sourceforge.net/
+     \end{center}
+   \end{itemize}
+  \end{block}
+
+  %\pause
+  \begin{block}{Using Heterogeneous Systems}
+   \begin{itemize}
+    \item Reuse software libraries
+    \item 'Time to science' most important
+   \end{itemize}
+  \end{block}
+  
+  %\pause
+  \begin{block}{Slides}
+    \begin{itemize}
+     \item Available in folder PHSP2014 at
+     \begin{center}
+      \Large http://github.com/karlrupp/slides
+     \end{center}
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+

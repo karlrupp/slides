@@ -1,0 +1,28 @@
+
+
+\begin{frame}[fragile]{Iterators}
+
+ \begin{block}{C++ Loves Iterators}
+  \begin{itemize}
+   \item Fundamental for STL
+   \item Forward Iterator vs. Random Access Iterator
+    \begin{lstlisting}
+ std::copy(x.begin(), x.begin() + 5, y.begin() + 4);
+    \end{lstlisting}
+  \end{itemize}
+ \end{block}
+
+ \pause
+ \begin{block}{Massive Parallelism}
+  \begin{itemize}
+   \item Forward Iterator is sequential by nature
+   \item Only Random Access Iterator suitable for parallelism
+   \item Simpler APIs:
+    \begin{lstlisting}
+ x[range(0, 5)] = y[range(4, 9)];
+    \end{lstlisting}
+  \end{itemize}
+ \end{block}
+ 
+\end{frame}
+

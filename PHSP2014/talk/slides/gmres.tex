@@ -1,0 +1,76 @@
+
+%%% GMRES optimization:
+% mdot
+
+
+\begin{frame}[fragile]{GMRES Optimization}
+
+ \begin{block}{Generalized Minimum Residual (GMRES) Method}
+   \begin{itemize}
+    \item Krylov space  $\mathrm{span}\{r, Ar, A^2r, \ldots, A^{N-1}r\}$
+    \item Orthogonal basis $\{v_1, v_2, \ldots, v_N\}$
+   \end{itemize}
+ \end{block}
+
+ %\pause
+ \begin{block}{Gram-Schmidt Method revisited}
+   \begin{itemize}
+    \item Given: orthonormal basis $\{v_1, v_2, \ldots, v_N\}$, augment by $w$
+    \item $w \leftarrow w - \sum_{i=1}^N \langle w, v_i \rangle v_i$
+    \item $w \leftarrow w / \Vert w \Vert$
+    \item Add $w$ to basis
+   \end{itemize}
+ \end{block}
+
+ %\pause
+ \begin{block}{Multiple inner products $\langle w, v_i \rangle$}
+   \begin{itemize}
+    \item Performance critical (global reductions)
+    \item Reuse of $w$ desirable
+   \end{itemize}
+ \end{block}
+\end{frame}
+
+
+% - mdot
+\begin{frame}[fragile]{GMRES Optimization}
+
+ \begin{block}{Custom routine \textit{mdot}}
+   \begin{itemize}
+    \item Process $\alpha_i = \langle w, v_i \rangle$ in batches
+    \item Batch sizes 1, 2, 3, 4, 8
+    \item Batch size 8: Only $12.5 \%$ overhead vs.~arbitrary batch sizes
+   \end{itemize}
+ \end{block}
+
+ \begin{block}{Code sketch (Batch size 4)}
+ \begin{lstlisting}
+ for (size_t i=thread_id; i<M; i += threads_per_group)
+ {
+   double val_w = w[i];
+   alpha_1 += val_w * v1[i];
+   alpha_2 += val_w * v2[i];
+   alpha_3 += val_w * v3[i];
+   alpha_4 += val_w * v4[i];
+ }
+   \end{lstlisting}
+ \end{block}
+    
+
+\end{frame}
+
+\begin{frame}{Benchmarks}
+ \begin{center}
+   \centering \includegraphics[width=0.8\textwidth]{figures/time-size-amd-3} \\[1em]
+   \hspace*{1cm} Fixed number of $50$ vectors
+ \end{center}
+\end{frame}
+
+\begin{frame}{Benchmarks}
+ \begin{center}
+   \centering \includegraphics[width=0.8\textwidth]{figures/time-size-nvidia-4} \\[1em]
+   \hspace*{1cm} Fixed number of $50$ vectors
+ \end{center}
+\end{frame}
+
+

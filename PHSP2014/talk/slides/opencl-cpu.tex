@@ -1,0 +1,35 @@
+
+
+\begin{frame}[fragile]{OpenCL on the CPU}
+
+ \begin{block}{Cost of a Function Call}
+  \begin{itemize}
+   \item Plain C: Tens of nanoseconds
+   \item OpenCL: Several microseconds
+  \begin{lstlisting}
+     std::vector<double>      std_x(100);
+viennacl::vector<double>      vcl_x(100);
+
+for (size_t i=0; i<100; ++i){
+    std_x[i] = rand();
+    vcl_x[i] = rand();  //possible, inefficient
+}
+\end{lstlisting}
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Host-based Execution}
+  \begin{itemize}
+   \item Required for serial code
+   \item Rich library set
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Recommendation}
+  \begin{itemize}
+   \item Don't use OpenCL for CPUs
+  \end{itemize}
+ \end{block}
+ 
+\end{frame}
+
