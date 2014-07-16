@@ -1,0 +1,87 @@
+
+
+\begin{frame}{Portable Performance}
+  \begin{center} \Large \textbf{Histograms} \end{center}
+\end{frame}
+
+\begin{frame}{Portable Performance}
+  \begin{center} \includegraphics[width=0.75\textwidth]{figures/firepro_w9000_double_hist_itertype_dot} \end{center}
+\end{frame}
+
+\begin{frame}{Portable Performance}
+  \begin{center} \includegraphics[width=0.75\textwidth]{figures/k20m_double_hist_itertype_dot} \end{center}
+\end{frame}
+
+\begin{frame}{Portable Performance}
+  \begin{center} \includegraphics[width=0.75\textwidth]{figures/xeon_cpu_double_hist_itertype_dot} \end{center}
+\end{frame}
+
+\begin{frame}{Portable Performance}
+  \begin{center} \includegraphics[width=0.55\textwidth]{figures/xeon_cpu_double_hist_itertype_dot} \\[1em]
+                 \includegraphics[width=0.45\textwidth]{figures/copy-kernel-cpu-full} 
+  \end{center}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Portable Performance}
+  \begin{center} \textbf{ [Addition$|$Inner Product$|$Matrix-Vector] vs. Copy Kernel }\\[1em] Same Device \end{center}
+\end{frame}
+
+\begin{frame}{Portable Performance}
+  \only<1>{\begin{center} \includegraphics[width=0.8\textwidth]{figures/gtx285-addition-copy-1} \end{center}}
+  \only<2>{\begin{center} \includegraphics[width=0.8\textwidth]{figures/gtx285-addition-copy-2} \end{center}}
+  \only<3>{\begin{center} \includegraphics[width=0.8\textwidth]{figures/gtx285-addition-copy-3} \end{center}}
+\end{frame}
+
+
+\begin{frame}{Portable Performance}
+  \only<1>{\begin{center} {\LARGE NVIDIA Tesla K20m} \\[2em]       \hspace*{1.cm} Addition \hspace*{2.1cm} Inner Product \hspace*{1.4cm} Mat-Vec Product \\[1em] \includegraphics[width=0.99\textwidth]{figures/k20m_double_xy_copy-crop} \end{center}}
+  \only<2>{\begin{center} {\LARGE AMD Radeon HD 5850} \\[2em]      \hspace*{1.cm} Addition \hspace*{2.1cm} Inner Product \hspace*{1.4cm} Mat-Vec Product \\[1em] \includegraphics[width=0.99\textwidth]{figures/hd5850_double_xy_copy-crop} \end{center}}
+  \only<3>{\begin{center} {\LARGE AMD FirePro W9000} \\[2em]       \hspace*{1.cm} Addition \hspace*{2.1cm} Inner Product \hspace*{1.4cm} Mat-Vec Product \\[1em] \includegraphics[width=0.99\textwidth]{figures/firepro_w9000_double_xy_copy} \end{center}}
+  \only<4>{\begin{center} {\LARGE INTEL Dual Xeon E5-2670} \\[2em] \hspace*{1.cm} Addition \hspace*{2.1cm} Inner Product \hspace*{1.4cm} Mat-Vec Product \\[1em] \includegraphics[width=0.99\textwidth]{figures/xeon_cpu_double_xy_copy-crop} \end{center}}
+  \only<5>{\begin{center} {\LARGE INTEL Xeon Phi} \\[2em]          \hspace*{1.cm} Addition \hspace*{2.1cm} Inner Product \hspace*{1.4cm} Mat-Vec Product \\[1em] \includegraphics[width=0.99\textwidth]{figures/xeon_phi_float_xy_copy-crop} \end{center}}
+\end{frame}
+
+\begin{frame}{Portable Performance}
+  \begin{center} Conclusio: \\[1em]
+    {\Large Focus on fastest configurations for copy-kernel sufficient} \\[5em]
+    
+    Good choice: \\[1em]
+    {\Large Local workgroup size of 128 with 128 workgroups}
+  \end{center}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{frame}{Portable Performance}
+  \begin{block}{Matrix-Matrix Multiplication}
+    \begin{itemize}
+     \item Compute-bound
+     \item Block-decomposition to maximize cache utilization
+    \end{itemize}
+  \end{block}
+  
+  \begin{center}
+   \includegraphics[width=0.99\textwidth]{figures/MatrixMatrixProduct}
+  \end{center}
+
+
+\end{frame}
+
+
+\begin{frame}{Portable Performance}
+  \begin{center}
+  Matrix-Matrix Multiplication (Single Precision) \\
+  \includegraphics[width=0.8\textwidth]{figures/sgemm}
+  \end{center} 
+  
+  {\small Ph.~Tillet \textit{et al.}: HotPar'13}
+\end{frame}
+

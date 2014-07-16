@@ -1,0 +1,113 @@
+
+\input{slides/self.tex}
+
+
+%% Table of Contents
+
+%% 100x myth
+\input{slides/gpu-disillusion.tex}
+
+
+%% About OpenCL
+\begin{frame}{Table of Contents}
+ \begin{block}{100x Speedup!?} \end{block}
+ \begin{block}{\textbf{About OpenCL}} \end{block}
+ \begin{block}{OpenCL Execution Model} \end{block}
+ \begin{block}{OpenCL Kernel Language} \end{block}
+ \begin{block}{Comparison with CUDA and OpenACC} \end{block}
+ \begin{block}{Portable Performance} \end{block}
+ \begin{block}{Summary} \end{block}
+\end{frame}
+
+\input{slides/opencl-history.tex}
+
+
+
+%% OpenCL Execution Model
+\begin{frame}{Table of Contents}
+ \begin{block}{100x Speedup!?} \end{block}
+ \begin{block}{About OpenCL} \end{block}
+ \begin{block}{\textbf{OpenCL Execution Model}} \end{block}
+ \begin{block}{OpenCL Kernel Language} \end{block}
+ \begin{block}{Comparison with CUDA and OpenACC} \end{block}
+ \begin{block}{Portable Performance} \end{block}
+ \begin{block}{Summary} \end{block}
+\end{frame}
+
+\input{slides/opencl-platform.tex}
+
+
+
+%% OpenCL Kernel Language 
+\begin{frame}{Table of Contents}
+ \begin{block}{100x Speedup!?} \end{block}
+ \begin{block}{About OpenCL} \end{block}
+ \begin{block}{OpenCL Execution Model} \end{block}
+ \begin{block}{\textbf{OpenCL Kernel Language}} \end{block}
+ \begin{block}{Comparison with CUDA and OpenACC} \end{block}
+ \begin{block}{Portable Performance} \end{block}
+ \begin{block}{Summary} \end{block}
+\end{frame}
+
+\input{slides/opencl-kernels.tex}
+
+
+%% Comparison with CUDA and OpenACC
+\begin{frame}{Table of Contents}
+ \begin{block}{100x Speedup!?} \end{block}
+ \begin{block}{About OpenCL} \end{block}
+ \begin{block}{OpenCL Execution Model} \end{block}
+ \begin{block}{OpenCL Kernel Language} \end{block}
+ \begin{block}{\textbf{Comparison with CUDA and OpenACC}} \end{block}
+ \begin{block}{Portable Performance} \end{block}
+ \begin{block}{Summary} \end{block}
+\end{frame}
+
+
+\input{slides/library-aspects.tex}
+
+
+%% Portable Performance Section
+\begin{frame}{Table of Contents}
+ \begin{block}{100x Speedup!?} \end{block}
+ \begin{block}{About OpenCL} \end{block}
+ \begin{block}{OpenCL Execution Model} \end{block}
+ \begin{block}{OpenCL Kernel Language} \end{block}
+ \begin{block}{Comparison with CUDA and OpenACC} \end{block}
+ \begin{block}{\textbf{Portable Performance}} \end{block}
+ \begin{block}{Summary} \end{block}
+\end{frame}
+
+\input{slides/benchmarks.tex}
+
+\input{slides/benchmark-intro.tex}
+\input{slides/benchmark.tex}
+
+%% Summary
+\begin{frame}{Summary}
+ 
+ \begin{block}{OpenCL}
+  \begin{itemize}
+   \item Program CPUs and accelerators (GPUs, MIC, etc.) from different vendors
+   \item Clean integration into existing projects
+   \item Not a silver bullet
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Recommendations}
+  \begin{itemize}
+   \item Program with data locality and data movement in mind
+   \item Compilers cannot fix bad programming
+   \item There is no free lunch
+  \end{itemize}
+ \end{block}
+
+  \begin{block}{Convenient Use of OpenCL}
+  \begin{itemize}
+   \item Use libraries built on top of OpenCL
+   \item \begin{center} Tue, July 15, 9:00am: \\ \textit{Lessons Learned in Developing the Linear Algebra Library ViennaCL} \end{center}
+  \end{itemize}
+ \end{block}
+
+
+\end{frame}
