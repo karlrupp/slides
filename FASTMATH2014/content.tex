@@ -1,0 +1,48 @@
+
+
+%
+% Introduction: Motivation for this work
+%
+
+\input{slides/gpu-disillusion.tex}
+
+
+
+\input{slides/host-device-comm.tex}
+
+
+\input{slides/cg.tex}
+\input{slides/cg2.tex}
+
+
+
+
+%
+% Conclusion:
+%
+\begin{frame}{Summary and Conclusion}
+
+ \begin{block}{Accelerator Architecture}
+  \begin{itemize}
+   \item FLOPs for free
+   \item Limited 'work window'
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Host-Device Communication}
+  \begin{itemize}
+   \item Latency of about $1$-$10$ microseconds
+   \item PCI-Express 3.0 addresses bandwidth, not latency
+   \item Tighter integration with host desired
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Advice for Implementations}
+  \begin{itemize}
+   \item Count kernel launches to estimate minimum execution time
+   \item Minimize data transfers to/from main memory
+  \end{itemize}
+ \end{block}
+
+\end{frame}
+

@@ -1,0 +1,103 @@
+
+
+% Show CG algorithm <-> BLAS
+
+\begin{frame}[fragile]{Conjugate Gradients}
+
+ \begin{block}{}
+  
+   \begin{minipage}{0.45\textwidth}
+      {\large \textbf{Pseudocode}} \\
+      
+      Choose $x_0$ \\
+      $p_0 = r_0 = b - Ax_0$ \\
+      For $i=0$ until convergence
+     \begin{enumerate}
+      \item Compute and store $Ap_i$
+      \item Compute $\langle p_i, Ap_i \rangle$
+      \item $\alpha_i = \langle r_i, r_i \rangle / \langle p_i, Ap_i \rangle$
+      \item $x_{i+1} = x_{i} + \alpha_i p_i$          
+      \item $r_{i+1} = r_i - \alpha_i Ap_i$       
+      \item Compute $\langle r_{i+1}, r_{i+1} \rangle$
+      \item $\beta_i = \langle r_{i+1}, r_{i+1} \rangle / \langle r_i, r_i \rangle$
+      \item $p_{i+1} = r_{i+1} + \beta_i p_i$
+     \end{enumerate}
+     EndFor
+   \end{minipage}
+   \begin{minipage}{0.48\textwidth}
+      {\large \textbf{BLAS-based Implementation}} \\
+      
+            - \\
+      SpMV, AXPY \\
+      For $i=0$ until convergence
+     \begin{enumerate}
+      \item SpMV {\color{blue} $\leftarrow$ No caching of $Ap_i$}
+      \item DOT {\color{red} $\leftarrow$ Global sync!}
+      \item -
+      \item AXPY         
+      \item AXPY  {\color{blue} $\leftarrow$ No caching of $r_{i+1}$}
+      \item DOT {\color{red} $\leftarrow$ Global sync!}
+      \item -
+      \item AXPY
+     \end{enumerate}
+     EndFor
+   \end{minipage}
+   
+   \end{block}
+   
+\end{frame}
+
+\begin{frame}[fragile]{Conjugate Gradients}
+
+ \begin{block}{}
+ 
+ \begin{center}
+  \vspace*{-0.5cm}
+  \includegraphics[width=0.85\textwidth]{figures/cg-k20m-0}
+ \end{center}
+
+ \begin{itemize}
+  \item   \vspace*{-0.3cm} {\small (2D Finite Difference Discretization)}
+ \end{itemize}
+
+ \end{block}
+   
+\end{frame}
+
+%%%%
+
+\begin{frame}[fragile]{Conjugate Gradients}
+
+ \begin{block}{}
+ 
+ \begin{center}
+  \vspace*{-0.5cm}
+  \includegraphics[width=0.85\textwidth]{figures/cg-k20m-1}
+ \end{center}
+
+ \begin{itemize}
+  \item   \vspace*{-0.3cm} {\small (2D Finite Difference Discretization)}
+ \end{itemize}
+
+ \end{block}
+   
+\end{frame}
+
+%%%
+
+\begin{frame}[fragile]{Conjugate Gradients}
+
+ \begin{block}{}
+ 
+ \begin{center}
+  \vspace*{-0.5cm}
+  \includegraphics[width=0.85\textwidth]{figures/cg-k20m-2}
+ \end{center}
+
+ \begin{itemize}
+  \item   \vspace*{-0.3cm} {\small (2D Finite Difference Discretization)}
+ \end{itemize}
+
+ \end{block}
+   
+\end{frame}

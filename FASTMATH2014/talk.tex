@@ -1,0 +1,104 @@
+% -------------------------------------------------------------------
+\documentclass[usepdftitle=false,9pt]{beamer}
+
+% Specify the respective Beamer theme here:
+%\usetheme[height=0.3cm,width=1.cm,shadow=false]{iue}
+
+%encodings
+\usepackage[utf8]{inputenc}
+\usepackage[OT1]{fontenc}
+
+%some useful packages
+\usepackage[]{mathrsfs}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{acronym}
+\usepackage[]{graphicx}
+\usepackage[]{textcomp} %for tilde
+
+\hypersetup{pdftitle={Using Accelerators - The FLOPs, the Bandwidth, and the Latency}, pdfauthor={Karl Rupp}}
+
+%% Listings package START
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.6,0,0}
+\definecolor{darkgreen}{rgb}{0,.4,0}
+\definecolor{red}{rgb}{.98,0,0}
+\definecolor{lightgrey}{rgb}{0.98,0.98,0.98}
+
+
+\lstloadlanguages{C++}
+\lstset{%
+  language=C++,
+  basicstyle=\small\ttfamily,
+  commentstyle=\itshape\color{darkgreen},
+  keywordstyle=\bfseries\color{darkblue},
+  stringstyle=\color{darkred},
+  showspaces=false,
+  showtabs=false,
+  columns=fixed,
+  backgroundcolor=\color{lightgrey},
+  numbers=none,
+  frame=single,
+  numberstyle=\tiny,
+  breaklines=true,
+  showstringspaces=false,
+  xleftmargin=0.1cm,
+  xrightmargin=3em
+}%
+
+\lstset{emphstyle=\color{red}}
+
+%% Listings package STOP
+
+
+
+\graphicspath{{figures/}}           % in which folder all the figures are
+
+
+%\mode<presentation>
+
+% table of contents, depth
+\setcounter{tocdepth}{2}
+
+% modify at will
+\setbeamercovered{invisible}
+%\setbeamercovered{transparent}
+
+
+
+\author[Karl Rupp]{\vspace*{-0.3cm} \\ Karl Rupp$^{1,2}$ \\[1em]
+                        {\ttfamily rupp@iue.tuwien.ac.at} \\
+                        \textbf{\ttfamily http://karlrupp.net/} \\[1em]
+                    %\includegraphics[width=1em]{figures/twitter-logo.png}\ @karlrupp \\[1.0em]
+\color{black}{\small based on stimuli from PETSc+ViennaCL users}
+                  }
+
+\institute[ASC]
+{ \footnotesize
+  $^1$ Institute for Microelectronics, TU Wien, Austria \\
+  $^2$ Institute for Analysis and Scientific Computing, TU Wien, Austria
+}
+
+\title[GPU Tutorial]{Using Accelerators \\ The FLOPs, the Bandwidth, and the Latency}
+
+\date[October 1st, 2014]{ \footnotesize October 1st, 2014}
+
+\setbeamertemplate{blocks}[default]
+%\setbeamercolor{block title}{bg=}
+\setbeamercolor{block body}{bg=}
+%\setbeamercovered{transparent}
+
+\begin{document}
+
+\begin{frame}[plain]
+ \frametitle{~}
+ \titlepage
+\end{frame}
+
+\input{content}
+
+\end{document}
+
