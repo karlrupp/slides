@@ -1,0 +1,119 @@
+% -------------------------------------------------------------------
+\documentclass[usepdftitle=false,9pt]{beamer}
+
+% Specify the respective Beamer theme here:
+%\usetheme[height=0.3cm,width=1.cm,shadow=false]{iue}
+
+
+%encodings
+\usepackage[utf8]{inputenc}
+\usepackage[OT1]{fontenc}
+
+%some useful packages
+\usepackage[]{mathrsfs}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{acronym}
+\usepackage[]{listings}
+\usepackage[]{xcolor}
+\usepackage[]{graphicx}
+\usepackage[]{textcomp} %for tilde
+\usepackage{tikz}
+
+\hypersetup{pdftitle={Writing Performance-Portable Code for GPUs}, pdfauthor={Karl Rupp}}
+
+
+%% Listings package START
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.6,0,0}
+\definecolor{darkgreen}{rgb}{0,.4,0}
+\definecolor{red}{rgb}{.98,0,0}
+\definecolor{lightgrey}{rgb}{0.98,0.98,0.98}
+
+
+\lstloadlanguages{C++}
+\lstset{%
+  language=C++,
+  basicstyle=\small\ttfamily,
+  commentstyle=\itshape\color{darkgreen},
+  keywordstyle=\bfseries\color{darkblue},
+  stringstyle=\color{darkred},
+  showspaces=false,
+  showtabs=false,
+  columns=fixed,
+  backgroundcolor=\color{lightgrey},
+  numbers=none,
+  frame=single,
+  numberstyle=\tiny,
+  breaklines=true,
+  showstringspaces=false,
+  xleftmargin=0.1cm,
+  xrightmargin=3em
+}%
+
+\lstset{emphstyle=\color{red}}
+
+%% Listings package STOP
+
+
+\renewcommand{\matrix}[1]{\boldsymbol{#1}}
+\renewcommand{\vector}[1]{\boldsymbol{#1}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\black}{ }
+\newcommand{\ViennaCL}{\texttt{ViennaCL}}
+
+%\setlength{\fboxrule}{1pt}
+
+%\renewcommand{\seriesdefault}{\bfdefault}
+%\usepackage{helvet}
+
+\graphicspath{{figures/}}           % in which folder all the figures are
+\newcommand{\tn}   {\textnormal}
+
+%\mode<presentation>
+
+% table of contents, depth
+\setcounter{tocdepth}{2}
+
+% modify at will
+\setbeamercovered{invisible}
+%\setbeamercovered{transparent}
+
+
+
+\author[Karl Rupp]{\vspace*{-0.3cm} \\ Karl Rupp$^{1,2}$ \\[1em]
+                        {\ttfamily rupp@iue.tuwien.ac.at} \\[1em]
+                    \includegraphics[width=1em]{figures/twitter-logo.png}\ @karlrupp \\[1.0em]
+\color{black}{\small with contributions from \\ Philippe Tillet$^1$, Florian Rudolf$^1$,\\ Josef Weinbub$^1$, Ansgar J\"ungel$^2$, Tibor Grasser$^1$ \\ (based on stimuli from PETSc+ViennaCL users)}
+                  }
+
+\institute[ASC]
+{ \footnotesize
+  $^1$ Institute for Microelectronics, TU Wien, Austria \\
+  $^2$ Institute for Analysis and Scientific Computing, TU Wien, Austria
+}
+
+\title[GPUs]{Writing Performance-Portable Code for GPUs}
+
+\date[Boulder, March 20th, 2015]{ \footnotesize Boulder, March 20th, 2015}
+
+\setbeamertemplate{blocks}[default]
+%\setbeamercolor{block title}{bg=}
+\setbeamercolor{block body}{bg=}
+%\setbeamercovered{transparent}
+
+\begin{document}
+
+\begin{frame}[plain]
+ \frametitle{~}
+ \titlepage
+\end{frame}
+
+\input{content}
+
+\end{document}
+
+

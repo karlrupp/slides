@@ -1,0 +1,70 @@
+
+
+%
+% Introduction: Motivation for this work
+%
+
+\begin{frame}{Outline}
+ \begin{center}
+  \includegraphics[width=0.9\textwidth]{figures/outline-crop}
+ \end{center}
+\end{frame}
+
+\input{slides/intro.tex}
+
+%
+% Introduce CG and perform first optimizations
+%
+\input{slides/cg.tex}
+
+%
+% Parameter Tuning: Explain benchmark setting, then present results
+%
+\input{slides/benchmark-intro.tex}
+\input{slides/benchmark.tex}
+
+%
+% Continue with CG-method, show results for pipelined variant
+%
+\input{slides/cg2.tex}
+
+
+%
+% Discuss BiCGStab and GMRES performance results:
+%
+\input{slides/gmres.tex}
+
+
+%
+% Conclusion:
+%
+
+\begin{frame}{Conclusion}
+
+  \begin{block}{Performance-Portable Code for GPUs}
+    \begin{itemize}
+     \item Start with 128 work items
+     \item Refrain from using vector datatypes
+     \item Let each workgroup work on a contiguous piece of memory
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Pipelined Iterative Solvers}
+    \begin{itemize}
+     \item Reduced number of kernel launches
+     \item On-chip data reuse
+     \item Faster than BLAS-based implementations
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Best Practices for GPU Computing}
+    \begin{itemize}
+      \item FLOPs are (almost always) for free
+      \item Work on large enough data
+      \item Avoid unnecessary PCI-Express communication
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+
