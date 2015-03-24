@@ -1,0 +1,101 @@
+
+----------------------------------------------
+               Device Info
+----------------------------------------------
+Reading matrix...
+Reading matrix completed.
+-- CG solver (no preconditioner, warmup) --
+  > Solver time: 9.10312
+  > Relative residual: 9.43182e-09
+  > Iterations: 453
+  > Relative deviation from result: 1.11579e-08
+-- CG solver (no preconditioner) --
+  > Solver time: 9.08158
+  > Relative residual: 9.43182e-09
+  > Iterations: 453
+  > Relative deviation from result: 1.11579e-08
+-- CG with AMG preconditioner, ONEPASS COARSENING, DIRECT INTERPOLATION --
+ * Setup phase (ViennaCL types)...
+Working on Level 0
+ Coarse grid construction time: 0.392324
+ No of C points = 32513,  No of F points = 32512
+ Interpolation construction time: 0.239591
+  Time for transpose: 0.023502
+  Time for prod: 0.062234
+ Galerkin product time: 0.087583
+Working on Level 1
+ Coarse grid construction time: 0.338857
+ No of C points = 8072,  No of F points = 24441
+ Interpolation construction time: 0.119515
+  Time for transpose: 0.012385
+  Time for prod: 0.025823
+ Galerkin product time: 0.038489
+Working on Level 2
+ Coarse grid construction time: 0.075217
+ No of C points = 2019,  No of F points = 6053
+ Interpolation construction time: 0.031065
+  Time for transpose: 0.002421
+  Time for prod: 0.006279
+ Galerkin product time: 0.008976
+Working on Level 3
+ Coarse grid construction time: 0.017782
+ No of C points = 513,  No of F points = 1506
+ Interpolation construction time: 0.009971
+  Time for transpose: 0.000557
+  Time for prod: 0.001921
+ Galerkin product time: 0.002626
+Working on Level 4
+ Coarse grid construction time: 0.003689
+ No of C points = 135,  No of F points = 378
+ Interpolation construction time: 0.002777
+  Time for transpose: 0.000172
+  Time for prod: 0.000732
+ Galerkin product time: 0.000987
+Working on Level 5
+ Coarse grid construction time: 0.001195
+ No of C points = 44,  No of F points = 91
+ Interpolation construction time: 0.000966
+  Time for transpose: 6.7e-05
+  Time for prod: 0.000462
+ Galerkin product time: 0.000604
+ * CG solver (ViennaCL types)...
+  > Solver time: 0.057928
+  > Relative residual: 7.21617e-09
+  > Iterations: 9
+  > Relative deviation from result: 1.0918e-08
+-- CG with AMG preconditioner, AG COARSENING, AG INTERPOLATION (host) --
+ * Setup phase (ViennaCL types)...
+Working on Level 0
+ Coarse grid construction time: 0.016267
+ No of C points = 9567,  No of F points = 55458
+ Interpolation construction time: 0.024015
+  Time for transpose: 0.013079
+  Time for prod: 0.061942
+ Galerkin product time: 0.075302
+Working on Level 1
+ Coarse grid construction time: 0.002244
+ No of C points = 1148,  No of F points = 8419
+ Interpolation construction time: 0.000473
+  Time for transpose: 0.001228
+  Time for prod: 0.005816
+ Galerkin product time: 0.00728
+Working on Level 2
+ Coarse grid construction time: 0.000357
+ No of C points = 122,  No of F points = 1026
+ Interpolation construction time: 0.000159
+  Time for transpose: 0.000172
+  Time for prod: 0.00097
+ Galerkin product time: 0.001219
+Working on Level 3
+ Coarse grid construction time: 0.000143
+ No of C points = 15,  No of F points = 107
+ Interpolation construction time: 8.7e-05
+  Time for transpose: 3.5e-05
+  Time for prod: 0.000381
+ Galerkin product time: 0.000481
+ * CG solver (ViennaCL types)...
+  > Solver time: 0.352833
+  > Relative residual: 8.96312e-09
+  > Iterations: 72
+  > Relative deviation from result: 3.9806e-08
+!!!! TUTORIAL COMPLETED SUCCESSFULLY !!!!

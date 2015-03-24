@@ -1,0 +1,119 @@
+
+----------------------------------------------
+               Device Info
+----------------------------------------------
+Name:                Hawaii
+Vendor:              Advanced Micro Devices, Inc.
+Type:                GPU 
+Available:           1
+Max Compute Units:   44
+Max Work Group Size: 256
+Global Mem Size:     3221225472
+Local Mem Size:      32768
+Local Mem Type:      1
+Host Unified Memory: 0
+
+Reading matrix...
+Reading matrix completed.
+-- CG solver (no preconditioner, warmup) --
+  > Solver time: 0.586222
+  > Relative residual: 7.144e-09
+  > Iterations: 121
+  > Relative deviation from result: 2.47493e-09
+-- CG solver (no preconditioner) --
+  > Solver time: 0.023328
+  > Relative residual: 7.144e-09
+  > Iterations: 121
+  > Relative deviation from result: 2.47493e-09
+-- CG with AMG preconditioner, ONEPASS COARSENING, DIRECT INTERPOLATION --
+ * Setup phase (ViennaCL types)...
+Working on Level 0
+ Coarse grid construction time: 0.002788
+ No of C points = 1985,  No of F points = 1984
+ Interpolation construction time: 0.002173
+  Time for transpose: 0.000127
+  Time for prod: 0.002675
+ Galerkin product time: 0.00282
+Working on Level 1
+ Coarse grid construction time: 0.002096
+ No of C points = 488,  No of F points = 1497
+ Interpolation construction time: 0.001059
+  Time for transpose: 6e-05
+  Time for prod: 0.001577
+ Galerkin product time: 0.001651
+Working on Level 2
+ Coarse grid construction time: 0.000499
+ No of C points = 123,  No of F points = 365
+ Interpolation construction time: 0.00027
+  Time for transpose: 1.8e-05
+  Time for prod: 0.00039
+ Galerkin product time: 0.000416
+Working on Level 3
+ Coarse grid construction time: 0.000131
+ No of C points = 32,  No of F points = 91
+ Interpolation construction time: 7.3e-05
+  Time for transpose: 7e-06
+  Time for prod: 0.000123
+ Galerkin product time: 0.000137
+ * CG solver (ViennaCL types)...
+  > Solver time: 0.276945
+  > Relative residual: 2.29336e-09
+  > Iterations: 8
+  > Relative deviation from result: 5.33246e-10
+-- CG with AMG preconditioner, AG COARSENING, AG INTERPOLATION (host) --
+ * Setup phase (ViennaCL types)...
+Working on Level 0
+ Coarse grid construction time: 0.000203
+ No of C points = 608,  No of F points = 3361
+ Interpolation construction time: 5.7e-05
+  Time for transpose: 4.8e-05
+  Time for prod: 0.001711
+ Galerkin product time: 0.001774
+Working on Level 1
+ Coarse grid construction time: 3.4e-05
+ No of C points = 78,  No of F points = 530
+ Interpolation construction time: 1.4e-05
+  Time for transpose: 1e-05
+  Time for prod: 0.000279
+ Galerkin product time: 0.000297
+Working on Level 2
+ Coarse grid construction time: 8e-06
+ No of C points = 11,  No of F points = 67
+ Interpolation construction time: 7e-06
+  Time for transpose: 4e-06
+  Time for prod: 5.4e-05
+ Galerkin product time: 6.7e-05
+ * CG solver (ViennaCL types)...
+  > Solver time: 0.072585
+  > Relative residual: 6.89893e-09
+  > Iterations: 33
+  > Relative deviation from result: 1.69905e-08
+-- CG with AMG preconditioner, AG COARSENING, AG INTERPOLATION (device) --
+ * Setup phase (ViennaCL types)...
+Working on Level 0
+ Coarse grid construction time: 0.001033
+ No of C points = 608,  No of F points = 3361
+ Interpolation construction time: 0.000593
+  Time for transpose: 0.000436
+  Time for prod: 0.015222
+ Galerkin product time: 0.015711
+Working on Level 1
+ Coarse grid construction time: 0.000431
+ No of C points = 78,  No of F points = 530
+ Interpolation construction time: 0.000232
+  Time for transpose: 0.000299
+  Time for prod: 0.010634
+ Galerkin product time: 0.010979
+Working on Level 2
+ Coarse grid construction time: 0.000422
+ No of C points = 11,  No of F points = 67
+ Interpolation construction time: 0.000239
+  Time for transpose: 0.000279
+  Time for prod: 0.005213
+ Galerkin product time: 0.005538
+ * CG solver (ViennaCL types)...
+  > Solver time: 0.069687
+  > Relative residual: 6.41717e-09
+  > Iterations: 31
+  > Relative deviation from result: 1.47739e-08
+!!!! TUTORIAL COMPLETED SUCCESSFULLY !!!!

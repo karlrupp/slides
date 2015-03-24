@@ -1,0 +1,15 @@
+
+----------------------------------------------
+               Device Info
+----------------------------------------------
+Name:                Hawaii
+Vendor:              Advanced Micro Devices, Inc.
+Type:                GPU 
+Available:           1
+Max Compute Units:   44
+Max Work Group Size: 256
+Global Mem Size:     3221225472
+Local Mem Size:      32768
+Local Mem Type:      1
+Host Unified Memory: 0
+

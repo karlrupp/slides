@@ -1,0 +1,119 @@
+
+----------------------------------------------
+               Device Info
+----------------------------------------------
+Name:                Tesla K20m
+Vendor:              NVIDIA Corporation
+Type:                GPU 
+Available:           1
+Max Compute Units:   13
+Max Work Group Size: 1024
+Global Mem Size:     5032706048
+Local Mem Size:      49151
+Local Mem Type:      1
+Host Unified Memory: 0
+
+Reading matrix...
+Reading matrix completed.
+-- CG solver (no preconditioner, warmup) --
+  > Solver time: 0.013435
+  > Relative residual: 7.144e-09
+  > Iterations: 121
+  > Relative deviation from result: 2.47493e-09
+-- CG solver (no preconditioner) --
+  > Solver time: 0.011366
+  > Relative residual: 7.144e-09
+  > Iterations: 121
+  > Relative deviation from result: 2.47493e-09
+-- CG with AMG preconditioner, ONEPASS COARSENING, DIRECT INTERPOLATION --
+ * Setup phase (ViennaCL types)...
+Working on Level 0
+ Coarse grid construction time: 0.022621
+ No of C points = 1985,  No of F points = 1984
+ Interpolation construction time: 0.00877
+  Time for transpose: 0.000149
+  Time for prod: 0.024434
+ Galerkin product time: 0.024623
+Working on Level 1
+ Coarse grid construction time: 0.005719
+ No of C points = 488,  No of F points = 1497
+ Interpolation construction time: 0.0011
+  Time for transpose: 7.1e-05
+  Time for prod: 0.000833
+ Galerkin product time: 0.000928
+Working on Level 2
+ Coarse grid construction time: 0.000983
+ No of C points = 123,  No of F points = 365
+ Interpolation construction time: 0.000302
+  Time for transpose: 2.7e-05
+  Time for prod: 0.000271
+ Galerkin product time: 0.000317
+Working on Level 3
+ Coarse grid construction time: 0.000262
+ No of C points = 32,  No of F points = 91
+ Interpolation construction time: 0.000113
+  Time for transpose: 1.2e-05
+  Time for prod: 0.000157
+ Galerkin product time: 0.000186
+ * CG solver (ViennaCL types)...
+  > Solver time: 0.022462
+  > Relative residual: 2.29336e-09
+  > Iterations: 8
+  > Relative deviation from result: 5.33246e-10
+-- CG with AMG preconditioner, AG COARSENING, AG INTERPOLATION (host) --
+ * Setup phase (ViennaCL types)...
+Working on Level 0
+ Coarse grid construction time: 0.000318
+ No of C points = 608,  No of F points = 3361
+ Interpolation construction time: 6.9e-05
+  Time for transpose: 6.3e-05
+  Time for prod: 0.00098
+ Galerkin product time: 0.001066
+Working on Level 1
+ Coarse grid construction time: 5.9e-05
+ No of C points = 78,  No of F points = 530
+ Interpolation construction time: 2.5e-05
+  Time for transpose: 1.4e-05
+  Time for prod: 0.000224
+ Galerkin product time: 0.000257
+Working on Level 2
+ Coarse grid construction time: 2.8e-05
+ No of C points = 11,  No of F points = 67
+ Interpolation construction time: 2e-05
+  Time for transpose: 6e-06
+  Time for prod: 8.7e-05
+ Galerkin product time: 0.000109
+ * CG solver (ViennaCL types)...
+  > Solver time: 0.068163
+  > Relative residual: 6.89893e-09
+  > Iterations: 33
+  > Relative deviation from result: 1.69905e-08
+-- CG with AMG preconditioner, AG COARSENING, AG INTERPOLATION (device) --
+ * Setup phase (ViennaCL types)...
+Working on Level 0
+ Coarse grid construction time: 0.000159
+ No of C points = 608,  No of F points = 3361
+ Interpolation construction time: 0.000197
+  Time for transpose: 0.000332
+  Time for prod: 0.012434
+ Galerkin product time: 0.01282
+Working on Level 1
+ Coarse grid construction time: 0.000114
+ No of C points = 78,  No of F points = 530
+ Interpolation construction time: 0.000164
+  Time for transpose: 0.000132
+  Time for prod: 0.008484
+ Galerkin product time: 0.008669
+Working on Level 2
+ Coarse grid construction time: 0.000109
+ No of C points = 11,  No of F points = 67
+ Interpolation construction time: 0.000163
+  Time for transpose: 0.000124
+  Time for prod: 0.003387
+ Galerkin product time: 0.003561
+ * CG solver (ViennaCL types)...
+  > Solver time: 0.065287
+  > Relative residual: 8.88072e-09
+  > Iterations: 32
+  > Relative deviation from result: 2.07201e-08
+!!!! TUTORIAL COMPLETED SUCCESSFULLY !!!!
