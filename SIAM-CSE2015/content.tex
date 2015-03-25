@@ -1,0 +1,50 @@
+
+
+%
+% Introduction: Motivation for this work
+%
+
+\input{slides/introduction.tex}
+
+\input{slides/algorithm.tex}
+
+\input{slides/performance.tex}
+
+\input{slides/modeling.tex}
+
+
+%
+% Conclusion:
+%
+\begin{frame}{Summary and Conclusion}
+
+ \begin{block}{FEM Quadrature on GPUs}
+  \begin{itemize}
+   \item ``Matrix-Free''
+   \item Higher arithmetic intensity
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Performance Results}
+  \begin{itemize}
+   \item Good performance on NVIDIA GPUs and AMD APUs
+   \item 5x improvements for discrete AMD GPUs desired
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Performance Modeling}
+  \begin{itemize}
+   \item Performance limited by memory bandwidth
+   \item Excellent prediction accuracy
+  \end{itemize}
+ \end{block}
+
+  \begin{block}{Reproducibility}
+  \begin{itemize}
+   \item PETSc, SNES tutorial, ex12
+  \end{itemize}
+ \end{block}
+
+
+\end{frame}
+

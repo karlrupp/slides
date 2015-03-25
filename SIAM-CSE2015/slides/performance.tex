@@ -1,0 +1,99 @@
+
+
+\begin{frame}{Benchmark}
+
+ \begin{block}{OpenCL-enabled Hardware}
+  \begin{itemize}
+   \item NVIDIA GTX 470
+   \item NVIDIA GTX 580
+   \item NVIDIA Tesla K20m
+   \item AMD FirePro W9100
+   \item (AMD A10-5800K)
+  \end{itemize}
+ \end{block}
+
+  \begin{block}{Comparisons}
+  \begin{itemize}
+   \item Single vs. double precision
+   \item 2D vs. 3D
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Invariants}
+  \begin{itemize}
+   \item Variable coefficients
+   \item First-order FEM
+   \item Poisson equation
+  \end{itemize}
+ \end{block}
+
+\end{frame}
+
+
+\begin{frame}{Benchmark}
+ \begin{block}{Choice of Block and Batch Numbers}
+ \begin{itemize}
+  \item NVIDIA GTX 470
+  \item Performance in GFLOPs/sec
+  \item Actual choice not very sensitive
+ \end{itemize}
+ \end{block}
+ 
+ \begin{center}
+  \begin{tabular}{|r||c|c|c|c|c|c|}
+    \hline
+           & \multicolumn{6}{c|}{Batches} \\
+    Blocks & 16 & 20 & 24 & 28 & 32 & 36 \\
+    \hline
+    \hline
+      4    & 113 & 120 & 118 & 122 & \textbf{137} & 119 \\
+      8    & 109 & 116 & 113 & 120 & 108 & 117 \\
+     12    & 102 & 112 & 110 & 109 & 115 & 113 \\ 
+     16    & 108 & 100 &  99 & 111 & 130 & 106 \\ 
+    \hline
+  \end{tabular}
+  
+  \vspace*{.3cm}
+   {\small (2D triangular mesh, variable coefficients, single precision, NVIDIA GTX 470)}
+ \end{center}
+
+   {\small PETSc SNES ex12: \\
+    {\footnotesize \texttt{./ex12 -petscspace\_order 1 -run\_type perf -variable\_coefficient field \\
+            -refinement\_limit 0.00001 -show\_solution false -petscfe\_type opencl \\
+            -petscfe\_num\_blocks 4 -petscfe\_num\_batches 16}}}
+ 
+
+\end{frame}
+
+
+
+\begin{frame}{Benchmark}
+ \begin{center}
+  \includegraphics[width=0.9\textwidth]{figures/2d_variable_float-crop}
+ \end{center}
+\end{frame}
+
+\begin{frame}{Benchmark}
+ \begin{center}
+  \includegraphics[width=0.9\textwidth]{figures/3d_variable_float-crop}
+ \end{center}
+\end{frame}
+
+\begin{frame}{Benchmark}
+ \begin{center}
+  \includegraphics[width=0.9\textwidth]{figures/3d_variable-crop}
+ \end{center}
+\end{frame}
+
+\begin{frame}{Benchmark}
+ \begin{center}
+  \includegraphics[width=0.9\textwidth]{figures/amd_2d_variable-crop}
+ \end{center}
+\end{frame}
+
+\begin{frame}{Benchmark}
+ \begin{center}
+  \includegraphics[width=0.9\textwidth]{figures/amd_3d_variable-crop}
+ \end{center}
+\end{frame}
+
