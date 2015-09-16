@@ -1,0 +1,200 @@
+
+
+%
+% Introduction: Motivation for this work
+%
+
+%\input{slides/intro.tex}
+%\input{slides/portability.tex}
+
+\begin{frame}{Introduction}
+
+ \begin{minipage}{0.65\textwidth}
+ \begin{block}{Positions}
+   \begin{itemize}
+    \item PhD student at TU Wien (2009-2011)
+    \item Postdoc at ANL (09/2012-09/2013)
+    \item Postdoc at TU Wien (09/2013-current)
+   \end{itemize}
+ \end{block}
+
+ \begin{block}{Research Interests}
+   \begin{itemize}
+    \item Semiconductor device simulation
+    \item Numerical solution of PDEs
+    \item Parallel computing
+   \end{itemize}
+ \end{block}
+
+ \begin{block}{Software Development}
+   \begin{itemize}
+    \item PETSc
+    \item ViennaCL
+    \item ViennaSHE
+    \item ...
+   \end{itemize}
+ \end{block}
+ \end{minipage}
+
+\end{frame}
+
+
+\begin{frame}{Introduction}
+ \vspace*{-0.5cm}
+ \begin{center}
+  \includegraphics[width=0.95\textwidth]{figures/40-years-processor-trend}
+ \end{center}
+ {\tiny https://www.karlrupp.net/2015/06/40-years-of-microprocessor-trend-data/ }
+\end{frame}
+
+\begin{frame}{Introduction}
+ \vspace*{-0.5cm}
+ \begin{center}
+  Theoretical Peak Performance \\
+  \includegraphics[width=0.95\textwidth]{figures/gflops-dp}
+ \end{center}
+ \vspace*{-0.5cm}
+ {\tiny https://www.karlrupp.net/2013/06/cpu-gpu-and-mic-hardware-characteristics-over-time/ }
+\end{frame}
+
+\begin{frame}{Introduction}
+ \vspace*{-0.5cm}
+ \begin{center}
+  Theoretical Peak Performance per Watt \\
+  \includegraphics[width=0.95\textwidth]{figures/gflops-per-watt-dp}
+ \end{center}
+ \vspace*{-0.5cm}
+ {\tiny https://www.karlrupp.net/2013/06/cpu-gpu-and-mic-hardware-characteristics-over-time/ }
+\end{frame}
+
+\begin{frame}{Introduction}
+ \vspace*{-0.5cm}
+ \begin{center}
+  Theoretical Peak Performance (FLOPs) per Byte of Memory Bandwidth \\
+  \includegraphics[width=0.95\textwidth]{figures/flop-per-byte-dp}
+ \end{center}
+ \vspace*{-0.5cm}
+ {\tiny https://www.karlrupp.net/2013/06/cpu-gpu-and-mic-hardware-characteristics-over-time/ }
+\end{frame}
+
+
+
+\input{slides/ublas-to-viennacl.tex}
+
+\input{slides/about.tex}
+
+\input{slides/internals.tex}
+
+
+\begin{frame}{ViennaCL Features (Excerpt)}
+
+\begin{block}{Standard Functionality}
+\begin{itemize}
+ \item BLAS levels 1-3
+ \item Sparse matrix times \{vector, dense matrix, sparse matrix\}
+ \item Triangular solvers (dense and sparse)
+\end{itemize}
+\end{block}
+\vspace*{-0.3cm}
+
+%\pause
+
+\begin{block}{Iterative Solvers}
+\begin{itemize}
+ \item Krylov solvers: CG, BiCGStab, GMRES
+ \item Preconditioners: Jacobi, serial + parallel ILU0, ILUT, AMG, SPAI
+\end{itemize}
+\end{block}
+\vspace*{-0.3cm}
+
+%\pause
+
+\begin{block}{Eigen Solvers}
+\begin{itemize}
+ \item Lanczos, power iteration
+ \item QR method (experimental), bisection
+\end{itemize}
+\end{block}
+\vspace*{-0.3cm}
+
+%\pause
+
+\begin{block}{Miscellaneous}
+\begin{itemize}
+ \item FFT, QR factorization, SVD, Non-negative matrix factorization
+ \item Bandwidth reduction: Cuthill-McKee, Gibbs-Poole-Stockmeyer
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Case Study: Iterative Solvers}
+
+  \begin{center}
+   {\Large Case Study: Optimizing Iterative Solvers} \\[1.5em]
+   {A Story in Three Parts}
+  \end{center}
+
+\end{frame}
+
+
+
+\input{slides/cg.tex}
+
+%
+% Benchmarks: Explain benchmark setting
+%
+\input{slides/benchmark-intro.tex}
+
+% copy kernel: 8 parameters
+% from there, move on to addition, inner product, matrix-vector multiplication
+
+%
+% Benchmark results: Take from abstract
+%
+
+\input{slides/benchmark.tex}
+
+
+% Continue with CG-stuff
+\input{slides/cg2.tex}
+
+
+
+\begin{frame}{Conclusion}
+
+  \begin{block}{Pick Proper Algorithms}
+    \begin{itemize}
+      \item FLOPs are (almost always) for free
+      \item Avoid unnecessary PCI-Express communication
+      \item Expose fine-grained parallelism
+      \item Pipelining and overlapping computations
+    \end{itemize}
+  \end{block}
+
+  \vspace*{-0.3cm}
+  \begin{block}{Fuse Lightweight Kernels}
+    \begin{itemize}
+     \item Reduced number of kernel launches
+     \item Less PCI-Express traffic
+     \item Case study: faster than BLAS-based implementations
+    \end{itemize}
+  \end{block}
+
+  \vspace*{-0.3cm}
+  \begin{block}{Parameterize Kernels for Performance-Portability}
+    \begin{itemize}
+     \item 128 work items, 128 work groups is a good starting point
+     \item Vector datatypes (float4, etc.) often not necessary
+     \item Let each workgroup operate on a contiguous piece of memory
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+
+
