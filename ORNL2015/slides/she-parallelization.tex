@@ -1,0 +1,60 @@
+
+\section{Parallelization}
+
+
+\begin{frame}{Parallelization}
+ \begin{block}{Preconditioner for Iterative Linear Solvers}
+  \begin{itemize}
+   \item No fast general-purpose parallel preconditioner available
+   \item Physics-based parallel block preconditioner developed
+  \end{itemize}
+  \begin{center}
+   \includegraphics[width=0.8\textwidth]{electron-trajectory-2}
+  \end{center}
+ \end{block}
+%  \vspace*{-0.4cm}
+
+\end{frame}
+
+%%%
+
+
+\begin{frame}{Parallelization}
+ \begin{block}{Scaling of Solution Variables}
+  \begin{itemize}
+   \item Exponential decay with energy: $f(E_i) \sim \exp(- \frac{E_i}{k_\mathrm{B} T})$
+   \item Rescale unknowns: $\tilde{f}(E_i) = \exp( \frac{E_i}{k_\mathrm{B} T}) f(E_i)$
+   \item New system: $\tilde{\mathbf A} \tilde{\mathbf x} = \mathbf A \mathbf D \mathbf D^{-1} \mathbf x = \mathbf b$
+   \item Row normalization: $\hat{\mathbf A} \tilde{\mathbf x} = \mathbf P \tilde{\mathbf A} \tilde{\mathbf x} = \mathbf P \mathbf b$
+  \end{itemize}
+  \begin{center}
+   \includegraphics[width=0.45\textwidth]{matrix-structure-1} \hfill
+   \includegraphics[width=0.45\textwidth]{matrix-structure-2}
+  \end{center}
+ \end{block}
+%  \vspace*{-0.4cm}
+
+\end{frame}
+
+
+%%%
+
+\begin{frame}{Parallelization}
+  \vspace{-1.25cm}
+  \begin{center}
+   Benchmark results for a FinFET (INTEL Core i7 960, NVIDIA GTX 580) \\
+   \vspace*{0.5cm}
+  \includegraphics[width=0.48\textwidth]{mosfet-precondtimes} \hspace*{0.2cm}
+  \includegraphics[width=0.48\textwidth]{mosfet-solvertimes}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Parallelization}
+  \begin{center}
+   Benchmark results for a FinFET (INTEL Core i7 960, NVIDIA GTX 580) \\
+   \vspace*{0.5cm}
+   \includegraphics[width=0.7\textwidth]{mosfet-totaltimes}
+  \end{center}
+\end{frame}
+
+
