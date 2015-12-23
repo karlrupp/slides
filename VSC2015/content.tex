@@ -1,0 +1,86 @@
+
+
+\begin{frame}{Overview}
+
+ \begin{block}{Hardware}
+  \begin{itemize}
+   \item Graphics Processing Units
+   \item Many Integrated Cores (Xeon Phi family)
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Software}
+  \begin{itemize}
+   \item CUDA
+   \item OpenCL
+   \item Parallel Primitives
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Performance Modeling}
+  \begin{itemize}
+   \item Identifying Bottlenecks
+   \item Modeling by Example
+  \end{itemize}
+ \end{block}
+
+
+\end{frame}
+
+
+%%
+%% Part C: Hardware
+%%
+
+\input{slides/gpus.tex}
+\input{slides/mics.tex}
+
+
+%%
+%% Part D: Software
+%%
+
+\begin{frame}{Overview} \begin{center} \Large Software: CUDA \end{center} \end{frame}
+\input{slides/cuda.tex}
+\begin{frame}{Overview} \begin{center} \Large Software: OpenCL \end{center} \end{frame}
+\input{slides/opencl.tex}
+\begin{frame}{Overview} \begin{center} \Large Software: Parallel Primitives \end{center} \end{frame}
+\input{slides/primitives.tex}
+
+
+
+
+%%
+%% Part E: Performance Modeling
+%%
+\begin{frame}{Overview} \begin{center} \Large Performance Modeling: Bottlenecks \end{center} \end{frame}
+\input{slides/bottlenecks.tex}
+\begin{frame}{Overview} \begin{center} \Large Performance Modeling: Examples \end{center} \end{frame}
+\input{slides/modeling-examples.tex}
+
+
+%%
+%% Summary
+%%
+
+\begin{frame}{Summary}
+
+ \begin{block}{Many-Core Architectures}
+   \begin{itemize}
+    \item GPUs: 100s and 1000s of threads
+    \item MIC: 61 cores (KNC), 72 cores (KNL)
+    \item 2-3x enhancements (perf/Watt) for some applications
+    \item Amdahl's Law limits general applicability
+   \end{itemize}
+ \end{block}
+
+ \begin{block}{Recommendations}
+   \begin{itemize}
+    \item (Re-)Use software libraries
+    \item Profile and model before you optimize
+    \item Pay attention to memory transfers
+   \end{itemize}
+ \end{block}
+
+\end{frame}
+
