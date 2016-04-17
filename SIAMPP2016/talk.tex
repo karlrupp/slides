@@ -1,0 +1,113 @@
+% -------------------------------------------------------------------
+\documentclass[usepdftitle=false,9pt]{beamer}
+
+% Specify the respective Beamer theme here:
+%\usetheme[height=0.3cm,width=1.cm,shadow=false]{iue}
+
+
+%encodings
+\usepackage[utf8]{inputenc}
+\usepackage[OT1]{fontenc}
+
+%some useful packages
+\usepackage[]{mathrsfs}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{acronym}
+\usepackage[]{listings}
+\usepackage[]{xcolor}
+\usepackage[]{graphicx}
+\usepackage[]{textcomp} %for tilde
+\usepackage{soul}
+
+\hypersetup{pdftitle={MPI+X: Opportunities and Limitations},
+            pdfauthor={Karl Rupp},
+            pdfsubject={To Thread or Not to Thread, SIAM PP 2016}}
+
+
+%% Listings package START
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.6,0,0}
+\definecolor{darkgreen}{rgb}{0,.4,0}
+\definecolor{red}{rgb}{.98,0,0}
+\definecolor{lightgrey}{rgb}{0.98,0.98,0.98}
+
+
+\lstloadlanguages{C++}
+\lstset{%
+  language=C++,
+  basicstyle=\small\ttfamily,
+  commentstyle=\itshape\color{darkgreen},
+  keywordstyle=\bfseries\color{darkblue},
+  stringstyle=\color{darkred},
+  showspaces=false,
+  showtabs=false,
+  columns=fixed,
+  backgroundcolor=\color{lightgrey},
+  numbers=none,
+  frame=single,
+  numberstyle=\tiny,
+  breaklines=true,
+  showstringspaces=false,
+  xleftmargin=0.1cm,
+  xrightmargin=3em
+}%
+
+\lstset{emphstyle=\color{red}}
+
+%% Listings package STOP
+
+
+\renewcommand{\matrix}[1]{\boldsymbol{#1}}
+\renewcommand{\vector}[1]{\boldsymbol{#1}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\black}{ }
+\newcommand{\ViennaCL}{\texttt{ViennaCL}}
+
+\graphicspath{{figures/}}           % in which folder all the figures are
+\newcommand{\tn}   {\textnormal}
+
+%\mode<presentation>
+
+% table of contents, depth
+\setcounter{tocdepth}{2}
+
+% modify at will
+\setbeamercovered{invisible}
+
+\author[Karl Rupp]{\vspace*{-0.3cm} \\ Karl Rupp \\[1em]
+                        { \url{https://karlrupp.net/}} %\\
+                        %{ \url{https://github.com/karlrupp/slides/}}
+                   }
+
+\institute[IuE]
+{ \footnotesize 
+  \textit{now:}      \\ Freelance Scientist \\[1em]
+  \textit{formerly:} \\ Institute for Microelectronics, TU Wien \\[1em]
+  in collaboration with colleagues at TU Wien:\\
+  J.~Weinbub, F.~Rudolf, A.~Morhammer, T.~Grasser, A.~J\"ungel \\
+  ...and in discussion with colleagues all over the world
+}
+
+\title[Many-Core Architectures]{ {\LARGE MPI+X: Opportunities and Limitations \\ for Heterogeneous Systems} }
+
+\date[SIAM PP, April 13, 2016]{ \footnotesize MS35 - To Thread or Not To Thread \\ SIAM PP, Paris \\  April 13, 2016}
+
+\setbeamertemplate{blocks}[default]
+\setbeamercolor{block body}{bg=}
+
+\begin{document}
+
+\begin{frame}[plain]
+ \frametitle{~}
+ \titlepage
+\end{frame}
+
+\input{content}
+
+\end{document}
+
+
