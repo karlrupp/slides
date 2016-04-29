@@ -1,0 +1,109 @@
+
+\input{content/overview.tex}
+
+\begin{frame}{Outline}
+\begin{center}
+ {\Large How can we make OpenCL more library-friendly?}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Outline}
+
+ \begin{block}{Just-In-Time Kernel Compilation}
+   \begin{itemize}
+    \item Library may provide hundreds of kernels
+    \item Just-in-time compilation entails certain overhead
+   \end{itemize}
+ \end{block}
+
+ %\pause
+ \begin{block}{Kernel Interaction}
+   \begin{itemize}
+    \item Host-function not callable from OpenCL kernel on host
+    \item Hindrance to software composability
+   \end{itemize}
+ \end{block}
+
+ %\pause
+  \begin{block}{OpenCL Heterogeneity}
+   \begin{itemize}
+    \item OpenCL 2.2 was released this week
+    \item Many SDKs still at OpenCL 1.2 or earlier
+   \end{itemize}
+ \end{block}
+\end{frame}
+
+
+%%% Say what is not included in the talk
+% - performance portability
+% - compiler bugs
+
+\begin{frame}{Not In This Talk}
+
+ \begin{block}{Performance Portability}
+   \begin{itemize}
+    \item Not specific to libraries
+    \item Several strategies proposed in the past
+   \end{itemize}
+ \end{block}
+ \vspace*{.5cm}
+ 
+ %\pause
+ \begin{center}
+  \textit{``There is no secret to performance portability;\\
+          it's just hard.``} --- Neil Trevett, IWOCL 2016
+ \end{center}
+
+ 
+ %\pause
+ \vspace*{.5cm}
+  \begin{block}{ViennaCL Approach}
+   \begin{itemize}
+    \item Extensive kernel parameterization
+    \item Built-in device database
+    \item Match device type, vendor, architecture, device name
+   \end{itemize}
+ \end{block}
+\end{frame}
+
+
+%%% Kernel compilation
+\input{content/jit.tex}
+
+
+%%% Extensibility (callbacks)
+\input{content/callback.tex}
+
+
+
+
+%%% Heterogeneous OpenCL versions 
+\input{content/opencl.tex}
+
+
+
+%%% Conclusion
+
+
+
+\begin{frame}{Conclusion}
+
+ \begin{block}{Just-In-Time Kernel Compilation}
+   \begin{itemize}
+    \item Require optional kernel caching by OpenCL SDKs
+   \end{itemize}
+ \end{block}
+
+ \begin{block}{Kernel Interaction}
+   \begin{itemize}
+    \item Allow calling host functions for OpenCL kernels on CPU
+   \end{itemize}
+ \end{block}
+
+  \begin{block}{OpenCL Heterogeneity}
+   \begin{itemize}
+    \item Let OpenCL benefit from Vulkan's momentum
+   \end{itemize}
+ \end{block}
+\end{frame}
