@@ -1,0 +1,103 @@
+% -------------------------------------------------------------------
+\documentclass[usepdftitle=false,9pt]{beamer}
+
+% Specify the respective Beamer theme here:
+%\usetheme[height=0.3cm,width=1.cm,shadow=false]{iue}
+
+%encodings
+\usepackage[utf8]{inputenc}
+\usepackage[OT1]{fontenc}
+
+%some useful packages
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{graphicx}
+
+\hypersetup{pdftitle={FEM Integration with Quadrature and Preconditioners on GPUs},
+            pdfauthor={Karl Rupp},
+            pdfsubject={Platform for Research in Simulation Methods - Workshop on Embracing Accelerators},
+            pdfkeywords={Finite Elements, Multigrid, Solvers, Preconditioners, GPUs}
+           }
+
+%% Listings package START
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.6,0,0}
+\definecolor{darkgreen}{rgb}{0,.4,0}
+\definecolor{red}{rgb}{.98,0,0}
+\definecolor{lightgrey}{rgb}{0.98,0.98,0.98}
+
+
+\lstloadlanguages{C++}
+\lstset{%
+  language=C++,
+  basicstyle=\small\ttfamily,
+  commentstyle=\itshape\color{darkgreen},
+  keywordstyle=\bfseries\color{darkblue},
+  stringstyle=\color{darkred},
+  showspaces=false,
+  showtabs=false,
+  columns=fixed,
+  backgroundcolor=\color{lightgrey},
+  numbers=none,
+  frame=single,
+  numberstyle=\tiny,
+  breaklines=true,
+  showstringspaces=false,
+  xleftmargin=0.1cm,
+  xrightmargin=3em
+}%
+
+\lstset{emphstyle=\color{red}}
+
+%% Listings package STOP
+
+
+
+\graphicspath{{figures/}}           % in which folder all the figures are
+
+
+%\mode<presentation>
+
+% table of contents, depth
+\setcounter{tocdepth}{2}
+
+\setbeamercovered{invisible}
+
+\author[Karl Rupp]{\vspace*{-0.3cm} \\ Karl Rupp \\
+                        { \url{https://karlrupp.net/}} %\\
+                        %{ \url{https://github.com/karlrupp/slides/}}
+                   }
+
+\institute[IuE]
+{ \footnotesize 
+  \textit{now:}      \\ Freelance Scientist \\[1em]
+  \textit{formerly:} \\ Institute for Microelectronics, TU Wien \\[1em]
+  in collaboration with:\\
+  M.~Knepley (Rice U.), A.~Terrel (Fashion Metric), J.~Weinbub, \\
+  F.~Rudolf, A.~Morhammer, T.~Grasser, A.~J\"ungel (TU Wien) \\
+}
+
+
+\title[FEM Quadrature]{ \Large FEM Integration with Quadrature \\ and Preconditioners on GPUs}
+
+\date[April 18th, 2016]{ \footnotesize Platform for Research in Simulation Methods \\ Workshop on Embracing Accelerators\\ Imperial College, London \\ April 18th, 2016}
+
+\setbeamertemplate{blocks}[default]
+\setbeamercolor{block body}{bg=}
+
+\renewcommand{\matrix}[1]{\boldsymbol{#1}}
+
+\begin{document}
+
+\begin{frame}[plain]
+ \frametitle{~}
+ \titlepage
+\end{frame}
+
+\input{content}
+
+\end{document}
+

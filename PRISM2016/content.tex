@@ -1,0 +1,154 @@
+
+\input{slides/intro.tex}
+
+
+
+%
+% Introduction: Motivation for this work
+%
+
+\begin{frame}{Part 1: Finite Element Method}
+ \begin{center}
+  {\Large \textbf{Part 1: FEM Integration with Quadrature}}
+ \end{center}
+\end{frame}
+
+\input{slides/introduction.tex}
+
+\input{slides/algorithm.tex}
+
+\input{slides/performance.tex}
+
+\input{slides/modeling.tex}
+
+
+%
+% Conclusion:
+%
+\begin{frame}{Summary - FEM Quadrature}
+
+ \begin{block}{FEM Quadrature on GPUs}
+  \begin{itemize}
+   \item ``Matrix-Free''
+   \item Higher arithmetic intensity
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Performance Results}
+  \begin{itemize}
+   \item Good performance on NVIDIA GPUs and AMD APUs
+   \item 5x improvements for discrete AMD GPUs desired
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Performance Modeling}
+  \begin{itemize}
+   \item Performance limited by memory bandwidth
+   \item Excellent prediction accuracy
+  \end{itemize}
+ \end{block}
+
+  \begin{block}{Reproducibility}
+  \begin{itemize}
+   \item PETSc, SNES tutorial, ex12
+  \end{itemize}
+ \end{block}
+
+
+\end{frame}
+
+
+%%%
+%%% Preconditioners
+%%%
+
+\begin{frame}{Part 2: Solvers and Preconditioners}
+ \begin{center}
+  {\Large \textbf{Part 2: Solvers and Preconditioners}}
+ \end{center}
+\end{frame}
+
+
+\begin{frame}{Overview - Solvers and Preconditioners}
+
+ \begin{block}{Pipelined CG}
+  \begin{itemize}
+   \item Merge global reductions
+   \item Kernel fusion
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Parallel Incomplete LU Factorizations}
+  \begin{itemize}
+   \item Level scheduling
+   \item Nonlinear relaxation
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Algebraic Multigrid}
+  \begin{itemize}
+   \item Parallel aggregation
+   \item Sparse matrix-matrix products
+  \end{itemize}
+ \end{block}
+
+\end{frame}
+
+
+\input{slides/cg.tex}
+
+\begin{frame}{Content}
+ \begin{block}{Parallel Incomplete LU Factorizations}
+  \begin{itemize}
+   \item Level scheduling
+   \item Nonlinear relaxation
+  \end{itemize}
+ \end{block}
+\end{frame}
+\input{slides/ilu.tex}
+
+
+\begin{frame}{Content}
+ \begin{block}{Algebraic Multigrid}
+  \begin{itemize}
+   \item Parallel aggregation
+   \item Sparse matrix-matrix products
+  \end{itemize}
+ \end{block}
+\end{frame}
+\input{slides/amg.tex}
+
+
+
+
+%
+% Conclusion:
+%
+
+\begin{frame}{Summary}
+
+ \begin{block}{FEM Integration with Quadrature}
+   \begin{itemize}
+    \item Thread transposition over cell patches
+    \item Performance model with high accuracy
+    \item Peak performance on NVIDIA GPUs
+   \end{itemize}
+ \end{block}
+
+  \begin{block}{Fast Solvers}
+   \begin{itemize}
+    \item Shift to parallel algorithms, sequentially inefficient
+    \item ILU: Multiple sweeps for setup and solve
+    \item AMG: Coarse grid computation on CPU?
+   \end{itemize}
+ \end{block}
+
+ \begin{block}{How to Use and Reproduce?}
+   \begin{itemize}
+    \item ViennaCL: \url{http://viennacl.sourceforge.net/}
+    \item PETSc: \url{http://mcs.anl.gov/petsc/}
+   \end{itemize}
+ \end{block}
+
+\end{frame}
+

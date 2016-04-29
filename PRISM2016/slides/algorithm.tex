@@ -1,0 +1,35 @@
+
+
+\begin{frame}{New Algorithm}
+
+ \begin{block}{Thread Block Works on Multiple Elements}
+  \begin{itemize}
+   \item Number of quadrature points $N_\mathrm{q}$
+   \item Number of basis functions $N_\mathrm{b}$
+   \item Minimum number of elements $\mathrm{LCM}(N_\mathrm{q},N_\mathrm{b})$
+  \end{itemize}
+ \end{block}
+ 
+ \begin{center}
+  \includegraphics[width=0.6\textwidth]{figures/eval-1}
+ \end{center}
+
+\end{frame}
+
+
+
+\begin{frame}{New Algorithm}
+
+ \begin{block}{High Level Decomposition}
+  \begin{itemize}
+   \item Chunks  \hspace*{0.11cm} - \hspace*{0.05cm} Cells processed by each thread workgroup
+   \item Batches \hspace*{0.05cm}  - \hspace*{0.05cm} Cells processed with one thread transposition
+   \item Blocks  \hspace*{0.28cm} - \hspace*{0.05cm} Smallest unit of execution
+  \end{itemize}
+ \end{block}
+ 
+ \begin{center}
+  \includegraphics[width=0.9\textwidth]{figures/chunk-batch-block}
+ \end{center}
+
+\end{frame}

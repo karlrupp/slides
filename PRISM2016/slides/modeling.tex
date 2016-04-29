@@ -1,0 +1,34 @@
+
+
+\begin{frame}{Performance Modeling}
+
+ \begin{block}{Limiting Factor?}
+  \begin{itemize}
+   \item GTX 470: 134 GB/sec memory bandwidth (theoretical)
+   \item GTX 470: 1088 GFLOPs/sec peak (theoretical)
+  \end{itemize}
+ \end{block}
+ 
+ %\pause
+ \begin{block}{Arithmetic Intensity}
+  \begin{itemize}
+   \item Count FLOPs and bytes loaded/stored
+   \item \vspace*{-0.3cm}\begin{align*}
+  \beta &= \frac{\bigl[(2 + (2 + 2d) d) N_{\mathrm{bt}}N_{\mathrm{q}} + 2 d N_{\mathrm{comp}} N_{\mathrm{q}} + (2 + 2d) d N_{\mathrm{q}} N_{\mathrm{bt}} \bigr] N_{\mathrm{bs}} N_{\mathrm{bl}}
+                }{4 N_{\mathrm{t}} \left((d^2 + 1) + N_{\mathrm{bt}} + (d + 1) N_{\mathrm{q}} \right)}
+         \end{align*}
+  \end{itemize}
+ \end{block}
+ 
+ %\pause
+ \begin{block}{2D Mesh, First-Order FEM, Single Precision}
+  \begin{itemize}
+   \item $\beta = 41/22 \approx 2$ FLOPs/Byte
+   \item GTX 470: $134 \times 41 / 22 = 250$ GFLOPs possible
+   \item GTX 470: $200$ GFLOPs achieved (80 percent, cf.~STREAM benchmark)
+  \end{itemize}
+
+ \end{block}
+
+
+\end{frame}

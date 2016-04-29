@@ -1,0 +1,101 @@
+
+
+\begin{frame}{FEM Introduction}
+
+ \begin{block}{Finite Element Method}
+  \begin{itemize}
+   \item Several basis functions per element
+   \item Evaluation of integrals on each element
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{General Weak Form}
+  \begin{itemize}
+   \item Residual formulation for test function $\phi$
+   \item \begin{align*}
+    \int_\Omega \phi\cdot f_0(u,\nabla u) + \nabla\phi:\mathbf{f}_1(u,\nabla u) = 0.
+         \end{align*}
+
+  \end{itemize}
+ \end{block}
+
+  %\pause
+  \begin{block}{Examples}
+  \begin{itemize}
+   \item Laplace: $f_0 \equiv 0$, $\mathbf{f}_1 \equiv \nabla u$
+   \item Poisson: $f_0 \equiv g$, $\mathbf{f}_1 \equiv \nabla u$
+  \end{itemize}
+ \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{Introduction}
+
+\begin{center} \vspace*{-0.5cm}
+   \begin{align*}
+    \int_\Omega \phi\cdot f_0(u,\nabla u) + \nabla\phi:\mathbf{f}_1(u,\nabla u) = 0.
+   \end{align*}
+\end{center}
+
+
+ \begin{block}{Element-Wise General Weak Form}
+  \begin{itemize}
+   \item Evaluation using quadrature
+   \item \vspace*{-0.2cm} \begin{align*}
+  \sum_e \mathcal{E}^T_e \left[ B^T W f_0(u^q, \nabla u^q) + \sum_k D^T_k W \mathbf{f}^k_1(u^q, \nabla u^q) \right] = 0
+         \end{align*}
+   \item $ \mathcal{E} \ \quad \ \ \ldots \ $ global vector
+   \item $ W \quad \ \ \ldots \ $ quadrature weights
+   \item $ B, D_k \ \ldots \ $ reduction operations for global basis coefficients
+  \end{itemize}
+ \end{block}
+ 
+ %\pause
+  \begin{block}{Parallelization Options}
+  \begin{itemize}
+   \item Across elements
+   \item Quadrature points
+   \item Basis functions
+  \end{itemize}
+ \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{Introduction}
+
+ \begin{block}{Parallelization Across Elements}
+  \begin{itemize}
+   \item Large memory per thread
+   \item Synchronizations with neighbor elements
+   \item {\small [Cecka et al. 2011; Taylor et al. 2008; Williams 2012]}
+  \end{itemize}
+ \end{block}
+
+ %\pause
+ \begin{minipage}{0.5\textwidth}
+ \begin{block}{Parallelization per Quadrature Point}
+  \begin{itemize}
+   \item No memory overhead
+   \item Too many synchronizations
+  \end{itemize}
+ \end{block}
+ \end{minipage}
+%  \begin{minipage}{0.48\textwidth}
+%  \includegraphics[width=\textwidth]{figures/hat-function.png}
+%  \end{minipage}
+
+
+ %\pause
+ \begin{block}{Parallelization via Basis Functions}
+  \begin{itemize}
+   \item Very little local memory
+   \item Repeated loads of coefficients from global memory
+   \item {\small [Dabrowski et al. 2008]}
+  \end{itemize}
+ \end{block}
+
+\end{frame}
