@@ -1,0 +1,135 @@
+% -------------------------------------------------------------------
+\documentclass[usepdftitle=false,9pt]{beamer}
+
+% Specify the respective Beamer theme here:
+% \usetheme[height=0.3cm,width=0.8cm,shadow=false]{iue}
+
+
+%encodings
+\usepackage[utf8]{inputenc}
+\usepackage[OT1]{fontenc}
+
+%some useful packages
+\usepackage[]{mathrsfs}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{acronym}
+\usepackage[]{listings}
+\usepackage[]{xcolor}
+\usepackage[]{graphicx}
+\usepackage[]{textcomp} %for tilde
+\usepackage{tikz}
+
+
+%% Listings package START
+\usepackage{color}
+\usepackage{listings}
+
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.6,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\definecolor{lightgrey}{rgb}{0.98,0.98,0.98}
+
+
+\lstloadlanguages{C++}
+\lstset{%
+  language=C++,
+  basicstyle=\small\ttfamily,
+  commentstyle=\itshape\color{darkgreen},
+  keywordstyle=\bfseries\color{darkblue},
+  stringstyle=\color{darkred},
+  showspaces=false,
+  showtabs=false,
+  columns=fixed,
+  backgroundcolor=\color{lightgrey},
+  numbers=none,
+  frame=single,
+  numberstyle=\tiny,
+  breaklines=true,
+  showstringspaces=false,
+  xleftmargin=0.1cm,
+  xrightmargin=3em
+}%
+
+\lstset{emphstyle=\color{red}}
+
+%% Listings package STOP
+
+
+
+
+
+
+
+
+\renewcommand{\matrix}[1]{\boldsymbol{#1}}
+\renewcommand{\vector}[1]{\boldsymbol{#1}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\domelem}[1]{\boldsymbol{\mathrm{#1}}}
+\newcommand{\kB}{k_\mathrm{B}}
+\newcommand{\VT}{V_\mathrm{T}}
+\newcommand{\q}{\mathrm{q}}
+\newcommand{\LandauO}{\mathcal{O}}
+\newcommand{\Bullet}{$\triangleright$}
+\newcommand{\black}{ }
+\newcommand{\ViennaCL}{\texttt{ViennaCL}}
+
+%\setlength{\fboxrule}{1pt}
+
+%\renewcommand{\seriesdefault}{\bfdefault}
+%\usepackage{helvet}
+
+\graphicspath{{figures/}}           % in which folder all the figures are
+\newcommand{\tn}   {\textnormal}
+
+%\mode<presentation>
+
+\hypersetup{pdftitle = {PETSc Tutorial - About, Installation, Vectors and Matrices, Linear Solvers, Preconditioners, Distributed Arrays},
+            pdfsubject = {PETSc User Meeting 2016},
+            pdfauthor={Karl Rupp (based on slides of Jed Brown et al.)}}
+
+% table of contents, depth
+\setcounter{tocdepth}{2}
+
+% modify at will
+\setbeamercovered{invisible}
+%\setbeamercovered{transparent}
+
+
+
+\author[Karl Rupp]{Karl Rupp \\ \ttfamily me@karlrupp.net}
+
+\institute[ANL]
+{ \footnotesize
+  Freelance Computational Scientist \\
+}
+
+\title[PETSc]{ { { \Huge PETSc Tutorial } \\ About, Installation, Vectors and Matrices, \\
+                                             Linear Solvers, Preconditioners, Distributed Arrays } %\\[0.5em] Portable, Extensible Toolkit for Scientific Computation
+             }
+
+\date[PETSc 2016, June 28-30, 2016]{ \footnotesize Seminarzentrum-Hotel Am Spiegeln, Vienna, Austria \\[1em] June 28-30, 2016 \\[2em]
+  \hspace*{-2cm} 
+  \includegraphics[height=.9cm]{figures/google} \hspace*{1cm}
+  \includegraphics[height=.9cm]{figures/tech-x} \hspace*{1cm}
+  \includegraphics[height=.9cm]{figures/intel}  \hspace*{1cm}
+  \includegraphics[height=.9cm]{figures/vsc}
+  }
+
+\setbeamertemplate{blocks}[default]
+%\setbeamercolor{block title}{bg=}
+\setbeamercolor{block body}{bg=}
+\setbeamercovered{invisible}
+
+\begin{document}
+
+\begin{frame}[plain]
+ \frametitle{~}
+ \titlepage
+\end{frame}
+
+\input{content}
+
+\end{document}
+

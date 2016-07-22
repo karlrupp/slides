@@ -1,0 +1,269 @@
+
+% Start and ice-breaker:
+
+% Introducing myself
+
+
+
+\input{slides/self.tex}
+
+
+
+\begin{frame}{Before we start...}
+
+   \begin{block}{Goal of this Workshop}
+    \begin{itemize}
+     \item {\Huge \textbf{\color{red} You}} should learn new things about HPC
+    \end{itemize}
+   \end{block}
+
+   \vspace*{1cm}
+   \begin{block}{Ask Questions}
+    \begin{itemize}
+     \item Tell me if you do not understand
+     \item Ask for further details
+     \item Don't be shy
+    \end{itemize}
+   \end{block}
+
+\end{frame}
+
+
+
+%%%%%% General PETSc information %%%%%%%%%%
+
+%%% What is PETSc
+
+%
+% Stats, Who, Philosophy
+%
+
+
+\input{slides/petsc-overview}
+\input{slides/Timeline}
+\input{slides/About}
+\input{slides/RoleOfPETSc}
+
+%\begin{frame}{PETSc}
+%   \begin{center} \Large \textbf{First Steps} \end{center}
+%\end{frame}
+
+\input{slides/petsc-obtaining.tex}
+\input{slides/AutomaticDownloads.tex}
+
+
+\begin{frame}[fragile]
+\frametitle{PETSc Pyramid}
+ \begin{block}{PETSc Structure} \vspace{0.3cm}
+   \includegraphics[width=1.0\textwidth]{PETScPyramid.jpg}
+ \end{block}
+
+\end{frame}
+
+\input{slides/FlowControl.tex}
+
+
+\section{PETSc Overview}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Vectors and Matrices} \end{center}
+\end{frame}
+
+\input{slides/RoleOfPETSc2}
+
+\input{slides/Vectors.tex}
+
+%
+% Matrices (preparing for Linear Solvers)
+%
+
+\input{slides/PETSc/MatrixMemoryPreallocation.tex}
+\input{slides/PETSc/Integration/MisguidedMatrixAssembly.tex}
+\input{slides/PETSc/Integration/EfficientMatrixAssembly.tex}
+
+
+\input{slides/MatrixDefinition.tex}
+
+% Sparse Matrix formats (include benchmark from manual or Jed)
+% Matrices in parallel
+% Matrix preallocation
+
+\input{slides/MatricesImportant.tex}
+
+% \begin{frame}{PETSc}
+%    \begin{center} \Large \textbf{What can we do with a matrix \\ which does not have entries?} \\[2em]
+%       \visible<2>{\includegraphics[width=0.4\textwidth]{figures/coffee} }
+%    \end{center}
+% \end{frame}
+
+% 41 distinct slides here
+
+
+
+
+%
+% Linear Solvers
+%
+
+% Condition number!
+\section{Iterative Solvers}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Iterative Solvers} \end{center}
+\end{frame}
+
+\input{slides/MatrixNoEntries.tex}
+
+% Dense solvers (reiterate MAGMA-stuff from Day 1)
+% Direct solvers (Sparse Gauss, Dissection, etc.)
+% Conjugate Gradients
+% BiCGStab
+\input{slides/GMRES.tex}
+
+\input{slides/PETSc/Integration/LinearSolvers.tex}
+
+
+
+
+%
+%%%%% Preconditioners
+% 
+
+\section{Preconditioners}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Preconditioners} \end{center}
+\end{frame}
+
+\input{slides/Preconditioning.tex}
+
+% Explain various preconditioners here:
+%   - Jacobi, Block-Jacobi
+%   - SPAI
+%   - ICC/ILU (include symbolic stage)
+%   - Multigrid (geometric, algebraic)
+%\input{slides/PreconditioningSamples.tex}
+
+
+
+% Intermediate summary: Preconditioners for single quantity
+
+
+\input{slides/FieldSplit.tex}
+% Compose preconditioners for multiple fields (Fun with Matt)
+
+
+
+
+%
+%%%%% Distributed Arrays
+%
+
+
+\section{Distributed Arrays}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Distributed Arrays} \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Distributed Array}
+
+  \begin{block}{Interface for topologically structured grids}
+  \end{block}
+
+  \begin{block}{Defines (topological part of) a finite-dimensional function space}
+    \begin{itemize} 
+      \item Get an element from this space: \lstinline|DMCreateGlobalVector()| 
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Provides parallel layout}
+  \end{block}
+
+  \begin{block}{Refinement and coarsening}
+    \begin{itemize}
+      \item \lstinline|DMRefineHierarchy()| 
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Ghost value coherence}
+    \begin{itemize}
+       \item \lstinline|DMGlobalToLocalBegin()|
+     \end{itemize}
+  \end{block}
+
+  \begin{block}{Matrix preallocation}
+       \begin{itemize}
+         \item \lstinline|DMCreateMatrix()| (formerly \lstinline|DMGetMatrix()|) 
+       \end{itemize}
+  \end{block}
+\end{frame}
+
+\input{slides/DA/GhostValues.tex}
+\input{slides/DA/GlobalNumberings.tex}
+\input{slides/DA/LocalNumbering.tex}
+\input{slides/DA/Vectors.tex}
+\input{slides/DA/UpdatingGhosts.tex}
+\input{slides/DA/Stencils.tex}
+\input{slides/DA/CreatingDA2d.tex}
+\input{slides/DA/WorkingWithLocal.tex}
+\input{slides/DA/LocalGlobalMapping.tex}
+\input{slides/DA/LocalFunction.tex}
+
+
+
+
+
+
+
+
+
+%
+%%%%% Preconditioners
+% 
+
+
+%\input{slides/OptionsDatabase.tex}
+
+
+%\section{Application Integration}
+%\begin{frame}{PETSc}
+%   \begin{center} \Large \textbf{Application Integration} \end{center}
+%\end{frame}
+
+%\input{slides/ApplicationIntegration1.tex}
+%\input{slides/ApplicationIntegration2.tex}
+%\input{slides/IntegrationStages.tex}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\input{slides/petsc-operations.tex}
+
+
+%%%% Conclusion
+
+
+\section{Summary}
+\begin{frame}{Summary}
+ 
+ \begin{block}{PETSc Can Help You}
+  \begin{itemize}
+   \item solve algebraic and DAE problems in your application area
+   \item rapidly develop efficient parallel code, can start from examples
+   \item develop new solution methods and data structures
+   \item debug and analyze performance
+   \item advice on software design, solution algorithms, and performance
+   \item \centering \texttt{petsc-\{users,dev,maint\}@mcs.anl.gov}
+
+  \end{itemize}
+ \end{block}
+
+ %\pause
+ \begin{block}{You Can Help PETSc}
+  \begin{itemize}
+   \item report bugs and inconsistencies, or if you think there is a better way
+   \item tell us if the documentation is inconsistent or unclear
+   \item consider developing new algebraic methods as plugins, contribute if your idea works
+  \end{itemize}
+ \end{block}
+
+\end{frame}

@@ -1,0 +1,33 @@
+\begin{frame}[fragile]{Distributed Array}
+
+  \begin{block}{Interface for topologically structured grids}
+  \end{block}
+
+  \begin{block}{Defines (topological part of) a finite-dimensional function space}
+    \begin{itemize} 
+      \item Get an element from this space: \lstinline|DMCreateGlobalVector()| 
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Provides parallel layout}
+  \end{block}
+
+  \begin{block}{Refinement and coarsening}
+    \begin{itemize}
+      \item \lstinline|DMRefineHierarchy()| 
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Ghost value coherence}
+    \begin{itemize}
+       \item \lstinline|DMGlobalToLocalBegin()|
+     \end{itemize}
+  \end{block}
+
+  \begin{block}{Matrix preallocation}
+       \begin{itemize}
+         \item \lstinline|DMCreateMatrix()| (formerly \lstinline|DMGetMatrix()|) 
+       \end{itemize}
+  \end{block}
+\end{frame}
+

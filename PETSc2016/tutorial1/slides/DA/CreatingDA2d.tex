@@ -1,0 +1,63 @@
+\begin{frame}[fragile]
+\frametitle{Creating a DMDA}
+
+{\small \lstinline|DMDACreate2d(comm, xbdy, ybdy, type, M, N, m, n|, \\
+\qquad\qquad\qquad \qquad  \lstinline|dof, s, lm[], ln[], DA *da)|}
+
+\begin{block}{\lstinline|xbdy,ybdy|: Specifies periodicity or ghost cells}
+  \vspace*{-0.2cm}
+  \begin{itemize}
+    \item \lstinline|DM_BOUNDARY_NONE|, \lstinline|DM_BOUNDARY_GHOSTED|, \lstinline|DM_BOUNDARY_MIRROR|, \lstinline|DM_BOUNDARY_PERIODIC|
+  \end{itemize}
+\end{block}
+
+\vspace*{-0.3cm}
+\begin{block}{\lstinline|type|}
+  \vspace*{-0.2cm}
+  \begin{itemize}
+    \item Specifies stencil: \lstinline|DMDA_STENCIL_BOX| or \lstinline|DMDA_STENCIL_STAR|
+  \end{itemize}
+\end{block}
+
+\vspace*{-0.3cm}
+\begin{block}{\lstinline|M,N|}
+  \vspace*{-0.2cm}
+  \begin{itemize}
+    \item Number of grid points in x/y-direction
+  \end{itemize}
+\end{block}
+
+\vspace*{-0.3cm}
+\begin{block}{\lstinline|m,n|}
+  \vspace*{-0.2cm}
+  \begin{itemize}
+    \item Number of processes in x/y-direction
+  \end{itemize}
+\end{block}
+
+\vspace*{-0.3cm}
+\begin{block}{\lstinline|dof|}
+  \vspace*{-0.2cm}
+  \begin{itemize}
+    \item Degrees of freedom per node
+  \end{itemize}
+\end{block}
+
+\vspace*{-0.3cm}
+\begin{block}{\lstinline|s|}
+  \vspace*{-0.2cm}
+  \begin{itemize}
+    \item The stencil width
+  \end{itemize}
+\end{block}
+
+\vspace*{-0.3cm}
+\begin{block}{\lstinline|lm,ln|}
+  \vspace*{-0.2cm}
+  \begin{itemize}
+    \item Alternative array of local sizes
+    \item Use \lstinline|NULL| for the default
+  \end{itemize}
+\end{block}
+
+\end{frame}

@@ -1,0 +1,71 @@
+
+
+\begin{frame}[fragile]
+\frametitle{PETSc Objects}
+\begin{block}{Sample Code}
+  \begin{lstlisting}
+    Mat A;
+    PetscInt m,n,M,N;
+    MatCreate(comm,&A);
+    MatSetSizes(A,m,n,M,N);      /* or PETSC_DECIDE */ 
+    MatSetOptionsPrefix(A,"foo_");
+    MatSetFromOptions(A);
+    /* Use A */
+    MatView(A,PETSC_VIEWER_DRAW_WORLD);
+    MatDestroy(A);
+  \end{lstlisting}
+  \end{block}
+  
+  \begin{block}{Remarks}
+  \begin{itemize}
+  \item \lstinline|Mat| is an opaque object (pointer to incomplete type)
+    \begin{itemize}
+     \item Assignment, comparison, etc, are cheap
+    \end{itemize}
+  \item What's up with this ``Options'' stuff?
+    \begin{itemize}
+    \item We will discuss this later...
+    \end{itemize}
+  \end{itemize}
+  
+\end{block}
+\end{frame}
+
+\input{slides/PetscObject.tex}
+
+\begin{frame}[fragile]{PETSc Options}
+\begin{block}{Ways to set options}
+  \begin{itemize}
+  \item Command line
+  \item Filename in the third argument of \lstinline|PetscInitialize()|
+  \item \lstinline|~/.petscrc|
+  \item \lstinline|$PWD/.petscrc|
+  \item \lstinline|$PWD/petscrc|
+  \item \lstinline|PetscOptionsInsertFile()|
+  \item \lstinline|PetscOptionsInsertString()|
+  \item \lstinline|PETSC_OPTIONS| environment variable
+  \item command line option \lstinline|-options_file [file]|
+  \end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]{PETSc Options}
+
+\begin{block}{Example of Command Line Control}
+  %\lstinline|$> cd $PETSC_DIR/src/snes/examples/tutorials && make ex5}| \\
+  \begin{itemize}
+  \item \lstinline|$> ./ex5 -da_grid_x 10 -da_grid_y 10 -par 6.7| \\
+      \lstinline|       -snes_monitor -{ksp,snes}_converged_reason| \\
+      \lstinline|       -snes_view|
+  \item \lstinline|$> ./ex5 -da_grid_x 10 -da_grid_y 10 -par 6.7| \\
+      \lstinline|       -snes_monitor -{ksp,snes}_converged_reason| \\
+      \lstinline|       -snes_view -mat_view_draw -draw_pause 0.5|
+  \item \lstinline|$> ./ex5 -da_grid_x 10 -da_grid_y 10 -par 6.7| \\
+      \lstinline|       -snes_monitor -{ksp,snes}_converged_reason| \\
+      \lstinline|       -snes_view -mat_view_draw -draw_pause 0.5| \\
+      \lstinline|       -pc_type lu -pc_factor_mat_ordering_type natural|
+  \item Use \lstinline|-help| to find other ordering types
+\end{itemize}
+\end{block}
+\end{frame}

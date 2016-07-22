@@ -1,0 +1,26 @@
+
+\begin{frame}[fragile]{PETSc Debugging}
+  \begin{itemize}
+  \item By default, a debug build is provided
+
+  \vspace*{0.3cm}
+  \item Launch the debugger
+  \begin{itemize}
+    \item \lstinline|-start_in_debugger  [gdb,dbx,noxterm]|
+    \item \lstinline|-on_error_attach_debugger [gdb,dbx,noxterm]|
+  \end{itemize}
+
+  \vspace*{0.3cm}
+  \item Attach the debugger only to some parallel processes
+  \begin{itemize}
+    \item \lstinline|-debugger_nodes 0,1|
+  \end{itemize}
+
+  \vspace*{0.3cm}
+  \item Set the display (often necessary on a cluster)
+  \begin{itemize}
+    \item \lstinline|-display :0|
+  \end{itemize}
+\end{itemize}
+\end{frame}  
+

@@ -1,0 +1,41 @@
+\begin{frame}[fragile]{PETSc Solvers}
+
+\begin{block}{Linear Solvers - Krylov Methods}
+ \begin{itemize}
+  \item Using PETSc linear algebra, just add:
+  \begin{lstlisting}[basicstyle=\footnotesize\ttfamily]
+KSPSetOperators(KSP ksp, Mat A, Mat M)
+KSPSolve(KSP ksp, Vec b, Vec x)
+  \end{lstlisting}
+
+  \item Can access subobjects
+  \begin{lstlisting}[basicstyle=\footnotesize\ttfamily]
+KSPGetPC(KSP ksp, PC *pc)
+  \end{lstlisting}
+
+  \item Preconditioners must obey PETSc interface
+  \begin{itemize}
+    \item Basically just the KSP interface
+  \end{itemize}
+
+  \item Can change solver dynamically from the command line, \lstinline|-ksp_type|
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Linear solvers in PETSc KSP}
+ \begin{block}{Linear solvers in PETSc KSP (Excerpt)}
+  \begin{itemize}
+  \item Richardson
+  \item Chebychev
+  \item Conjugate Gradient
+  \item BiConjugate Gradient
+  \item Generalized Minimum Residual Variants
+  \item Transpose-Free Quasi-Minimum Residual
+  \item Least Squares Method
+  \item Conjugate Residual
+  \end{itemize}
+ \end{block}
+\end{frame}

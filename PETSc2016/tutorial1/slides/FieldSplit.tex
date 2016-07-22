@@ -1,0 +1,57 @@
+\begin{frame}{Splitting for Multiphysics}
+  \begin{equation*}
+    \begin{bmatrix}
+      A & B \\ C & D
+    \end{bmatrix}
+    \begin{bmatrix}
+      x \\ y
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      f \\ g
+    \end{bmatrix}
+  \end{equation*}
+  \begin{itemize}\item Relaxation: \lstinline|-pc_fieldsplit_type| \newline
+    \lstinline| [additive,multiplicative,symmetric_multiplicative]|
+    \begin{equation*}
+      \begin{bmatrix}
+        A & \\  & D
+      \end{bmatrix}^{-1} \qquad 
+      \begin{bmatrix}
+        A & \\ C & D
+      \end{bmatrix}^{-1} \qquad
+      \begin{bmatrix}
+        A & \\  & \mathbf{1}
+      \end{bmatrix}^{-1}
+      \left(
+        \mathbf{1} -
+        \begin{bmatrix}
+          A & B \\ & \mathbf{1}
+        \end{bmatrix}
+        \begin{bmatrix}
+          A & \\ C & D
+        \end{bmatrix}^{-1}
+      \right)
+    \end{equation*}
+    \begin{itemize}
+    \item Gauss-Seidel inspired, works when fields are loosely coupled
+    \end{itemize}
+  \item Factorization: \lstinline|-pc_fieldsplit_type schur|
+    \begin{align*}
+      \begin{bmatrix}
+        A & B \\ & S
+      \end{bmatrix}^{-1}
+      \begin{bmatrix}
+        \mathbf{1} & \\ CA^{-1} & \mathbf{1}
+      \end{bmatrix}^{-1}, \qquad
+      S = D - C A^{-1} B
+    \end{align*}
+    \begin{itemize}
+    \item robust (exact factorization), can often drop lower block
+    \item how to precondition $S$ which is usually dense?
+      \begin{itemize}
+      \item interpret as differential operators, use approximate commutators
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{frame}

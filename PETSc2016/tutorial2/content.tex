@@ -1,0 +1,217 @@
+
+
+
+
+
+
+\begin{frame}{Table of Contents}
+   \begin{block}{Debugging and Profiling} \end{block}
+   \begin{block}{Nonlinear Solvers} \end{block}
+   \begin{block}{Unstructured Grids} \end{block}
+   \begin{block}{PETSc and GPUs} \end{block}
+\end{frame}
+
+
+%%%%%% General PETSc information %%%%%%%%%%
+
+%
+% Why Libraries?
+%   - Reinvent the wheel again and again?
+%   - Same procedure common for non-software (Theorems, engineering, etc.)
+%   - Specialization and settlement of approaches over time (OS, Hardware, etc.)
+%   
+
+
+
+%
+% Debugging and Profiling
+%
+\section{Debugging and Profiling}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Debugging and Profiling} \end{center}
+\end{frame}
+
+\subsection{Debugging}
+\begin{frame}[fragile]{PETSc Debugging}
+  \begin{itemize}
+  \item By default, a debug build is provided
+
+  \vspace*{0.3cm}
+  \item Launch the debugger
+  \begin{itemize}
+    \item \lstinline|-start_in_debugger  [gdb,dbx,noxterm]|
+    \item \lstinline|-on_error_attach_debugger [gdb,dbx,noxterm]|
+  \end{itemize}
+
+  \vspace*{0.3cm}
+  \item Attach the debugger only to some parallel processes
+  \begin{itemize}
+    \item \lstinline|-debugger_nodes 0,1|
+  \end{itemize}
+
+  \vspace*{0.3cm}
+  \item Set the display (often necessary on a cluster)
+  \begin{itemize}
+    \item \lstinline|-display :0|
+  \end{itemize}
+\end{itemize}
+\end{frame}  
+
+\input{slides/PETSc/DebuggingTips.tex}
+
+
+
+\input{slides/PETSc/Integration/Profiling.tex}
+\input{slides/ReadingLogSummary.tex}
+\input{slides/CommunicationCosts.tex}
+
+
+
+
+%
+% Nonlinear Solvers
+%
+\section{Nonlinear Solvers}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Nonlinear Solvers} \end{center}
+\end{frame}
+
+
+\begin{frame}{Newton Iteration: Workhorse of SNES}
+  \begin{flushright}
+    \includegraphics[width=0.25\textwidth]{figures/Newton}
+  \end{flushright}
+  \vspace*{-4cm}
+  \begin{block}{Standard form of a nonlinear system}
+    \[ \hspace*{-1cm} -\nabla \cdot \bigl(\vert\nabla u\vert^{\mathfrak{p}-2} \nabla u \bigr) - \lambda e^u = F(u) = 0 \]
+  \end{block}
+  
+  \begin{block}{Iteration}
+    \vspace*{-0.5cm}
+    \begin{align*}
+      \text{Solve:} & \qquad J(u) w = -F(u) \\
+      \text{Update:} & \qquad u^+ \gets u + w
+    \end{align*}
+    \begin{itemize}
+    \item Quadratically convergent near a root: $|u^{n+1}-u^*| \in \mathcal{O} \Big(|u^n-u^*|^2\Big)$
+    \item Picard is the same operation with a different $J(u)$
+    \end{itemize}
+  \end{block}
+  
+  \begin{block}{Jacobian Matrix for $\mathfrak{p}$-Bratu Equation}
+    \vspace*{-0.5cm}
+        \begin{gather*}
+         J(u) w \sim -\nabla \bigl[ (\eta {\mathbf{1}} + \eta' \nabla u \otimes \nabla u) \nabla w \bigr] - \lambda e^u w \\
+          \eta' = \frac{\mathfrak{p}-2}{2} \eta / (\epsilon^2 + \gamma)
+        \end{gather*}
+  \end{block}
+\end{frame}
+
+
+\begin{frame}{SNES}
+  
+  \begin{block}{Scalable Nonlinear Equation Solvers}
+    \begin{itemize}
+     \item Newton solvers: Line Search, Thrust Region
+     \item Inexact Newton-methods: Newton-Krylov
+     \item Matrix-Free Methods: With iterative linear solvers
+    \end{itemize}
+  \end{block}
+  
+  \begin{block}{How to get the Jacobian Matrix?}
+    \begin{itemize}
+     \item Implement it by hand
+     \item Let PETSc finite-difference it
+     \item Use Automatic Differentiation software
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\input{slides/SNES/NonlinearSolversList.tex}
+
+%\input{slides/SNES/FlowControl.tex}
+\input{slides/SNES/Callbacks.tex}
+\input{slides/SNES/Function.tex}
+\input{slides/SNES/Jacobian.tex}
+\input{slides/SNES/FiniteDifferenceJacobian.tex}
+
+\input{slides/SNES/DMDASNES.tex}
+
+
+
+
+
+%
+% GPU Summary
+%
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{PETSc and GPUs} \end{center}
+\end{frame}
+
+
+\input{slides/gpu-intro}
+\input{slides/gpu-current}
+\input{slides/gpu-future}
+
+
+\begin{frame}{GPU Summary and Conclusion}
+
+  \begin{block}{Currently Available}
+    \begin{itemize}
+     \item CUSP for CUDA, ViennaCL for OpenCL
+     \item Automatic use for vector operations and SpMV
+     \item Smoothed Agg. AMG via CUSP
+      \item ViennaCL as CUDA/OpenCL/OpenMP-hydra
+    \end{itemize}
+  \end{block}
+
+  \begin{minipage}{0.7\textwidth}
+    \begin{block}{Current Activities}
+      \begin{itemize}
+      \item Use of cuBLAS and cuSPARSE
+      \item Better support for $n>1$ processes
+      %\item CUSolver for sparse direct solution?
+      \end{itemize}
+    \end{block}
+  \end{minipage}
+  \begin{minipage}{0.29\textwidth}
+    \includegraphics[width=0.99\textwidth]{figures/hydra}
+  \end{minipage}
+
+\end{frame}
+
+
+%%%% Conclusion
+
+
+
+
+%
+% Conclusion and Wrap-Up
+%
+\section{Conclusions}
+\begin{frame}{Conclusions}
+ 
+ \begin{block}{PETSc can help You}
+  \begin{itemize}
+   \item solve algebraic and DAE problems in your application area
+   \item rapidly develop efficient parallel code, can start from examples
+   \item develop new solution methods and data structures
+   \item debug and analyze performance
+   \item advice on software design, solution algorithms, and performance
+   \item \centering \texttt{petsc-\{users,dev,maint\}@mcs.anl.gov}
+
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{You can help PETSc}
+  \begin{itemize}
+   \item report bugs and inconsistencies, or if you think there is a better way
+   \item tell us if the documentation is inconsistent or unclear
+   \item consider developing new algebraic methods as plugins, contribute if your idea works
+  \end{itemize}
+ \end{block}
+
+\end{frame}
+
+

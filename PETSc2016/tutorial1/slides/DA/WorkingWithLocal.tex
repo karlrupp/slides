@@ -1,0 +1,79 @@
+\begin{frame}[fragile]{Working with the Local Form}
+
+\begin{block}{Wouldn't it be nice if we could just write our code for the natural numbering?}
+ 
+ \only<1>{
+\begin{center}
+\begin{tabular}{cc}
+\begin{tabular}{c}
+\begin{tabular}{|ccc|cc|}
+\hline
+\multicolumn{3}{|c|}{Proc 2} & \multicolumn{2}{c|}{Proc 3} \\
+\hline
+25 & 26 & 27 & 28 & 29 \\
+20 & 21 & 22 & 23 & 24 \\
+15 & 16 & 17 & 18 & 19 \\
+\hline
+10 & 11 & 12 & 13 & 14 \\
+ 5 &  6 &  7 &  8 &  9 \\
+ 0 &  1 &  2 &  3 &  4 \\
+\hline
+\multicolumn{3}{|c|}{Proc 0} & \multicolumn{2}{c|}{Proc 1} \\
+\hline
+\end{tabular} \\
+Natural numbering
+\end{tabular}
+& 
+\begin{tabular}{c}
+\begin{tabular}{|ccc|cc|}
+\hline
+\multicolumn{3}{|c|}{Proc 2} & \multicolumn{2}{c|}{Proc 3} \\
+\hline
+21 & 22 & 23 & 28 & 29 \\
+18 & 19 & 20 & 26 & 27 \\
+15 & 16 & 17 & 24 & 25 \\
+\hline
+ 6 &  7 &  8 & 13 & 14 \\
+ 3 &  4 &  5 & 11 & 12 \\
+ 0 &  1 &  2 &  9 & 10 \\
+\hline
+\multicolumn{3}{|c|}{Proc 0} & \multicolumn{2}{c|}{Proc 1} \\
+\hline
+\end{tabular}\\
+PETSc numbering
+\end{tabular}
+\end{tabular}
+\end{center}
+\vspace*{1cm}
+    }
+    
+    
+ \only<2>{
+  \begin{itemize}
+  \item Yes, that's what \lstinline|DMDAVecGetArray()| is for.
+  \end{itemize}
+  }
+  
+  \end{block}
+  
+  \only<2>{
+ \begin{block}{DMDA offers \emph{local} callback functions}
+    \begin{itemize}
+      \item \lstinline|FormFunctionLocal()|, set by \lstinline|DMDASetLocalFunction()|
+      \item \lstinline|FormJacobianLocal()|, set by \lstinline|DMDASetLocalJacobian()|
+    \end{itemize}
+ \end{block}
+
+ 
+ \begin{block}{Evaluating the nonlinear residual $F(x)$}
+    \begin{itemize}
+      \item Each process evaluates the local residual
+      \item PETSc assembles the global residual automatically
+        \begin{itemize}
+        \item Uses \lstinline|DMLocalToGlobal()| method
+        \end{itemize}
+    \end{itemize}
+ \end{block}
+ }
+
+\end{frame}

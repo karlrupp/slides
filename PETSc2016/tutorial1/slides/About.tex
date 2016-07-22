@@ -1,0 +1,151 @@
+\begin{frame}{PETSc}
+\vspace*{-0.2cm}
+\begin{center} {\bf Portable} Extensible Toolkit for Scientific Computing \end{center}
+\vspace*{-0.2cm}
+
+%\pause
+\begin{block}{Architecture}
+    \begin{itemize}  \vspace*{-0.2cm}
+    \item tightly coupled (e.g. XT5, BG/P, Earth Simulator)
+    \item loosely coupled such as network of workstations
+    \item GPU clusters (many vector and sparse matrix kernels)
+    \end{itemize}
+\end{block} \vspace*{-0.2cm}
+
+
+%\pause
+\begin{block}{Software Environment}
+  \begin{itemize}\vspace*{-0.2cm}
+   \item Operating systems (Linux, Mac, Windows, BSD, proprietary Unix)
+   \item Any compiler
+   \item Usable from C, C++, Fortran 77/90, Python, and MATLAB
+   \item Real/complex, single/double/quad precision, 32/64-bit int
+  \end{itemize}
+\end{block}\vspace*{-0.2cm}
+
+%\pause
+\begin{block}{System Size}
+  \begin{itemize}\vspace*{-0.2cm}
+   \item 500B unknowns, 75\% weak scalability on Jaguar (225k cores) \\
+    and Jugene (295k cores)
+   \item Same code runs performantly on a laptop
+  \end{itemize}
+\end{block}\vspace*{-0.2cm}
+
+\begin{block}{Free to everyone (BSD-style license), open development}\end{block} \vspace*{-0.4cm}
+
+\end{frame}
+
+
+\begin{frame}{PETSc}
+
+\begin{center}Portable {\bf Extensible} Toolkit for Scientific Computing \end{center}
+
+%\pause
+\begin{block}{Philosophy: Everything has a plugin architecture}
+\begin{itemize}
+  \item Vectors, Matrices, Coloring/ordering/partitioning algorithms
+  \item Preconditioners, Krylov accelerators
+  \item Nonlinear solvers, Time integrators
+  \item Spatial discretizations/topology
+\end{itemize}
+\end{block}
+
+
+%\pause
+\begin{block}{Example}
+  \begin{itemize}
+   \item Vendor supplies matrix format and associated preconditioner, distributes
+	compiled shared library.  
+   \item Application user loads plugin at runtime, no source
+	code in sight.
+  \end{itemize}
+\end{block}
+
+\vspace{2cm}
+\end{frame}
+
+
+\begin{frame}{PETSc}
+
+\begin{center} Portable Extensible {\bf Toolkit} for Scientific Computing \end{center}
+
+%\pause
+\begin{block}{Toolset}
+  \begin{itemize}
+   \item algorithms
+   \item (parallel) debugging aids
+   \item low-overhead profiling
+  \end{itemize}
+\end{block}
+
+%\pause
+\begin{block}{Composability}
+ \begin{itemize}
+  \item try new algorithms by choosing from product space
+  \item composing existing algorithms (multilevel, domain decomposition, splitting)
+ \end{itemize}
+\end{block}
+%}
+
+%\pause
+\begin{block}{Experimentation}
+\begin{itemize}
+  \item Impossible to pick the solver \emph{a priori}
+  \item PETSc's response: expose an algebra of composition
+  \item keep solvers decoupled from physics and discretization
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{PETSc}
+\vspace*{-0.2cm}
+\begin{center}
+ Portable Extensible Toolkit for {\bf Scientific Computing}
+\end{center}
+\vspace*{-0.2cm}
+
+%\pause
+  \begin{block}{Computational Scientists}
+    \begin{itemize}\vspace*{-0.2cm}
+    \item PyLith (CIG), Underworld (Monash), Magma Dynamics (LDEO, Columbia), PFLOTRAN (DOE), SHARP/UNIC (DOE)
+    \end{itemize}
+  \end{block}\vspace*{-0.2cm}
+
+  
+%\pause
+\begin{block}{ Algorithm Developers (iterative methods and preconditioning)} \end{block}\vspace*{-0.4cm}
+
+
+  %\pause
+  \begin{block}{ Package Developers}
+    \begin{itemize} \vspace*{-0.2cm}
+    \item SLEPc, TAO, Deal.II, Libmesh, FEniCS, PETSc-FEM, MagPar, OOFEM, FreeCFD, OpenFVM
+    \end{itemize}
+  \end{block}\vspace*{-0.2cm}
+%}
+
+  %\pause
+  \begin{block}{Funding}
+    \begin{itemize} \vspace*{-0.2cm}    
+      \item Department of Energy
+      \begin{itemize}\item SciDAC, ASCR ISICLES, MICS Program, INL Reactor Program
+      \end{itemize}
+    \item National Science Foundation
+      \begin{itemize}\item CIG, CISE, Multidisciplinary Challenge Program
+      \end{itemize}
+    \end{itemize}
+  \end{block}\vspace*{-0.2cm}
+
+  
+  %\pause
+  \begin{block}{Documentation and Support}
+   \begin{itemize}\vspace*{-0.2cm}
+    \item Hundreds of tutorial-style examples
+    \item Hyperlinked manual, examples, and manual pages for all routines
+    \item Support from \url{petsc-maint@mcs.anl.gov}
+   \end{itemize}
+  \end{block}
+
+\end{frame}

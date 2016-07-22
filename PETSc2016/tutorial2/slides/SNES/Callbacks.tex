@@ -1,0 +1,26 @@
+\begin{frame}[fragile]
+\frametitle{SNES Paradigm}
+
+\begin{block}{SNES Interface based upon Callback Functions}
+\begin{itemize}
+  \item \lstinline|FormFunction()|, set by \lstinline|SNESSetFunction()|
+  \item \lstinline|FormJacobian()|, set by \lstinline|SNESSetJacobian()|
+\end{itemize}
+\end{block}
+%\bigskip
+
+ \begin{block}{Evaluating the nonlinear residual $F(x)$}
+\begin{itemize}
+  \item Solver calls the \textbf{user's} function
+
+  \medskip
+
+  \item User function gets application state through the \lstinline|ctx| variable
+\end{itemize}
+ \end{block}
+
+   \begin{center}
+    \color{red} PETSc \emph{never} sees application data
+  \end{center}
+
+\end{frame}
