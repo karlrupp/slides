@@ -1,0 +1,130 @@
+
+
+%%%%%% General PETSc information %%%%%%%%%%
+
+%%% What is PETSc
+
+
+
+\begin{frame}[fragile]
+\frametitle{PETSc Pyramid}
+ \begin{block}{PETSc Structure} \vspace{0.3cm}
+   \includegraphics[width=1.0\textwidth]{PETScPyramid.jpg}
+ \end{block}
+
+\end{frame}
+
+\input{slides/FlowControl.tex}
+
+
+\section{PETSc Overview}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Vectors and Matrices} \end{center}
+\end{frame}
+
+\input{slides/RoleOfPETSc2}
+
+\input{slides/Vectors.tex}
+
+%
+% Matrices (preparing for Linear Solvers)
+%
+
+\input{slides/PETSc/MatrixMemoryPreallocation.tex}
+\input{slides/PETSc/Integration/MisguidedMatrixAssembly.tex}
+\input{slides/PETSc/Integration/EfficientMatrixAssembly.tex}
+
+
+\input{slides/MatrixDefinition.tex}
+
+% Sparse Matrix formats (include benchmark from manual or Jed)
+% Matrices in parallel
+% Matrix preallocation
+
+\input{slides/MatricesImportant.tex}
+
+% \begin{frame}{PETSc}
+%    \begin{center} \Large \textbf{What can we do with a matrix \\ which does not have entries?} \\[2em]
+%       \visible<2>{\includegraphics[width=0.4\textwidth]{figures/coffee} }
+%    \end{center}
+% \end{frame}
+
+% 41 distinct slides here
+
+
+
+
+%
+% Linear Solvers
+%
+
+% Condition number!
+\section{Iterative Solvers}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Iterative Solvers} \end{center}
+\end{frame}
+
+\input{slides/MatrixNoEntries.tex}
+
+% Dense solvers (reiterate MAGMA-stuff from Day 1)
+% Direct solvers (Sparse Gauss, Dissection, etc.)
+% Conjugate Gradients
+% BiCGStab
+\input{slides/GMRES.tex}
+
+\input{slides/PETSc/Integration/LinearSolvers.tex}
+
+
+
+
+%
+%%%%% Preconditioners
+% 
+
+\section{Preconditioners}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{Preconditioners} \end{center}
+\end{frame}
+
+\input{slides/Preconditioning.tex}
+
+% Explain various preconditioners here:
+%   - Jacobi, Block-Jacobi
+%   - SPAI
+%   - ICC/ILU (include symbolic stage)
+%   - Multigrid (geometric, algebraic)
+%\input{slides/PreconditioningSamples.tex}
+
+
+
+% Intermediate summary: Preconditioners for single quantity
+
+
+\input{slides/FieldSplit.tex}
+% Compose preconditioners for multiple fields (Fun with Matt)
+
+
+%%%% Conclusion
+
+
+\section{Conclusion}
+\begin{frame}{End of Lecture}
+ 
+ \begin{block}{Distributed Systems}
+  \begin{itemize}
+   \item Mind data partitioning
+   \item Asymptotics of solvers important
+   \item Reuse existing packages!
+  \end{itemize}
+ \end{block}
+
+ \pause
+ \begin{block}{General Recommendations}
+  \begin{itemize}
+   \item Consult literature for preconditioners
+   \item Performance modeling is very handy
+   \item Your time is more valuable than computing time!
+  \end{itemize}
+ \end{block}
+
+\end{frame}

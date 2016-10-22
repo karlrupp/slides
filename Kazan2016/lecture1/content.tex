@@ -1,0 +1,84 @@
+
+
+\input{slides/intro.tex}
+
+\input{slides/cuda.tex}
+
+\input{slides/primitives.tex}
+
+\begin{frame}{Overview}
+
+ \begin{block}{Pipelined CG}
+  \begin{itemize}
+   \item Merge global reductions
+   \item Kernel fusion
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Parallel Incomplete LU Factorizations}
+  \begin{itemize}
+   \item Level scheduling
+   \item Nonlinear relaxation
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{Algebraic Multigrid}
+  \begin{itemize}
+   \item Parallel aggregation
+   \item Sparse matrix-matrix products
+  \end{itemize}
+ \end{block}
+
+\end{frame}
+
+
+\input{slides/cg.tex}
+
+\begin{frame}{Content}
+ \begin{block}{Parallel Incomplete LU Factorizations}
+  \begin{itemize}
+   \item Level scheduling
+   \item Nonlinear relaxation
+  \end{itemize}
+ \end{block}
+\end{frame}
+\input{slides/ilu.tex}
+
+
+\begin{frame}{Content}
+ \begin{block}{Algebraic Multigrid}
+  \begin{itemize}
+   \item Parallel aggregation
+   \item Sparse matrix-matrix products
+  \end{itemize}
+ \end{block}
+\end{frame}
+\input{slides/amg.tex}
+
+
+
+%%
+%% Summary
+%%
+
+\begin{frame}{Summary}
+
+ \begin{block}{Parallel Primitives}
+   \begin{itemize}
+    \item Embarassingly parallel operations (vector addition, etc.)
+    \item Reductions
+    \item Prefix Sums
+    \item etc.
+   \end{itemize}
+ \end{block}
+
+ \begin{block}{Solvers on Shared Memory Architectures}
+   \begin{itemize}
+    \item Pipelining to reduce synchronization costs
+    \item Pipelining to increase data reuse
+    \item Replace sequential stages with parallel alternatives
+   \end{itemize}
+ \end{block}
+
+\end{frame}
+
