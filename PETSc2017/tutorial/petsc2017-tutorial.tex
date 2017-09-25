@@ -1,0 +1,101 @@
+% -------------------------------------------------------------------
+\documentclass[usepdftitle=false,9pt]{beamer}
+
+% Specify the respective Beamer theme here:
+\usetheme[height=0.3cm,width=0.8cm,shadow=false]{iue}
+
+
+%encodings
+\usepackage[utf8]{inputenc}
+\usepackage[OT1]{fontenc}
+
+%some useful packages
+\usepackage[]{mathrsfs}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{acronym}
+\usepackage[]{listings}
+\usepackage[]{xcolor}
+\usepackage[]{graphicx}
+\usepackage[]{textcomp} %for tilde
+\usepackage{tikz}
+
+\hypersetup{pdftitle = {PETSc User Meeting 2017 - Tutorial}, pdfauthor={Karl Rupp (based on slides of Jed Brown et al.)}}
+
+
+%% Listings package START
+\usepackage{color}
+\usepackage{listings}
+
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.6,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\definecolor{lightgrey}{rgb}{0.98,0.98,0.98}
+
+
+\lstloadlanguages{C++}
+\lstset{%
+  language=C++,
+  basicstyle=\small\ttfamily,
+  commentstyle=\itshape\color{darkgreen},
+  keywordstyle=\bfseries\color{darkblue},
+  stringstyle=\color{darkred},
+  showspaces=false,
+  showtabs=false,
+  columns=fixed,
+  backgroundcolor=\color{lightgrey},
+  numbers=none,
+  frame=single,
+  numberstyle=\tiny,
+  breaklines=true,
+  showstringspaces=false,
+  xleftmargin=0.1cm,
+  xrightmargin=3em
+}%
+
+\lstset{emphstyle=\color{red}}
+
+%% Listings package STOP
+
+\graphicspath{{figures/}}           % in which folder all the figures are
+
+% table of contents, depth
+\setcounter{tocdepth}{2}
+
+% modify at will
+\setbeamercovered{invisible}
+%\setbeamercovered{transparent}
+
+
+
+\author[Karl Rupp]{Karl Rupp \\ \ttfamily me@karlrupp.net}
+
+\institute[Freelance]
+{ \footnotesize
+  Freelance Computational Scientist \\
+  \textit{and} \\
+  Institute for Microelectronics, TU Wien
+}
+
+\title[PETSc]{ { { \Huge PETSc Tutorial } \\ PETSc and Many-Core/GPU Architectures } %\\[0.5em] Portable, Extensible Toolkit for Scientific Computation
+             }
+
+\date[PETSc 2017, June 14-16, 2017]{ \footnotesize Boulder, Colorado \\[1em] June 14-16, 2017}
+
+\setbeamertemplate{blocks}[default]
+%\setbeamercolor{block title}{bg=}
+\setbeamercolor{block body}{bg=}
+\setbeamercovered{invisible}
+
+\begin{document}
+
+\begin{frame}[plain]
+ \frametitle{~}
+ \titlepage
+\end{frame}
+
+\input{content}
+
+\end{document}
+

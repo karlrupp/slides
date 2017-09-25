@@ -1,0 +1,106 @@
+
+
+
+\begin{frame}{Current Directions}
+  \begin{center}
+    \Large PETSc on GPUs and MIC: \\[1em] Current Directions \\[1em]
+  \end{center}
+\end{frame}
+
+
+% cuBLAS and friends
+\begin{frame}[fragile]
+\frametitle{Current: CUDA}
+  \begin{block}{Split CUDA-buffers from CUSP}
+  \begin{itemize}
+   \item Vector operations by cuBLAS
+   \item MatMult by different packages
+   \item CUSP (and others) provides add-on functionality
+  \end{itemize}
+  \end{block}
+  
+  %\pause 
+  \begin{block}{More CUSP Functionality in PETSc}
+   \begin{itemize}
+    \item Relaxations (Gauss-Seidel, SOR)
+    \item Polynomial preconditioners
+    \item Approximate inverses
+   \end{itemize}
+  \end{block}
+
+\end{frame}
+
+
+% ViennaCL: CUDA, OpenCL, OpenMP
+\begin{frame}[fragile]
+\frametitle{Current: PETSc + ViennaCL}
+
+\begin{minipage}{0.58\textwidth}
+  \begin{block}{ViennaCL}
+  \begin{itemize}
+   \item CUDA, OpenCL, OpenMP backends
+   \item Backend switch at \textbf{runtime}
+   \item CUDA, OpenCL and OpenMP exposed in PETSc
+   \item Focus on shared memory machines
+  \end{itemize}
+  \end{block}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+   \includegraphics[width=0.999\textwidth]{figures/ViennaCL-arch}
+\end{minipage}
+
+  %\pause
+  \vspace*{0.3cm}
+  \begin{block}{Recent Advances}
+  \begin{itemize}
+   \item Pipelined Krylov solvers
+   \item Fast sparse matrix-vector products
+   \item Fast sparse matrix-matrix products
+   \item Fine-grained algebraic multigrid
+   \item Fine-grained parallel ILU
+  \end{itemize}
+  \end{block}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Current: PETSc + ViennaCL}
+
+  \begin{block}{Current Use of ViennaCL in PETSc}
+  \begin{itemize}
+   \item 
+  \begin{lstlisting}
+ $> ./ex12 -vec_type viennacl -mat_type aijviennacl ...
+  \end{lstlisting}
+   \item Executes on OpenCL device
+  \end{itemize}
+  \end{block}
+
+  %\pause
+  
+  \begin{block}{New Use of ViennaCL in PETSc}
+  \begin{itemize}
+   \item 
+  \begin{lstlisting}
+ $> ./ex12 -vec_type viennacl -mat_type aijviennacl
+           -viennacl_backend openmp ...
+  \end{lstlisting}
+  \end{itemize}
+  \end{block}
+
+  %\pause
+  
+  \begin{block}{Pros and Cons}
+  \begin{itemize}
+   \item Use CPU + GPU simultaneously
+   %\item Good PETSc performance on Theta, Aurora, Summit, ...
+   \item Non-intrusive, use plugin-mechanism
+   \item Non-optimal in strong-scaling limit
+   \item Gather experiences for best long-term solution
+  \end{itemize}
+  \end{block}
+
+\end{frame}
+
+

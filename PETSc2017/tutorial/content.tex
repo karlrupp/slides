@@ -1,0 +1,156 @@
+
+
+
+\begin{frame}{Table of Contents}
+   \begin{block}{FLOPs and Bandwidth} \end{block}
+   \begin{block}{Performance Modeling} \end{block}
+   \begin{block}{PETSc Profiling} \end{block}
+   \begin{block}{PETSc and Threads} \end{block}
+   \begin{block}{PETSc and GPUs} \end{block}
+\end{frame}
+
+
+
+%
+% FLOPs and Bandwidth
+%
+\section{FLOPs and Bandwidth}
+
+\section{PETSc Tutorial}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{FLOPs and Bandwidth} \end{center}
+\end{frame}
+
+\input{slides/flops-bandwidth}
+
+
+%
+% Performance Modeling
+%
+\section{Performance Modeling}
+
+\section{PETSc Tutorial}
+\begin{frame}{PETSc Tutorial}
+   \begin{center} \Large \textbf{Performance Modeling} \end{center}
+\end{frame}
+
+\begin{frame}{Performance Modeling Mantra}
+  \begin{center}
+   \LARGE \hspace*{-1cm} \emph{At any given time during a run, \\
+                               at least one hardware component\\
+                               is operating at 100 percent capacity.}
+  \end{center}
+\end{frame}
+
+\input{slides/bottlenecks}
+
+\input{slides/modeling-examples}
+
+
+
+
+%
+% Debugging and Profiling
+%
+\section{PETSc Profiling}
+\begin{frame}{PETSc Tutorial}
+   \begin{center} \Large \textbf{PETSc Profiling} \end{center}
+\end{frame}
+
+\input{slides/Profiling.tex}
+\input{slides/ReadingLogSummary.tex}
+\input{slides/CommunicationCosts.tex}
+\input{slides/profiling-stages.tex}
+
+
+
+
+%
+% Threads
+%
+\section{PETSc and Threads}
+
+\section{PETSc Tutorial}
+\begin{frame}{PETSc Tutorial}
+   \begin{center} \Large \textbf{PETSc and Threads} \end{center}
+\end{frame}
+
+\input{slides/threads.tex}
+
+
+
+%
+% GPU Summary
+%
+\section{PETSc and GPUs}
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{PETSc and GPUs} \end{center}
+\end{frame}
+
+
+\input{slides/gpu-intro}
+\input{slides/gpu-current}
+\input{slides/gpu-future}
+
+
+\begin{frame}{GPU Summary and Conclusion}
+
+  \begin{block}{Currently Available}
+    \begin{itemize}
+     \item CUSP/CUDA for CUDA, ViennaCL for CUDA/OpenCL/OpenMP
+     \item Automatic use for vector operations and SpMV
+     \item Smoothed Agg. AMG via CUSP and ViennaCL
+      \item ViennaCL as CUDA/OpenCL/OpenMP-hydra
+    \end{itemize}
+  \end{block}
+
+  \begin{minipage}{0.7\textwidth}
+    \begin{block}{Current Activities}
+      \begin{itemize}
+      \item GPU-acceleration for GAMG
+      \item Better support for $n>1$ processes
+      \item Use of cuBLAS and cuSPARSE
+      \end{itemize}
+    \end{block}
+  \end{minipage}
+  \begin{minipage}{0.29\textwidth}
+    \includegraphics[width=0.99\textwidth]{figures/hydra}
+  \end{minipage}
+
+\end{frame}
+
+
+%%%% Conclusion
+
+
+
+
+%
+% Conclusion and Wrap-Up
+%
+\section{Conclusions}
+\begin{frame}{Conclusions}
+ 
+ \begin{block}{PETSc can help You}
+  \begin{itemize}
+   \item solve algebraic and DAE problems in your application area
+   \item rapidly develop efficient parallel code, can start from examples
+   \item develop new solution methods and data structures
+   \item debug and analyze performance
+   \item advice on software design, solution algorithms, and performance
+   \item \centering \texttt{petsc-\{users,dev,maint\}@mcs.anl.gov}
+
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{You can help PETSc}
+  \begin{itemize}
+   \item report bugs and inconsistencies, or if you think there is a better way
+   \item tell us if the documentation is inconsistent or unclear
+   \item consider developing new algebraic methods as plugins, contribute if your idea works
+  \end{itemize}
+ \end{block}
+
+\end{frame}
+
+

@@ -1,0 +1,27 @@
+\begin{frame}{PETSc Profiling}
+
+\begin{block}{Communication Costs}
+  \begin{itemize}
+  \item Reductions: usually part of Krylov method, latency limited
+    \begin{itemize}
+    \item \lstinline|VecDot|
+    \item \lstinline|VecMDot|
+    \item \lstinline|VecNorm|
+    \item \lstinline|MatAssemblyBegin|
+    \item Change algorithm (e.g. IBCGS)
+    \end{itemize}
+  \item Point-to-point (nearest neighbor), latency or bandwidth
+    \begin{itemize}
+    \item \lstinline|VecScatter|
+    \item \lstinline|MatMult|
+    \item \lstinline|PCApply|
+    \item \lstinline|MatAssembly|
+    \item \lstinline|SNESFunctionEval|
+    \item \lstinline|SNESJacobianEval|
+    \item Compute subdomain boundary fluxes redundantly
+    \item Ghost exchange for all fields at once
+    \item Better partition
+    \end{itemize}
+  \end{itemize}
+  \end{block}
+\end{frame}

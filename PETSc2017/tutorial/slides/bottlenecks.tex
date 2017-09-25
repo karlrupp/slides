@@ -1,0 +1,44 @@
+
+% Latency
+
+\begin{frame}[fragile]{Bottleneck Potpourri}
+
+ \begin{block}{Latency}
+  \begin{itemize}
+   \item Bottleneck in strong scaling limit
+   \item Ultimate limit for time stepping
+  \end{itemize}
+ \end{block}
+
+ %\pause
+ \begin{block}{Latency - Sources}
+  \begin{itemize}
+   \item Network latency (Ethernet $\sim 20 \mu$s, Infiniband $\sim 5 \mu$s)
+   \item PCI-Express latency (Kernel launches, $\sim 10 \mu$s)
+   \item Thread synchronization (barriers, locks, $\sim 1-100 \mu$s)
+   \item Memory latency ($\sim 100$ns)
+  \end{itemize}
+ \end{block}
+
+\end{frame}
+
+
+% Arithmetic intensity: FLOP vs. bandwidth limited
+\begin{frame}[fragile]{Bottleneck Potpourri}
+
+ \begin{block}{Arithmetic Intensity}
+  \begin{itemize}
+   \item Number of FLOPs per Byte
+   \item FLOP-limited: Arithmetic intensity larger than $\sim$10
+   \item Memory-limited: Arithmetic intensity smaller than $\sim$1
+  \end{itemize}
+ \end{block}
+
+ \vspace*{-0.5cm}
+ \begin{center}
+   \includegraphics[width=0.7\textwidth]{figures/flop-per-byte-dp}
+ \end{center}
+
+\end{frame}
+
+
