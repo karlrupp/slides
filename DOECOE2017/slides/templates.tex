@@ -1,0 +1,110 @@
+
+
+\begin{frame}[fragile]{Disadvantages of C++ Templates}
+
+ \begin{block}{Static Dispatch}
+  \begin{itemize}
+   \item Architecture-specific information only available at run time
+   \item ``Change code and recompile'' not acceptable advice
+  \end{itemize}
+ \end{block}
+
+ %\pause
+ \begin{block}{Dealing with Compilation Errors}
+  \begin{itemize}
+   \item Type names pollute compiler output
+   \item Replicated across interfaces
+   \item CRTP may result in type length explosion
+   \item Default arguments become visible \\[0.5em]
+\begin{tabular}{|l|r|}
+ \hline
+  Type   & Length \\ 
+ \hline
+ \lstinline|std::vector<int>|                                           &  38 \\
+ \lstinline|std::vector<std::vector<int> >|                             & 109 \\
+ \lstinline|std::vector<std::vector<std::vector<int> > >|               & 251 \\
+ \lstinline|std::vector<std::vector<std::vector<std::vector<int> > > >| & 539 \\
+ \hline
+\end{tabular}
+  \end{itemize}
+ \end{block}
+
+ \vspace*{-7.5cm}
+ \begin{flushright}
+  \includegraphics[width=0.35\textwidth]{figures/xkcd-compiling} \\
+  {\scriptsize https://xkcd.com/303/}
+ \end{flushright}
+ \vspace*{2.5cm}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Disadvantages of C++ Templates}
+
+ \begin{center}
+  \includegraphics[width=0.95\textwidth]{figures/code-explosion} \\[0.5em]
+  {\scriptsize \texttt{https://tgceec.tumblr.com/}}
+ \end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Disadvantages of C++ Templates}
+
+ \begin{block}{Scope Limitations}
+  \begin{itemize}
+   \item Template metaprogramming lacks state
+   \item Optimizations across multiple code lines difficult or impossible
+  \end{itemize}
+ \end{block}
+
+ %\pause
+ \begin{block}{Example}
+  \begin{itemize}
+   \item Consider vector updates in pipelined CG method:
+\begin{align*}
+  x_i &\leftarrow x_{i-1} + \alpha  p_{i-1} \\
+  r_i &\leftarrow r_{i-1} - \alpha  y_i \\
+  p_i &\leftarrow r_i + \beta  p_{i-1}
+\end{align*}
+  \item Reuse of $p_{i-1}$ and $r_{i-1}$ easy with for-loops, but hard with expression templates
+
+  \end{itemize}
+ \end{block}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Disadvantages of C++ Templates}
+
+ \begin{block}{Complicates Debugging}
+  \begin{itemize}
+   \item Stack traces get longer names and deeper
+   \item Setting good breakpoints may become harder
+  \end{itemize}
+ \end{block}
+
+ %\pause
+ \begin{block}{Lack of a Stable ABI}
+  \begin{itemize}
+   \item Object files from different compilers generally incompatible
+   \item Name mangling makes use outside C++ land almost impossible
+  \end{itemize}
+ \end{block}
+
+ %\pause
+ \begin{block}{High Entry Bar}
+  \begin{itemize}
+   \item Number of potential contributors inversely proportional to code sophistication
+   \item Domain scientists have limited resources for C++ templates
+  \end{itemize}
+ \end{block}
+
+
+\end{frame}
+

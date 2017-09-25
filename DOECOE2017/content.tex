@@ -1,0 +1,89 @@
+
+
+\begin{frame}{Providing Context}
+
+ \begin{center}
+  \fbox{\includegraphics[clip,trim=0.5cm 20.5cm 0.5cm 0.4cm,width=0.75\textwidth]{figures/exascale-without-threads.pdf}} \\
+  {\scriptsize \texttt{https://www.orau.gov/hpcor2015/whitepapers/Exascale\_Computing\_without\_Threads-Barry\_Smith.pdf}}
+ \end{center}
+
+ \begin{block}{PETSc Developers Care About Recent Developments}
+  \begin{itemize}
+   \item After careful evaluation: Favor MPI 3.0 (and later) over threads
+   \item Find the best long-term solutions for our users
+   \item Consider best solutions for large-scale applications, not just toy-apps
+  \end{itemize}
+ \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{Providing Context}
+
+ \begin{center}
+  \includegraphics[width=0.65\textwidth]{figures/moose-arch} \\
+  {\scriptsize \texttt{http://mooseframework.org/static/media/wiki/images/229/b61cdbc1e8be71dae37adc31a688d209/moose-arch.png}}
+ \end{center}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Providing Context}
+
+ \begin{block}{Our Attempts in C++ Library Development}
+  \begin{itemize}
+   \item Sieve: Several years of C++ mesh management attempts in PETSc
+   \item ViennaGrid 2.x: Heavily templated C++ mesh management library
+   \item ViennaCL: Dense and sparse linear algebra and solvers for multi- and many-core architectures
+  \end{itemize}
+ \end{block}
+
+ %\pause
+ \begin{block}{Aftermath}
+  \begin{itemize}
+   \item Sieve: Replaced by DMPlex (written in C)
+   \item ViennaGrid: Version 3.0 provides C-ABI
+   \item ViennaCL: Rewrite in C likely
+  \end{itemize}
+ \end{block}
+
+ \vspace*{-2cm}
+ \begin{flushright}
+  Sequential build times for the ViennaCL test suite \hspace*{0.2cm}\ \\
+  \includegraphics[width=0.55\textwidth]{figures/build-time}
+ \end{flushright}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%
+
+\input{slides/templates.tex}
+
+\input{slides/forward.tex}
+
+
+\begin{frame}{Summary}
+
+ \begin{block}{Long-Term Problems of Heavy C++ Templates Use}
+  \begin{itemize}
+   \item Template metaprogramming is a leaky abstraction
+   \item Excessive type names slow down all stages of Compile-Run-Debug-cycle
+   \item Templates operate at compile time - architecture ultimately known at run time
+  \end{itemize}
+ \end{block}
+ 
+ \begin{block}{A Path Forward}
+  \begin{itemize}
+   \item Adopt professional software development practices
+   \item Be prepared to develop different datastructures and code paths
+   \item Write clear, readable code using simple datastructures
+   \item Evolve and refactor datastructures, kernels, and interfaces over time
+   \item \emph{(cf.~software productivity discussions)}
+  \end{itemize}
+ \end{block}
+ 
+
+\end{frame}
