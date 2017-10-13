@@ -1,0 +1,239 @@
+
+
+% About pTatin3d
+
+
+\begin{frame}{pTatin3d}
+
+  \begin{block}{About pTatin3d}
+  \begin{itemize}
+   \item Geodynamics modeling package
+   \item Simulates long-term lithospheric deformation
+   \item Solves heterogeneous Stokes problems
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{Discretization and Solver}
+  \begin{itemize}
+   \item Inf-sub stable $Q_2-P_1^{\mathrm{disc}}$ elements
+   \item (F)GMRES with multigrid preconditioner
+   \item Matrix-free application of viscous block
+  \end{itemize}
+  \end{block}
+
+\end{frame}
+
+
+% Solver Setup
+\begin{frame}{pTatin3d}
+
+  \begin{block}{Equations in $\Omega$}
+        \begin{align*}
+          \nabla \cdot \bigl[ 2 \eta(\mathbf u, p) \mathbf D(\mathbf u) \bigr] - \nabla p &= \mathbf f \ , \quad \mathrm{where} \ 
+          \mathbf D(\mathbf u) := \frac{1}{2}\bigl(\nabla \mathbf u^{\mathrm T} + \nabla \mathbf u \bigr) \ , \\
+          \nabla \cdot u &= \mathbf 0
+         \end{align*}
+  \begin{itemize}
+   \item Fluid velocity $\mathbf u$, pressure $p$
+   \item Effective shear viscosity $\eta$
+   \item Body force $\mathbf f$
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{Boundary Conditions}
+  \begin{itemize}
+   \item \ \ \ \ $\, \, \! \mathbf u = \mathbf{\overline{u}}$ on $\Gamma_{\mathrm D}$ (Dirichlet)
+   \item $\mathbf u \cdot \mathbf n = \mathbf{\overline{t}}$ on $\Gamma_{\mathrm N}$ (Neumann)
+  \end{itemize}
+  \end{block}
+
+  \begin{flushright}
+   \vspace*{-4cm} \includegraphics[width=0.45\textwidth]{figures/rifting} \\
+   {\scriptsize (D.~May, J.~Brown, L.~Le Pourhiet, 2014)}
+  \end{flushright}
+
+\end{frame}
+
+
+\begin{frame}{pTatin3d}
+
+  \begin{block}{Field-Split for Nonlinear System}
+        \begin{align*}
+          \left[ \begin{array}{cc} \mathbf{J}_\mathrm{uu}  &  \mathbf{J}_\mathrm{up} \\
+                                   \mathbf{J}_\mathrm{pu}  &  \mathbf 0
+                 \end{array} \right]
+                 = - \left[
+                 \begin{array}{c}
+                  \mathbf F_u \\
+                  \mathbf F_p
+                 \end{array} \right]
+         \end{align*}
+  \begin{itemize}
+   \item $\mathbf{J}_\mathrm{uu}$ symmetric, positive definite
+   \item Schur complement $\mathbf{S} = -  \mathbf{J}_\mathrm{pu}  \mathbf{J}_\mathrm{uu}^{-1} \mathbf{J}_\mathrm{up}$ (expensive)
+  \end{itemize}
+  \end{block}
+  
+  %\pause
+  \begin{block}{Approximate Preconditioner}
+    \begin{align*} \mathbf P = \left[
+      \begin{array}{cc}
+        \tilde{\mathbf{J}}_\mathrm{uu}  &  \mathbf 0 \\
+               \mathbf{J}_\mathrm{pu}  &  \tilde{\mathbf S}
+      \end{array} \right]
+    \end{align*}
+   \begin{itemize}
+    \item Multigrid for $\tilde{\mathbf{J}}_\mathrm{uu} := \mathbf{J}_\mathrm{uu}$ with Jacobi-preconditioned Chebychev-smoother
+    \item Scaled mass-matrix for $\tilde{\mathbf S}$
+   \end{itemize}
+
+  \end{block}
+
+
+\end{frame}
+
+% GPU optimization steps
+
+
+\begin{frame}{pTatin3d}
+
+  \begin{block}{Matrix-free Application of $\mathbf{J}_\mathrm{uu}$}
+  \begin{itemize}
+   \item Use hierarchical tensor basis for $Q_2$ elements on hexahedra:
+    \begin{align*}
+     A\mathbf{u} = \sum_{\mathrm{elements}\ e} \mathcal{E}_e^{\mathrm T} D_\xi^{\mathrm T} \Lambda\Bigl( (\nabla_{\mathbf x} \xi)^{\mathrm T} (\omega \eta) (\nabla_{\mathbf x} \xi) \Bigr) D_\xi \mathcal{E}_e  \mathbf{u}
+    \end{align*}
+   \item Reference derivative matrix $D_\xi$ composed of $\hat{D} \otimes \hat{B} \otimes \hat{B}$, $\hat{B} \otimes \hat{D} \otimes \hat{B}$, and $\hat{B} \otimes \hat{B} \otimes \hat{D}$
+   \item Higher FLOP/Byte ratio and lower memory bandwidth requirements
+  \end{itemize}
+  \end{block}
+
+  %\pause
+  \begin{block}{Previous Work: AVX-Vectorization}
+   \begin{itemize}
+    \item Vectorize over elements: 4 elements per AVX register (double precision, 256 bits)
+    \item Details: May \textit{et al.}, SC14 (2014)
+   \end{itemize}
+
+  \end{block}
+  
+\end{frame}
+
+
+
+
+% Performance modeling (kernel)
+
+\begin{frame}{pTatin3d}
+
+  \begin{block}{GPU-accelerated SpMV, First Attempt}
+  \begin{itemize}
+   \item One thread per element
+   \item Same execution flow as CPU version
+   \item Updates to result postponed and computed on host
+  \end{itemize}
+  \end{block}
+
+  %\pause
+  \begin{block}{Observations}
+   \begin{itemize}
+    \item It works!
+    %\pause
+    \item It's relatively slow (excessive register spilling)
+   \end{itemize}
+  \end{block}
+  
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+ \hline
+ mx=my=mz        & AVX (1 proc) & CUDA & OpenCL \\
+ \hline
+ \hline
+ 16              &  4.0         &  2.6  &  3.2  \\
+ 24              & 11.1         &  4.9  &  5.4  \\
+ 32              & 54.6         & 22.0  & 25.3 \\
+ 48              & 131.5        & 59.5  & 65.3  \\
+ \hline
+\end{tabular} \\
+(Timings in seconds, Piz Daint prior to upgrade)
+\end{center}
+  
+\end{frame}
+
+
+\begin{frame}{pTatin3d}
+
+  \begin{block}{GPU-accelerated SpMV, Optimizations}
+  \begin{itemize}
+   \item Stash GPU data to reduce host-device communication
+   \item Use one warp per element
+   \item Concurrent writes to result vector via atomics or coloring
+   \item CUDA: Use warp shuffles for tensor computations
+  \end{itemize}
+  \begin{flushright} \vspace*{-2.5cm}
+    \includegraphics[width=0.15\textwidth]{figures/threads-before} \ \ \ 
+    \includegraphics[width=0.15\textwidth]{figures/threads-after}
+  \end{flushright}
+  \end{block}
+
+   %\pause
+  \begin{block}{Observations}
+   \begin{itemize}
+    \item GPU occupancy at 25 percent (enough to cover memory latencies)
+    \item 166 GFLOPs (70 percent of 235, one FLOP per 4 warp shuffles)
+   \end{itemize}
+  \end{block}
+  
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+ \hline
+ mx=my=mz        & AVX (1 proc) & CUDA, unoptimized & CUDA, optimized \\
+ \hline
+ \hline
+ 16              &  4.0         &  2.6  &  1.0  \\
+ 24              & 11.1         &  4.9  &  2.2  \\
+ 32              & 54.6         & 22.0  &  8.1  \\
+ 48              & 131.5        & 59.5  & 14.6  \\
+ \hline
+\end{tabular} \\
+(Timings in seconds, Piz Daint prior to upgrade)
+\end{center}
+  
+\end{frame}
+
+
+% Performance modeling (multigrid)
+
+
+\begin{frame}{pTatin3d}
+
+  \begin{block}{Profiling Data for SpMV within Multigrid (Dual Xeon E5-2620 with Tesla K20)}
+  \begin{itemize}
+   \item Setup for SpMV (Gauss data, etc.): $<$1 percent
+   \item Copy field data: 21 percent
+   \item Kernel execution: \textbf{23 percent}
+   \item Copy result: 16 percent
+   \item Other (boundary conditions, etc.): 39 percent
+  \end{itemize}
+  \end{block}
+
+  
+\begin{center} \footnotesize
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c||c|c|c||c|c|}
+ \hline
+ mx=my=mz        & AVX (1T)      & AVX (2x12T)  & AVX (12x2T) & CUDA          & OpenCL \\
+ \hline
+ \hline
+ 16              &  4.7s / 7.1 &   2.4s / 14.0  & 0.7s / 52.8  &  1.0s / 33.6  & 1.1s / 30.5 \\
+ 24              & 12.8s / 6.9 &   4.3s / 20.4  & 1.5s / 62.4  &  2.2s / 40.0  & 2.4s / 36.7 \\
+ 32              & 49.2s / 6.8 &  16.4s / 20.6  & 4.3s / 66.0  &  8.1s / 40.7  & 8.2s / 40.2 \\
+ 40              & 55.4s / 6.9 &  16.5s / 23.1  & 6.1s / 69.6  &  9.3s / 40.9  & 9.4s / 40.4 \\ 
+ 48              & 82.3s / 6.9 &  22.5s / 25.1  & 8.7s / 68.4  & 14.6s / 38.7  & 15.2s / 37.1 \\
+ \hline
+\end{tabular} \\
+ Time/GFLOPs
+\end{center}
+
+\end{frame}
+

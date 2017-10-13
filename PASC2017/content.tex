@@ -1,0 +1,72 @@
+
+
+\begin{frame}{Introduction}
+
+  \begin{block}{PASC Project: GeoPC (2013-2016)}
+  \begin{itemize}
+   \item Infrastructure development for hybrid parallel smoothers for multigrid preconditioners
+   \item Today's topic: GPU acceleration for SpMV
+   \item More results: MS8, 17:00-17:30, Room C2-3
+  \end{itemize}
+  \end{block}
+
+    \begin{center} \vspace*{2cm}
+    \includegraphics[width=0.3\textwidth]{figures/pasc}
+  \end{center}
+
+\end{frame}
+
+
+
+
+\begin{frame}{pTatin3d}
+   \begin{center} \Large \textbf{GPU-SpMV in pTatin3d} \end{center}
+\end{frame}
+
+\input{slides/ptatin3d.tex}
+
+
+
+
+
+\begin{frame}{StagYY}
+  \begin{center} \Large \textbf{GPU-assisted Multigrid in StagYY} \end{center}
+\end{frame}
+
+\input{slides/stagyy.tex}
+
+
+
+%%
+%% Summary
+%%
+
+\begin{frame}{Summary}
+
+ \begin{block}{GPU-SpMV in pTatin3d}
+   \begin{itemize}
+    \item 166 GFLOPs in GPU kernel achieved
+    \item One thread per Q2 quadrature point
+    \item Overhead due to host-device communication significant
+   \end{itemize}
+ \end{block}
+
+ %\pause
+ \begin{block}{GPU-assisted Multigrid in StagYY}
+   \begin{itemize}
+    \item Residual evaluation and relaxations
+    \item Reduced boundary data transfer between host and GPU (cf.~gather and scatter)
+    \item Heavily PCI-Express bandwidth limited
+   \end{itemize}
+ \end{block}
+
+ %\pause
+ \begin{block}{General Conclusions}
+   \begin{itemize}
+    \item Starvation of modern GPUs for multigrid when attached via PCI-Express 
+    \item Kernel-level GPU integration insufficient for multigrid purposes
+   \end{itemize}
+ \end{block}
+
+\end{frame}
+
