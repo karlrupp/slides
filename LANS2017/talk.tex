@@ -1,0 +1,119 @@
+% -------------------------------------------------------------------
+\documentclass[usepdftitle=false,9pt]{beamer}
+
+% Specify the respective Beamer theme here:
+%\usetheme[height=0.3cm,width=1.cm,shadow=false]{iue}
+
+
+%encodings
+\usepackage[utf8]{inputenc}
+\usepackage[OT1]{fontenc}
+
+%some useful packages
+\usepackage[]{mathrsfs}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{acronym}
+\usepackage[]{listings}
+\usepackage[]{xcolor}
+\usepackage[]{graphicx}
+\usepackage[]{textcomp} %for tilde
+\usepackage{soul}
+
+\hypersetup{pdftitle={Matrix Multiplications: A Lot of Ways of Handling a Few Nonzeros},
+            pdfsubject={LANS Informal Seminar},
+            pdfauthor={Karl Rupp}}
+
+
+%% Listings package START
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.6,0,0}
+\definecolor{darkgreen}{rgb}{0,.4,0}
+\definecolor{red}{rgb}{.98,0,0}
+\definecolor{lightgrey}{rgb}{0.98,0.98,0.98}
+
+
+\lstloadlanguages{C++}
+\lstset{%
+  language=C++,
+  basicstyle=\small\ttfamily,
+  commentstyle=\itshape\color{darkgreen},
+  keywordstyle=\bfseries\color{darkblue},
+  stringstyle=\color{darkred},
+  showspaces=false,
+  showtabs=false,
+  columns=fixed,
+  backgroundcolor=\color{lightgrey},
+  numbers=none,
+  frame=single,
+  numberstyle=\tiny,
+  breaklines=true,
+  showstringspaces=false,
+  xleftmargin=0.1cm,
+  xrightmargin=3em
+}%
+
+\lstset{emphstyle=\color{red}}
+
+%% Listings package STOP
+
+
+\renewcommand{\matrix}[1]{\boldsymbol{#1}}
+\renewcommand{\vector}[1]{\boldsymbol{#1}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\black}{ }
+\newcommand{\ViennaCL}{\texttt{ViennaCL}}
+
+%\setlength{\fboxrule}{1pt}
+
+%\renewcommand{\seriesdefault}{\bfdefault}
+%\usepackage{helvet}
+
+\graphicspath{{figures/}}           % in which folder all the figures are
+\newcommand{\tn}   {\textnormal}
+
+%\mode<presentation>
+
+% table of contents, depth
+\setcounter{tocdepth}{2}
+
+% modify at will
+\setbeamercovered{invisible}
+%\setbeamercovered{transparent}
+
+
+
+\author[Karl Rupp]{ Karl Rupp }
+
+\institute[IuE]
+{ \footnotesize 
+  Short-Term Visiting Scientist\\
+  \textbf{Argonne National Laboratory} \\[2em]
+  extending previous work at TU Wien with\\
+  A.~Morhammer, F.~Rudolf, and J.~Weinbub \\[1em]
+}
+
+\title[Optimized Sparse Matrix-Matrix Multiplication]{ {\LARGE Matrix Multiplications: \\ A Lot of Ways of Handling a Few Nonzeros} }
+
+\date[LANS 2017, September 27, 2017]{ \footnotesize LANS Informal Seminar\\ September 27, 2017}
+
+\setbeamertemplate{blocks}[default]
+%\setbeamercolor{block title}{bg=}
+\setbeamercolor{block body}{bg=}
+%\setbeamercovered{transparent}
+
+\begin{document}
+
+\begin{frame}[plain]
+ \frametitle{~}
+ \titlepage
+\end{frame}
+
+\input{content}
+
+\end{document}
+
+

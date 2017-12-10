@@ -1,0 +1,241 @@
+
+
+\input{slides/who}
+
+
+%%
+%% Introduction
+%%
+
+
+\begin{frame}[fragile]{Matrix Multiplication}
+
+  \begin{block}{Dense Matrix-Matrix-Multiplications}
+  \begin{itemize}
+   \item Ubiquituous for: dense linear algebra (eigenvalues, LU factorization, etc.)
+   \item FLOP-limited, basis for TOP500
+   \item Computer scientist's darling
+  \end{itemize}
+ \end{block}
+
+
+ \begin{center}
+   \includegraphics[width=0.4\textwidth]{figures/gemm_diagram_2} \\
+ \tiny \verb|https://en.wikipedia.org/wiki/Matrix_multiplication#/media/File:Matrix_multiplication_diagram_2.svg|
+ \end{center}
+
+\end{frame}
+
+
+
+% \begin{frame}{Why Sparse Matrices?}
+% 
+%  \begin{minipage}{0.5\textwidth}
+%   \includegraphics[width=0.99\textwidth]{figures/social-graph.jpg}
+%  \end{minipage} \hfill \pause
+%  \begin{minipage}{0.45\textwidth}
+%   \begin{align*}
+%    \left(
+%    \begin{array}{ccccccccc}
+%     1 & 1 & 1 & 0 &  & 0 & 0 & 0 & 0 \\
+%     0 & 1 & 1 & 0 &  & 0 & 0 & 0 & 0 \\
+%     1 & 1 & 1 & 1 &  & 1 & 0 & 0 & 0 \\
+%     0 & 0 & 1 & 1 &  & 0 & 0 & 0 & 0 \\
+% & \\
+%     0 & 0 & 1 & 0 &  & 1 & 1 & 1 & 1 \\
+%     0 & 0 & 0 & 0 &  & 1 & 1 & 0 & 0 \\
+%     0 & 0 & 0 & 0 &  & 1 & 0 & 1 & 0 \\
+%     0 & 0 & 0 & 0 &  & 1 & 0 & 0 & 1 \\
+%     \end{array}
+%    \right)
+%   \end{align*}
+%  \end{minipage}
+%  
+%  \pause
+%  
+%  \vspace*{1cm}
+%  \begin{center}
+%   Distance-2 connectivity given by the squared matrix \\
+%   \pause
+%   ...\\
+%   Distance-$n$ connectivity given by the $n$-th power \\
+%  \end{center}
+%  \vspace*{-1cm}
+% 
+% 
+% \end{frame}
+
+
+% 
+% \begin{frame}{Why Sparse Matrices?}
+% 
+% \begin{center}
+%  \begin{center}
+%    \includegraphics[width=0.9\textwidth]{figures/multigridgrid} \\
+%  \scriptsize http://web.utk.edu/~wfeng1/style/mggrid.png
+%  \end{center}
+% \end{center}
+% \end{frame}
+% 
+
+
+% 
+% \begin{frame}{Why Sparse Matrices?}
+% 
+%  \begin{block}{Sparse Matrices}
+%   \begin{itemize}
+%    \item Ubiquituous for: graph algorithms, numerical solution of PDEs
+%    \item Finite differences, finite elements, finite volumes, etc.
+%   \end{itemize}
+%  \end{block}
+% 
+%  \begin{block}{Algebraic Multigrid}
+%   \begin{itemize}
+%    \item Asymptotically optimal solver
+%    %\item Construct coarse grid hierarchy from matrix entries only
+%    \item Computation of coarse grid operator $\mathbf{A}^{\mathrm{coarse}} = \mathbf{R} \mathbf{A}^{\mathrm{fine}} \mathbf{P}$ expensive
+%    %\item Sparse Matrix Products are the performance bottleneck
+%   \end{itemize}
+%  \end{block}
+% 
+%  \begin{center}
+%   \includegraphics[width=0.6\textwidth]{figures/smooth-error.png} \\
+%   \scriptsize https://str.llnl.gov/str/December03/gifs/falgout2.jpg
+%  \end{center}
+% 
+% \end{frame}
+% 
+% 
+% 
+% \begin{frame}{Why Sparse Matrices?}
+% 
+% \begin{center}
+%  \begin{center}
+%    \includegraphics[width=0.95\textwidth]{figures/two-grid-smoothing.png} \\
+%  \scriptsize [A.~Al Jarro, A.~Clo,H.~Bagci, 2012]
+%  \end{center}
+% \end{center}
+% \end{frame}
+
+
+\begin{frame}{Compressed Sparse Row Format}
+
+ \begin{block}{Sparse Matrix Storage}
+\begin{center}
+ \begin{center}{\includegraphics[height=40mm]{figures/matrix_csr}}\end{center}
+\end{center}
+ \end{block}
+
+
+\end{frame}
+
+
+%%
+%% Explain basic principles of SpGEMM
+%%
+
+
+
+\begin{frame}{Sparse Matrix Products}
+
+\begin{center}
+ \includegraphics[width=0.85\textwidth]{figures/spgemm-matrix-1} \\
+ \begin{align*}
+  \qquad \mathbf{C} \qquad \qquad = \qquad \qquad \qquad \mathbf{A} \qquad \qquad \qquad \qquad \mathbf{B}
+ \end{align*}
+ \vspace*{-0.22cm}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}{Sparse Matrix Products}
+
+\begin{center}
+ \includegraphics[width=0.85\textwidth]{figures/spgemm-matrix-2} \\
+ \begin{align*}
+  \mathrm{Row\ i:} \qquad \qquad \mathbf{c}_i \qquad \quad =\qquad \sum_{j} \qquad a_{ij} \qquad \qquad \qquad \mathbf{b}_j \qquad \qquad \qquad
+ \end{align*}
+\end{center}
+
+
+\end{frame}
+
+\begin{frame}{Sparse Matrix Products}
+
+\begin{center}
+ \includegraphics[width=0.85\textwidth]{figures/spgemm-matrix-3} \\
+ \begin{align*}
+  \mathrm{Row\ i:} \qquad \qquad \mathbf{c}_i \qquad \quad =\qquad \sum_{j} \qquad a_{ij} \qquad \qquad \qquad \mathbf{b}_j \qquad \qquad \qquad
+ \end{align*}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%
+
+
+%%
+%% Algorithms in PETSc
+%%
+
+\input{slides/seqmatmatmult}
+
+
+
+%%
+%% Algorithm
+%%
+
+\input{slides/rowmerge}
+
+
+%%
+%% Benchmarks
+%%
+\input{slides/benchmarks}
+
+
+
+%%
+%% Distributed SpGEMM
+%%
+\input{slides/mpimatmatmult}
+
+
+
+
+
+
+%%
+%% Summary
+%%
+
+\begin{frame}{Summary}
+
+ \begin{block}{Sequential Sparse Matrix-Matrix Products}
+   \begin{itemize}
+    \item Row Merge faster than MKL on Xeon CPUs on average
+    \item Row Merge faster than cuSPARSE and CUSP on Tesla K20m (and others)
+   \end{itemize}
+ \end{block}
+
+ \pause
+  \begin{block}{Parallel Sparse Matrix-Matrix Products}
+   \begin{itemize}
+    \item Potential for an approach similar to Row Merge
+    \item Fine-tune use of scalable vs.~non-scalable routines
+   \end{itemize}
+ \end{block}
+
+ \pause
+ \begin{block}{Implications and Outlook}
+   \begin{itemize}
+    \item CPUs beat accelerators for sparse matrix-matrix products (caches!)
+    \item Full integration into PETSc's GAMG (algebraic multigrid)
+    \item Find CPU/GPU balance for hybrid clusters
+   \end{itemize}
+ \end{block}
+
+\end{frame}
+
