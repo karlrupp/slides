@@ -1,0 +1,40 @@
+
+
+
+\begin{frame}{Current Directions}
+  \begin{center}
+    \Large PETSc on GPUs and MIC: \\[1em] Upcoming Features for the Next PETSc Release \\[1em]
+  \end{center}
+\end{frame}
+
+
+
+
+\begin{frame}{Current Directions}
+
+  \begin{block}{GPU-acceleration for GAMG}
+    \begin{itemize}
+     \item Use GPUs on the finest levels only
+     \item Coarse grid solvers unchanged
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{ViennaCL: Better support for $n>1$ processes}
+    \begin{itemize}
+     \item Efficient scatter operations
+     \item Minimize PCI-Express traffic
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Bindings for NVIDIA's AMGX package}
+    \begin{itemize}
+     \item AMGX is now available as open source
+     \item GPU-alternative to GAMG, Hypre, ML
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+
+%%%% Conclusion
+

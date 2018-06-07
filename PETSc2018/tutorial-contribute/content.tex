@@ -1,0 +1,87 @@
+
+
+
+\begin{frame}{LIVE DEMO}
+  \vspace*{2cm}
+   \begin{center} \Large \textbf{LIVE DEMO} \\ \normalsize Let's enhance PETSc together!\end{center}
+  \begin{flushright} \vspace*{3cm}
+   \begin{flushright}
+   \textit{Debugging does not mean just trying a bunch of random things \\
+           with no understanding and hoping to figure out the problem.}
+  \end{flushright}
+  \end{flushright}
+\end{frame}
+
+
+\begin{frame}[fragile]{In a Nutshell}
+
+ \begin{block}{Create Pull Request in BitBucket}
+  \begin{itemize}
+   \item Fork the repository at \verb|https://bitbucket.org/petsc/petsc/|
+   \item Create a new branch off master: \verb|git checkout -b myname/mybranchname|
+   \item Apply changes
+   \item Commit changes: \verb|git commit -a|
+   \item Push changes: \verb|git push -u origin myname/mybranchname|
+   \item Create pull request to master branch in main PETSc repository via webinterface
+  \end{itemize}
+ \end{block}
+ 
+ \begin{block}{Prefer GitHub?}
+  \begin{itemize}
+   \item You may also fork our mirror at GitHub
+   \item Repeat steps above
+  \end{itemize}
+ \end{block}
+ 
+\end{frame}
+
+
+
+%
+% Git branches
+%
+\section{PETSc and Git}
+
+\begin{frame}{PETSc}
+   \begin{center} \Large \textbf{What about all those branches in the repository?} \end{center}
+  \begin{flushright} \vspace*{4cm}
+   \textit{git sucks!}
+  \end{flushright}
+\end{frame}
+
+\input{slides/git.tex}
+
+
+
+%
+% Conclusion and Wrap-Up
+%
+\section{Conclusions}
+\begin{frame}{Conclusions}
+ 
+ \begin{block}{PETSc can Help You}
+  \begin{itemize}
+   \item solve algebraic and DAE problems in your application area
+   \item rapidly develop efficient parallel code, can start from examples
+   \item develop new solution methods and data structures
+   \item debug and analyze performance
+   \item advice on software design, solution algorithms, and performance
+   \item \centering \texttt{petsc-\{users,dev,maint\}@mcs.anl.gov}
+
+  \end{itemize}
+ \end{block}
+
+ \begin{block}{You can Help PETSc}
+  \begin{itemize}
+   \item report bugs and inconsistencies, or if you think there is a better way
+   \item tell us if the documentation is inconsistent or unclear
+   \item consider developing new algebraic methods as plugins, contribute if your idea works
+  \end{itemize}
+ \end{block}
+
+   \begin{flushright}
+   \textit{Thank you!}
+  \end{flushright}
+
+\end{frame}
+

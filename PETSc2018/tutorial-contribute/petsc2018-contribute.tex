@@ -1,0 +1,66 @@
+% -------------------------------------------------------------------
+\documentclass[usepdftitle=false,9pt]{beamer}
+
+% Specify the respective Beamer theme here:
+%\usetheme[height=0.3cm,width=0.8cm,shadow=false]{iue}
+
+
+%encodings
+\usepackage[utf8]{inputenc}
+\usepackage[OT1]{fontenc}
+
+%some useful packages
+\usepackage[]{mathrsfs}
+\usepackage[]{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{acronym}
+\usepackage[]{listings}
+\usepackage[]{xcolor}
+\usepackage[]{graphicx}
+\usepackage[]{textcomp} %for tilde
+\usepackage{tikz}
+
+\hypersetup{pdftitle = {Contributing to PETSc is Easy!},
+            pdfsubject = {PETSc User Meeting 2018},
+            pdfauthor={Karl Rupp}}
+
+
+\graphicspath{{figures/}}           % in which folder all the figures are
+
+%\mode<presentation>
+
+% table of contents, depth
+\setcounter{tocdepth}{2}
+
+% modify at will
+\setbeamercovered{invisible}
+%\setbeamercovered{transparent}
+
+\author[Karl Rupp]{Karl Rupp \\ \ttfamily rupp@iue.tuwien.ac.at \\ https://www.karlrupp.net/}
+
+\institute[IuE]
+{ \footnotesize
+  Institute for Microelectronics, TU Wien \\[1em]
+}
+
+\title[PETSc]{ \vspace*{1cm}\\ {Contributing to PETSc is Easy!} %\\[0.5em] Portable, Extensible Toolkit for Scientific Computation
+             }
+
+\date[PETSc 2018, June 4-6, 2018]{ \footnotesize PETSc User Meeting 2018 \\[1em] Imperial College London, UK \\[1em] June 4-6, 2018}
+
+\setbeamertemplate{blocks}[default]
+%\setbeamercolor{block title}{bg=}
+\setbeamercolor{block body}{bg=}
+\setbeamercovered{invisible}
+
+\begin{document}
+
+\begin{frame}[plain]
+ \frametitle{~}
+ \titlepage
+\end{frame}
+
+\input{content}
+
+\end{document}
+
